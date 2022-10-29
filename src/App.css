@@ -1,0 +1,86 @@
+html,
+body {
+  background-color: #e5e5e5;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.Form_area {
+  padding: 20px;
+  margin-left: 300px;
+
+  background-color: #e5e5e5;
+}
+#labels {
+  color: rgb(68, 3, 3);
+  padding: 8px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.sidebar {
+  display: flex;
+  align-items: left;
+}
+.btn {
+  position: relative;
+  float: right;
+}
+.sidenav {
+  height: 100%;
+  width: 300px;
+  position: fixed;
+
+  background-color: rgb(255, 255, 255);
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #302222;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+a {
+  display: inline;
+  font-size: 18px;
+  padding: 5px;
+}
+
+.modal {
+  font-size: 12px;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
