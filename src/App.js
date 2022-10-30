@@ -6,9 +6,10 @@ import { SearchBar } from "./Components/Home/SearchBar";
 import { InputField } from "./Components/Home/InputField";
 import { Target } from "./Components/Target/Target";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { addNewPatient, getAllPatient } from "./server"
 import { Navigate } from "react-router";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function App() {
   const onDelete = (event) => {
@@ -21,6 +22,17 @@ function App() {
   const onEdit = (event) => {};
 
   const [events, setevents] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      let serverEvents = await getAllPatient()
+      return serverEvents
+    }
+    /*
+    * Mahima server bata as a promise data aauxa teslai kasari render garne hera haii
+    */
+    // setevents([...events, fetchData()])
+  }, [])
+
   const addEvent = (title, desc, age, xyz) => {
     if (events.length === 0) {
       var sn = 1;
@@ -35,7 +47,7 @@ function App() {
       xyz: xyz,
     };
     setevents([...events, myevent]);
-    console.log(myevent);
+    console.log(addNewPatient(myevent))
   };
   return (
     <div className="App">
