@@ -1,7 +1,7 @@
 import "./App.css";
 import { Event } from "./Components/Home/Event";
 import { Person } from "./Components/Person/Person";
-import { Sidebar } from "./Components/Sidebar";
+import { Sidebar } from "./Components/Sidebar/Sidebar";
 import { SearchBar } from "./Components/Home/SearchBar";
 import { InputField } from "./Components/Home/InputField";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";

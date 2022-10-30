@@ -1,7 +1,7 @@
 html,
 body {
   background-color: #e5e5e5;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: sans-serif;
 }
 
 .Form_area {
@@ -25,25 +25,7 @@ body {
   position: relative;
   float: right;
 }
-.sidenav {
-  height: 100%;
-  width: 300px;
-  position: fixed;
 
-  background-color: rgb(255, 255, 255);
-}
-
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #302222;
-  display: block;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
 
 a {
   display: inline;
