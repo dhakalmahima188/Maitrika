@@ -12,6 +12,7 @@ import { addNewPatient, getAllPatient } from "./server"
 import { Navigate } from "react-router";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
+import { Tasks } from "./Components/Tasks/Tasks";
 
 function App() {
   const onDelete = (event) => {
@@ -61,6 +62,7 @@ function App() {
             element={
               <>
                 <Sidebar />
+                <Tasks />
               </>
             }
           />
