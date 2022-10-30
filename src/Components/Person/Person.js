@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, useParams } from "react-router-dom";
-export const   Person  =()=> {
+export const   Person  = () => {
    let {name} = useParams();
   return (
 

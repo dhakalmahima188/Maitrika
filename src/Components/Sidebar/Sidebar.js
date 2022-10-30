@@ -1,6 +1,8 @@
 import React from "react";
 import "./sidebar.css"
 import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
+
 import { MdOutlinePeopleOutline, MdTaskAlt, MdOutlineNotificationsActive, MdOutlineLocalHospital, MdOutlineEventAvailable } from "react-icons/md";
 
 export const Sidebar = () => {
@@ -13,29 +15,29 @@ export const Sidebar = () => {
         <br></br>
         <ul className="taskbar__items">
           <li>
-            <a href="#">
+            <Link to="/tasks">
               <MdOutlineNotificationsActive /> Tasks
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            <Link to="/people">
               <MdOutlinePeopleOutline /> People
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
-              <MdTaskAlt /> Targets
-            </a>
+              <Link to="/target">
+                <MdTaskAlt /> Target
+              </Link>
           </li>
           <li>
-            <a href="#">
+            <Link to="/events">
               <MdOutlineEventAvailable /> Events
-            </a>  
+            </Link>
           </li>
           <li>
-            <a href="#">
-              <MdOutlineLocalHospital /> Doctors
-            </a>
+            <Link to="/tasks">
+              <MdOutlineLocalHospital /> Doctor
+            </Link>
           </li>
 
         </ul>

@@ -4,6 +4,7 @@ import { Person } from "./Components/Person/Person";
 import { Sidebar } from "./Components/Sidebar/Sidebar";
 import { SearchBar } from "./Components/Home/SearchBar";
 import { InputField } from "./Components/Home/InputField";
+import { Target } from "./Components/Target/Target";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Navigate } from "react-router";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -40,9 +41,18 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route />
+
           <Route
-            path="/"
+            path="/tasks"
+            element={
+              <>
+                <Sidebar />
+              </>
+            }
+          />
+
+          <Route
+            path="/people"
             element={
               <>
                 <Sidebar />
@@ -52,17 +62,45 @@ function App() {
               </>
             }
           />
+
            <Route
             path="/person/:name"
             element={
               <>
-                  <Sidebar />
-              <Person/>
-            
-                
+              <Sidebar />
+              <Person/>  
               </>
             }
           />
+ 
+          <Route
+            path="/target"
+            element={
+              <>
+                <Sidebar />
+                <Target />
+              </>
+            }
+          />
+
+          <Route
+            path="/events"
+            element={
+              <>
+                <Sidebar />
+              </>
+            }
+          />  
+         
+         <Route
+            path="/doctor"
+            element={
+              <>
+                <Sidebar />
+              </>
+            }
+          />  
+         
         </Routes>
       </Router>
     </div>
