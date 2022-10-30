@@ -1,8 +1,11 @@
 import "./App.css";
-import { Event } from "./Components/Event";
+import { Event } from "./Components/Home/Event";
+import { Person } from "./Components/Person/Person";
 import { Sidebar } from "./Components/Sidebar";
-import { SearchBar } from "./Components/SearchBar";
-import { InputField } from "./Components/InputField";
+import { SearchBar } from "./Components/Home/SearchBar";
+import { InputField } from "./Components/Home/InputField";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Navigate } from "react-router";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 
@@ -35,10 +38,33 @@ function App() {
   };
   return (
     <div className="App">
-      <Sidebar />
-      <InputField addEvent={addEvent} />
-      <SearchBar/>
-      <Event events={events} onDelete={onDelete} onEdit={onEdit} />
+      <Router>
+        <Routes>
+          <Route />
+          <Route
+            path="/"
+            element={
+              <>
+                <Sidebar />
+                <InputField addEvent={addEvent} />
+                <SearchBar />
+                <Event events={events} onDelete={onDelete} onEdit={onEdit} />
+              </>
+            }
+          />
+           <Route
+            path="/person/:name"
+            element={
+              <>
+                  <Sidebar />
+              <Person/>
+            
+                
+              </>
+            }
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }

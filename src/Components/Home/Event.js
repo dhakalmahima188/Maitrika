@@ -1,4 +1,4 @@
-import "../App.css";
+import "../../App.css";
 import React from "react";
 import { EventItem } from "./EventItem";
 import "reactjs-popup/dist/index.css";
@@ -9,7 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
+import { Link } from "react-router-dom";
 export const Event = (props) => {
   return (
     <div>
@@ -22,6 +22,7 @@ export const Event = (props) => {
                   <input type="checkbox" />
                 </TableCell>
                 <TableCell>
+            
                   <h5>Patient Name</h5>
                 </TableCell>
                 <TableCell align="left">
