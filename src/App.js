@@ -5,6 +5,8 @@ import { Sidebar } from "./Components/Sidebar/Sidebar";
 import { SearchBar } from "./Components/Home/SearchBar";
 import { InputField } from "./Components/Home/InputField";
 import { Target } from "./Components/Target/Target";
+import { Doctor } from "./Components/Doctor/Doctor";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Navigate } from "react-router";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -97,6 +99,7 @@ function App() {
             element={
               <>
                 <Sidebar />
+                <Doctor />
               </>
             }
           />  

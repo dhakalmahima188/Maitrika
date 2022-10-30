@@ -7,6 +7,7 @@ import { MdOutlinePeopleOutline, MdTaskAlt, MdOutlineNotificationsActive, MdOutl
 
 export const Sidebar = () => {
   return (
+    <>
     <div>
       <div className="sidenav">
         <a href="#">
@@ -35,7 +36,7 @@ export const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/tasks">
+            <Link to="/doctor">
               <MdOutlineLocalHospital /> Doctor
             </Link>
           </li>
@@ -43,5 +44,6 @@ export const Sidebar = () => {
         </ul>
       </div>
     </div>
+    </>
   );
 };
