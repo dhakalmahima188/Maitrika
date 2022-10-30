@@ -1,6 +1,44 @@
-h2 {
+.area__name {
     right: 0;
     display: block;
     text-align: center;
-    background-color: red;
+    margin-left: 150px;
+    background-color: #43AED9;
+    padding: 20px;
+}
+
+.target__container {
+    margin-left: 250px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.target__box {
+    /* flex: 1 1 30%; */
+    width: 31.5%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px
+}
+
+.target__imgAndText {
+    display: flex;
+}
+
+.target__img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    margin-top: 5px;
+    /* margin-bottom: auto; */
+}
+
+.target__number {
+    margin-top: 5px;
+    font-size: 40px;
+    text-align: center;
+    color: red;
+    font-weight: bold;
 }
