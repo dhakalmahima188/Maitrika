@@ -6,31 +6,16 @@ import { SearchBar } from "./Components/Home/SearchBar";
 import { InputField } from "./Components/Home/InputField";
 import { Target } from "./Components/Target/Target";
 import { Doctor } from "./Components/Doctor/Doctor";
+import { removePeople, getPeople, addPeople } from "./localstorage";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import { Tasks } from "./Components/Tasks/Tasks";
 
-const localStorageItemKey = "patient"
-function getPeople() {
-  let data = localStorage.getItem(localStorageItemKey)
-  if (data) {
-    let jsondata = JSON.parse(data)
-    return jsondata.patients
-  }
-  else{
-    localStorage.setItem(localStorageItemKey, JSON.stringify({patients: []}))
-    return []
-  }
-}
-function addPeople(person) {
-  let people = getPeople()
-  localStorage.setItem(localStorageItemKey, JSON.stringify({patients: [...people, person]}))
-}
-
 function App() {
   const onDelete = (event) => {
+    removePeople(event)
     setevents(
       events.filter((e) => {
         return e !== event;
@@ -46,7 +31,7 @@ function App() {
   }, [])
 
   const [vitals, setvitals] = useState([]);
-  const addEvent = (title, desc, age, xyz) => {
+  const addEvent = (title, desc, age, recentlyGaveBirth, pregnant, xyz) => {
     if (events.length === 0) {
       var sn = 1;
     } else {
@@ -57,6 +42,8 @@ function App() {
       title: title,
       desc: desc,
       age: age,
+      recentlyGaveBirth: recentlyGaveBirth,
+      pregnant: pregnant,
       xyz: xyz,
     };
     setevents([...events, myevent]);

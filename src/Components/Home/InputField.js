@@ -9,13 +9,14 @@ export const InputField = (props) => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [age, setAge] = useState("");
-
+  const [recentlyGaveBirth, setRecentlyGaveBirth] = useState(false)
+  const [pregnant, setpregnant] = useState(false)
 
   const submit = () => {
     if (!title || !desc || !age ) {
       alert("Blank detected");
     } else {
-      props.addEvent(title, desc, age, 'xyz');
+      props.addEvent(title, desc, age, recentlyGaveBirth, pregnant, 'xyz');
     }
   };
 
@@ -60,6 +61,30 @@ export const InputField = (props) => {
             />
           </Col>
        
+        </Row>
+        <Row>
+          <Col>
+           <div id="labels">Recently Gave Birth</div>
+            <Form.Control
+              size="lg"
+              type="checkbox"
+              value={recentlyGaveBirth}
+              onChange={(e) => {
+                setRecentlyGaveBirth(e.target.value);
+              }}
+            />
+          </Col>
+          <Col>
+           <div id="labels">Pregnant</div>
+            <Form.Control
+              size="lg"
+              type="checkbox"
+              value={pregnant}
+              onChange={(e) => {
+                setpregnant(e.target.value);
+              }}
+            />
+          </Col>
         </Row>
         <Row>
           <Col>
