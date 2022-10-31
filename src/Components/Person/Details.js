@@ -18,7 +18,7 @@ export default function MyDetail(props) {
   const [cry, setcry] = useState("normally");
   const [teeth, setteeth] = useState("");
 
-  const { onCancel } = props;
+  const { onCancel,details } = props;
 
   const submit = () => {
     if (!temp) {
@@ -223,7 +223,7 @@ export default function MyDetail(props) {
         </Modal.Footer>
       </Modal>
 
-      {props.details.map((detail) => {
+      {details.map((detail) => {
         return (
           <>
             <div style={{ width: "50rem" }}>

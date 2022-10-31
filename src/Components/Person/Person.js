@@ -114,10 +114,7 @@ export const Person = (props) => {
         ADD Child
       </Button>
       <br></br>
-      <MyVital
-        show={showVitalModal}
-        onCancel={() => setShowVItalModal(false)}
-      />
+   
       <MyModal
         addVital={props.addVital}
         show={showDeleteModal}
@@ -127,17 +124,14 @@ export const Person = (props) => {
       <br></br>
 
         <MyDetail
+        
           adddetail={props.adddetail}
           details={props.details}
           show={showDetailModal}
           onCancel={() => setShowDetailModal(false)}
         />
 
-        <MyModal
-          addVital={props.addVital}
-          show={showDeleteModal}
-          onCancel={() => setShowDeleteModal(false)}
-        />
+      
         <br></br>
         <div style={{ flexDirection: "row" }}>
           {tasks.map((task) => {
