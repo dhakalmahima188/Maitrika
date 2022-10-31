@@ -14,7 +14,7 @@ export const Doctor = () => {
         <div className='container doctor__container'>
 
             <h2 className='doctor__type'>
-            {t('gynaecologist')}
+            {t('Gynaecologist')}
             </h2>
             {gynecologistData.map((item) => {
               return (
@@ -33,7 +33,7 @@ export const Doctor = () => {
             })}
 
             <h2 className='doctor__type'>
-              Pediatrician 
+              {t('Pediatrician')} 
             </h2>
             {pediatricianData.map((item) => {
               return (
