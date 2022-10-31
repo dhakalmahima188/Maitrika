@@ -78,60 +78,28 @@ export const Person = (props) => {
           })}
         </div>
         <br></br>
+
+        <br></br>
         <Button size="sm" onClick={() => setShowDeleteModal(true)}>
           ADD Child
         </Button>
         <br></br>
-      <div>
-        {props.vitals.map((vital) => {
-          return (
-            <>
-              <Card style={{ width: "18rem" }}>
-                <Card.Body>
-                  <p>
-                    <b>Name: </b>
-                    {vital.title}
-                  </p>
-                  <b>Age: </b>
-                  {vital.age}
-                </Card.Body>
-                <Button
-                  variant="primary"
-                  onClick={() => {
-                    setShowVItalModal(true);
-                  }}
-                >
-                  ADD Vitals
-                </Button>
-              </Card>
-              <br></br>
-            </>
-          );
-        })}
-      </div>
-      <br></br>
-      <Button size="sm" onClick={() => setShowDeleteModal(true)}>
-        ADD Child
-      </Button>
-      <br></br>
-   
-      <MyModal
-        addVital={props.addVital}
-        show={showDeleteModal}
-        onCancel={() => setShowDeleteModal(false)}
-        person={name}
-      />
-      <br></br>
+
+        <MyModal
+          addVital={props.addVital}
+          show={showDeleteModal}
+          onCancel={() => setShowDeleteModal(false)}
+          person={name}
+        />
+        <br></br>
 
         <MyDetail
-        
           adddetail={props.adddetail}
           details={props.details}
           show={showDetailModal}
           onCancel={() => setShowDetailModal(false)}
         />
 
-      
         <br></br>
         <div style={{ flexDirection: "row" }}>
           {tasks.map((task) => {

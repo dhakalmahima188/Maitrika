@@ -178,7 +178,7 @@ function App() {
                   details={details}
                   addvitaldetail={addvitaldetail}
                 />
-                <Person addVital={addVital} vitals={vitals} />
+               
 
 
               </>
