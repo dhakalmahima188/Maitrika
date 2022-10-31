@@ -2,7 +2,6 @@ import React from 'react';
 
 export const Box = (props) => {
     let item = props.item
-    console.log(item)
     return (
         <>
             <div className="box" style={{ backgroundColor: (item.key !== props.selected) ? 'white' : "#f0f4fd" }}
