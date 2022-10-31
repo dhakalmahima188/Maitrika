@@ -6,21 +6,24 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useState } from "react";
 import Card from "react-bootstrap/Card";
+import baby from '../../assets/baby.jpg'
 
 export default function MyVital(props) {
   const [height, setheight] = useState("");
   const [weight, setweight] = useState("");
   const [birth_date, setbirth_date] = useState("");
 
-  const { onCancel } = props;
+  const { onCancel,child_name } = props;
+  console.log('name',child_name);
 
   const submit = () => {
     if (!height ) {
       alert("Blank detected");
     } else {
-        props.addvitaldetail(height)
+        props.addvitaldetail(height,weight,birth_date)
       console.log("sucess");
     }
+
   };
   return (
     <>
@@ -115,10 +118,15 @@ export default function MyVital(props) {
           <div style={{ width: "20rem" }}>
             <Card style={{ flex:1}} >
               <Card.Header>
-                HEight <b>{detail.sn}</b>{" "}
+              <b> {child_name}</b> {" "}
               </Card.Header>
               <Card.Body>
-                <Card.Title>{detail.height}</Card.Title>
+
+              <img src={baby} className="baby_img"></img>
+            
+                <Card.Title>  <br></br><b>Height: </b>{detail.height}{" "}ft</Card.Title>
+                <Card.Title><b>Weight: </b>{detail.weight}{" "}kg</Card.Title>
+                <Card.Title><b>Birth Date:</b> {detail.birth_date}</Card.Title>
             
               
               </Card.Body>

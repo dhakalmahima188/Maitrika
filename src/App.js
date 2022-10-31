@@ -76,7 +76,7 @@ function App() {
     console.log(mydetails);
   };
 
-  const addvitaldetail = (height) => {
+  const addvitaldetail = (height,weight,birth_date) => {
     if (vitaldetails.length === 0) {
       var sn = 1;
     } else {
@@ -86,6 +86,8 @@ function App() {
     const myvitaldetails = {
       sn: sn,
       height: height,
+      weight:weight,
+      birth_date:birth_date
     };
     vitalsetdetails([...vitaldetails, myvitaldetails]);
     console.log(myvitaldetails);

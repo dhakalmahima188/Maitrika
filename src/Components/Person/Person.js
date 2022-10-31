@@ -36,6 +36,9 @@ export const Person = (props) => {
         {props.vitals.map((vital) => {
           return (
             <>
+
+
+
               <Card style={{ width: "18rem" }}>
                 <Card.Body>
                   <p>
@@ -65,8 +68,18 @@ export const Person = (props) => {
                 </Card.Body>
               </Card>
               <br></br>
+
+
+              <MyVital
+              child_name={vital.title}    
+    addvitaldetail={props.addvitaldetail}
+    vitaldetails={props.vitaldetails}
+      show={showVitalModal}
+      onCancel={() => setShowVItalModal(false)}
+    />
             </>
           );
+          
         })}
       </div>
       <br></br>
@@ -74,12 +87,7 @@ export const Person = (props) => {
         ADD Child
       </Button>
       <br></br>
-      <MyVital
-      addvitaldetail={props.addvitaldetail}
-      vitaldetails={props.vitaldetails}
-        show={showVitalModal}
-        onCancel={() => setShowVItalModal(false)}
-      />
+   
  <MyDetail
 adddetail={props.adddetail}
 details={props.details}
