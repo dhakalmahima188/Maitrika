@@ -16,14 +16,31 @@ export function addPeople(person) {
 }
 
 export function addChild(parentName, childInfo) {
-    // let people = getPeople()
-    // // const index = people.findIndex(p => p.title == person.title)
-    // if(index > -1)
-    // {
-    // let person = people[index]
-    // // TODo
-
-    // }
+    let people = getPeople()
+    const index = people.findIndex(p => p.title == parentName)
+    if (index > -1) {
+        let person = people[index]
+        if (person.children) {
+            people[index].children.push(childInfo)
+        }
+        else {
+            person.children = [childInfo]
+        }
+        localStorage.setItem(localStorageItemKey, JSON.stringify({ patients: [...people] }))
+        return person.children
+    }
+    return []
+}
+export function getChildren(parentName) {
+    let people = getPeople();
+    const index = people.findIndex(p => p.title == parentName)
+    if (index > -1) {
+        let person = people[index]
+        return person.children
+    }
+    else {
+        return []
+    }
 }
 
 export function removePeople(person) {

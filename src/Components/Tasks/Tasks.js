@@ -6,6 +6,7 @@ import { BinaryChoice } from './binary';
 
 import birth from '../../assets/newBorn.png';
 import vaccine from '../../assets/vaccine.png';
+import { useTranslation } from 'react-i18next';
 
 function dataToHTML(item) {
   if (item.category === "text") {
@@ -25,11 +26,12 @@ export const Tasks = () => {
   const updateSelected = (key) => {
     setSelected(key)
   }
+  const {t} = useTranslation()
 
 
   return (
     <>
-      <h4 className='area__name'>Amrita's Area, Sadar Marga, Ramaroshan Gaupalika, Achham</h4>
+      <h4 className='area__name'>Amrita's Area, {t('Sadar Marga')}, {t('Ramaroshan')} {t('Gaupalika')}, {t('Achham')}</h4>
       <div className='tasks__container'>
         <div className='task__list'>
           {targetData.map(data => {

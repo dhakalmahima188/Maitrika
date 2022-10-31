@@ -6,6 +6,8 @@ import i18next from 'i18next';
 import { MdOutlinePeopleOutline, MdTaskAlt, MdOutlineNotificationsActive, 
   MdOutlineLocalHospital, MdOutlineEventAvailable, MdLanguage } from "react-icons/md";
 
+import { useTranslation } from "react-i18next";
+
 const languages = [
   {
     code: 'en',
@@ -20,6 +22,7 @@ const languages = [
 ]
 
 export const Sidebar = () => {
+  const {t} = useTranslation()
   return (
     <>
     <div>
@@ -31,27 +34,27 @@ export const Sidebar = () => {
         <ul className="taskbar__items">
           <li>
             <Link to="/tasks">
-              <MdOutlineNotificationsActive /> Tasks
+              <MdOutlineNotificationsActive /> {t('Tasks')}
             </Link>
           </li>
           <li>
             <Link to="/">
-              <MdOutlinePeopleOutline /> People
+              <MdOutlinePeopleOutline /> {t('People')}
             </Link>
           </li>
           <li>
               <Link to="/target">
-                <MdTaskAlt /> Target
+                <MdTaskAlt /> {t('Target') }
               </Link>
           </li>
           <li>
             <Link to="/events">
-              <MdOutlineEventAvailable /> Events
+              <MdOutlineEventAvailable /> {t('Events') }
             </Link>
           </li>
           <li>
             <Link to="/doctor">
-              <MdOutlineLocalHospital /> Doctor
+              <MdOutlineLocalHospital /> {t('Doctor') }
             </Link>
           </li>
         </ul>

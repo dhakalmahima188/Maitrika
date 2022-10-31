@@ -4,7 +4,9 @@ import "reactjs-popup/dist/index.css";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 export const EventItem = (props) => {
+  const {t} = useTranslation()
 
 
   return (
@@ -38,7 +40,7 @@ export const EventItem = (props) => {
             props.onDelete(props.event);
           }}
         >
-          Delete
+          {t('Delete')}
         </Button>
       </TableCell>
     </TableRow>

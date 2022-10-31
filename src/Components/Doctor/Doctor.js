@@ -22,9 +22,11 @@ export const Doctor = () => {
                 <div className="doctor__box">
                     <img src={item.image} alt="" className='doctor__img'/>
                     <div className="doctor__textbox">
-                        <h4 className="doctor__title">{item.title}</h4>
+                        <h4 className="doctor__title">{t(item.title)}</h4>
                         <h6 className="doctor__contact">{item.contact}</h6>
-                        <span className="online__status">{item.status}</span>
+                        <span className="online__status"
+                          style={{color: item.status == "Online"? "darkgreen": "black"}}
+                        >{t(item.status)}</span>
                     </div>
                     <img src={videoCall} className="call"></img>
                 </div>
@@ -41,9 +43,11 @@ export const Doctor = () => {
                 <div className="doctor__box">
                     <img src={item.image} alt="" className='doctor__img'/>
                     <div className="doctor__textbox">
-                        <h4 className="doctor__title">{item.title}</h4>
+                        <h4 className="doctor__title">{t(item.title)}</h4>
                         <h6 className="doctor__contact">{item.contact}</h6>
-                        <span className="online__status">{item.status}</span>
+                        <span className="online__status"
+                          style={{color: item.status == "Online"? "darkgreen": "black"}}
+                        >{t(item.status)}</span>
                     </div>
                     <img src={videoCall} className="call"></img>
                 </div>
