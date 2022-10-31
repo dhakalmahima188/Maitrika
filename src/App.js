@@ -5,7 +5,7 @@ import { Sidebar } from "./Components/Sidebar";
 import { SearchBar } from "./Components/Home/SearchBar";
 import { InputField } from "./Components/Home/InputField";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Navigate } from "react-router";
+
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 
@@ -20,6 +20,8 @@ function App() {
   const onEdit = (event) => {};
 
   const [events, setevents] = useState([]);
+
+  const [vitals, setvitals] = useState([]);
   const addEvent = (title, desc, age, xyz) => {
     if (events.length === 0) {
       var sn = 1;
@@ -36,6 +38,30 @@ function App() {
     setevents([...events, myevent]);
     console.log(myevent);
   };
+
+
+
+
+  const addVital = (title,  age) => {
+    if (vitals.length === 0) {
+      var sn = 1;
+    } else {
+      sn = vitals[vitals.length - 1].sn + 1;
+    }
+
+    const myvitals = {
+      sn: sn,
+      title: title, 
+      age: age,
+  
+    };
+    setvitals([...vitals, myvitals]);
+    console.log(myvitals);
+  }
+
+
+
+
   return (
     <div className="App">
       <Router>
@@ -57,7 +83,7 @@ function App() {
             element={
               <>
                   <Sidebar />
-              <Person/>
+              <Person addVital={addVital} vitals={vitals}/>
             
                 
               </>

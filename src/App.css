@@ -21,7 +21,7 @@ body {
   display: flex;
   align-items: left;
 }
-.btn {
+.btn_prop {
   position: relative;
   float: right;
 }
@@ -41,6 +41,11 @@ body {
   display: block;
 }
 
+
+.vital_form{
+  padding: 20px;
+
+}
 .sidenav a:hover {
   color: #f1f1f1;
 }
