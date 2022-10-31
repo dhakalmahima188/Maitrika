@@ -6,7 +6,7 @@ body {
 
 .Form_area {
   padding: 20px;
-  margin-left: 300px;
+  margin-left: 200px;
 
   background-color: #e5e5e5;
 }
@@ -17,32 +17,13 @@ body {
   font-size: 20px;
 }
 
-.sidebar {
-  display: flex;
-  align-items: left;
-}
 .btn_prop {
   position: relative;
   float: right;
 }
 
-
-
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #302222;
-  display: block;
-}
-
-
-.vital_form{
+.vital_form {
   padding: 20px;
-
-}
-.sidenav a:hover {
-  color: #f1f1f1;
 }
 
 a {
@@ -54,42 +35,12 @@ a {
 .modal {
   font-size: 12px;
 }
-.modal > .header {
-  width: 100%;
-  border-bottom: 1px solid gray;
-  font-size: 18px;
-  text-align: center;
-  padding: 5px;
-}
-.modal > .content {
-  width: 100%;
-  padding: 10px 5px;
-}
-.modal > .actions {
-  width: 100%;
-  padding: 10px 5px;
-  margin: auto;
-  text-align: center;
-}
-.modal > .close {
-  cursor: pointer;
-  position: absolute;
-  display: block;
-  padding: 2px 5px;
-  line-height: 20px;
-  right: -10px;
-  top: -10px;
-  font-size: 24px;
-  background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid #cfcece;
-}
-.patient__name{
- 
+
+
+
+.patient__name {
   background-color: rgb(115, 191, 239);
-  width:100%;
-  display:flex;
+  width: 100%;
+  display: flex;
   justify-content: center;
-
-
 }

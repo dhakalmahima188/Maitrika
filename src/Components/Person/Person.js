@@ -72,11 +72,12 @@ export const Person = (props) => {
         onCancel={() => setShowDeleteModal(false)}
       />
       <br></br>
-
+      <div style={{ flexDirection: 'row'}}>
       {tasks.map((task) => {
         return (
           <>
-            <Card style={{ width: "20rem", justifyContent: "center" }}>
+          <div style={{ width: "20rem" }}>
+            <Card style={{ flex:1}} >
               <Card.Header>
                 Tasks <b>{task.sn}</b>{" "}
               </Card.Header>
@@ -88,10 +89,12 @@ export const Person = (props) => {
                 </Button>
               </Card.Body>
             </Card>
+            </div>
             <br></br>
           </>
         );
       })}
+      </div>
     </div>
     </>
   );

@@ -122,6 +122,15 @@ function App() {
               </>
             }
           />  
+               <Route
+            path="/"
+            element={
+              <>
+                <Sidebar />
+              
+              </>
+            }
+          />  
          
         </Routes>
       </Router>
