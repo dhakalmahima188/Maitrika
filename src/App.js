@@ -8,12 +8,32 @@ import { Target } from "./Components/Target/Target";
 import { Doctor } from "./Components/Doctor/Doctor";
 import { removePeople, getPeople, addPeople } from "./localstorage";
 
+import { useTranslation } from "react-i18next";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import { Tasks } from "./Components/Tasks/Tasks";
 
+// const languages = [
+//   { value: '', text: "Options" },
+//   { value: 'en', text: "English" },
+//   { value: 'ne', text: "Nepali" },
+//   { value: 'hi', text: "Hindi" },
+// ]
+
 function App() {
+
+  // const {t} = useTranslation();
+  // const [lang, setLang] = useState('en');
+
+  // // This function put query that helps to 
+  // // change the language
+  // const handleChange = e => { 
+  //   setLang(e.target.value);
+  //   let loc = "http://localhost:3000/";
+  //   window.location.replace(loc + "?lng=" + e.target.value);
+  // }
+
   const onDelete = (event) => {
     removePeople(event)
     setevents(
@@ -75,6 +95,15 @@ function App() {
 
   return (
     <div className="App">
+      {/* hi
+      <h1>{t('welcome')}</h1>
+      <label>{t('choose')}</label>
+      <select value={lang} onChange={handleChange}>
+        {languages.map(item => {
+            return (<option key={item.value} 
+            value={item.value}>{item.text}</option>);
+        })}
+      </select> */}
       <Router>
         <Routes>
 
@@ -111,6 +140,16 @@ function App() {
               </>
             }
           />
+
+          <Route
+            path="/target"
+            element={
+              <>
+                <Sidebar />
+                <Target />
+              </>
+            }
+          />  
 
           <Route
             path="/events"
