@@ -1,7 +1,7 @@
 html,
 body {
   background-color: #e5e5e5;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: sans-serif;
 }
 
 .Form_area {
@@ -25,13 +25,8 @@ body {
   position: relative;
   float: right;
 }
-.sidenav {
-  height: 100%;
-  width: 300px;
-  position: fixed;
 
-  background-color: rgb(255, 255, 255);
-}
+
 
 .sidenav a {
   padding: 6px 8px 6px 16px;
@@ -88,4 +83,13 @@ a {
   background: #ffffff;
   border-radius: 18px;
   border: 1px solid #cfcece;
+}
+.patient__name{
+ 
+  background-color: rgb(115, 191, 239);
+  width:100%;
+  display:flex;
+  justify-content: center;
+
+
 }

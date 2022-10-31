@@ -1,13 +1,16 @@
 import "./App.css";
 import { Event } from "./Components/Home/Event";
 import { Person } from "./Components/Person/Person";
-import { Sidebar } from "./Components/Sidebar";
+import { Sidebar } from "./Components/Sidebar/Sidebar";
 import { SearchBar } from "./Components/Home/SearchBar";
 import { InputField } from "./Components/Home/InputField";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Target } from "./Components/Target/Target";
+import { Doctor } from "./Components/Doctor/Doctor";
 
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Tasks } from "./Components/Tasks/Tasks";
 
 function App() {
   const onDelete = (event) => {
@@ -36,7 +39,7 @@ function App() {
       xyz: xyz,
     };
     setevents([...events, myevent]);
-    console.log(myevent);
+    // console.log(addNewPatient(myevent))
   };
 
 
@@ -66,9 +69,19 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route />
+
           <Route
-            path="/"
+            path="/tasks"
+            element={
+              <>
+                <Sidebar />
+                <Tasks />
+              </>
+            }
+          />
+
+          <Route
+            path="/people"
             element={
               <>
                 <Sidebar />
@@ -78,6 +91,7 @@ function App() {
               </>
             }
           />
+
            <Route
             path="/person/:name"
             element={
@@ -89,6 +103,26 @@ function App() {
               </>
             }
           />
+
+          <Route
+            path="/events"
+            element={
+              <>
+                <Sidebar />
+              </>
+            }
+          />  
+         
+         <Route
+            path="/doctor"
+            element={
+              <>
+                <Sidebar />
+                <Doctor />
+              </>
+            }
+          />  
+         
         </Routes>
       </Router>
     </div>

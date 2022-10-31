@@ -33,7 +33,7 @@ export const InputField = (props) => {
               onChange={(e) => {
                 setTitle(e.target.value);
               }}
-              placeholder="Event Name"
+              placeholder=" Name"
             />
           </Col>
           <Col>

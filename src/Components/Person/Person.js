@@ -24,8 +24,10 @@ export const Person = (props) => {
     },
   ];
   return (
-    <div className="Form_area">
-      <h2>Name: {name}</h2>
+    <>
+  
+      <h2 className='area__name'> {name}</h2>
+      <div className="Form_area ">
       <h3>Children</h3>
 
       <div>
@@ -91,5 +93,6 @@ export const Person = (props) => {
         );
       })}
     </div>
+    </>
   );
 };
