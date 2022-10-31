@@ -10,7 +10,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 export const Event = (props) => {
+  const {t} = useTranslation()
   return (
     <div>
       <div className="Form_area">
@@ -23,16 +25,16 @@ export const Event = (props) => {
                 </TableCell>
                 <TableCell>
             
-                  <h5>Patient Name</h5>
+                  <h5>{t('Patient Name')}</h5>
                 </TableCell>
                 <TableCell align="left">
-                  <h5>Location</h5>
+                  <h5>{t('Location')}</h5>
                 </TableCell>
                 <TableCell align="left">
-                  <h5>Age</h5>
+                  <h5>{t('Age')}</h5>
                 </TableCell>
                 <TableCell align="center">
-                  <h5>Action</h5>
+                  <h5>{t('Action')}</h5>
                 </TableCell>
               </TableRow>
             </TableHead>

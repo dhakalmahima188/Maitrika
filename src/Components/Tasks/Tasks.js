@@ -6,8 +6,7 @@ import { BinaryChoice } from './binary';
 
 import birth from '../../assets/newBorn.png';
 import vaccine from '../../assets/vaccine.png';
-
-
+import { useTranslation } from 'react-i18next';
 
 function dataToHTML(item) {
   if (item.category === "text") {
@@ -17,9 +16,7 @@ function dataToHTML(item) {
   else if (item.category === "fourm") {
     return <>
       <BinaryChoice name={"Gender"} icons={[birth, vaccine]} options={["male", "female"]} />
-
     </>
-
   }
 }
 
@@ -29,19 +26,23 @@ export const Tasks = () => {
   const updateSelected = (key) => {
     setSelected(key)
   }
+  const {t} = useTranslation()
 
 
   return (
     <>
-      <div className='task-list'>
-        {targetData.map(data => {
-          return (<>
-            <Box key={data.key} item={data} selected={selected} onClick={updateSelected} />
-          </>)
-        })}
-      </div>
-      <div className='description'>
-        {dataToHTML(targetData.find(item => item.key === selected))}
+      <h4 className='area__name'>Amrita's Area, {t('Sadar Marga')}, {t('Ramaroshan')} {t('Gaupalika')}, {t('Achham')}</h4>
+      <div className='tasks__container'>
+        <div className='task__list'>
+          {targetData.map(data => {
+            return (<>
+              <Box key={data.key} item={data} selected={selected} onClick={updateSelected} />
+            </>)
+          })}
+        </div>
+        <div className='task__detail'>
+          {dataToHTML(targetData.find(item => item.key === selected))}
+        </div>
       </div>
     </>
   )

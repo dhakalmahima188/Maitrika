@@ -6,7 +6,6 @@ import { BrowserRouter as Router, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 export const Person = (props) => {
-  console.log(props.addVital);
   let { name } = useParams();
 
   const [showDeleteModal, setShowDeleteModal] = React.useState(false);
@@ -83,6 +82,49 @@ export const Person = (props) => {
           ADD Child
         </Button>
         <br></br>
+      <div>
+        {props.vitals.map((vital) => {
+          return (
+            <>
+              <Card style={{ width: "18rem" }}>
+                <Card.Body>
+                  <p>
+                    <b>Name: </b>
+                    {vital.title}
+                  </p>
+                  <b>Age: </b>
+                  {vital.age}
+                </Card.Body>
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    setShowVItalModal(true);
+                  }}
+                >
+                  ADD Vitals
+                </Button>
+              </Card>
+              <br></br>
+            </>
+          );
+        })}
+      </div>
+      <br></br>
+      <Button size="sm" onClick={() => setShowDeleteModal(true)}>
+        ADD Child
+      </Button>
+      <br></br>
+      <MyVital
+        show={showVitalModal}
+        onCancel={() => setShowVItalModal(false)}
+      />
+      <MyModal
+        addVital={props.addVital}
+        show={showDeleteModal}
+        onCancel={() => setShowDeleteModal(false)}
+        person={name}
+      />
+      <br></br>
 
         <MyDetail
           adddetail={props.adddetail}
