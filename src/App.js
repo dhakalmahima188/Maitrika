@@ -61,7 +61,7 @@ function App() {
   const [details, setdetails] = useState([]);
   const [vitaldetails, vitalsetdetails] = useState([]);
 
-  const adddetail = (temp) => {
+  const adddetail = (temp,pulse,cry,breastfeeding,teeth,color) => {
     if (details.length === 0) {
       var sn = 1;
     } else {
@@ -71,6 +71,12 @@ function App() {
     const mydetails = {
       sn: sn,
       temp: temp,
+      pulse:pulse,
+      cry:cry,
+      breastfeeding:breastfeeding,
+      teeth:teeth,
+      color:color
+      
     };
     setdetails([...vitals, mydetails]);
     console.log(mydetails);

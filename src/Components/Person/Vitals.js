@@ -126,8 +126,7 @@ export default function MyVital(props) {
             
                 <Card.Title>  <br></br><b>Height: </b>{detail.height}{" "}ft</Card.Title>
                 <Card.Title><b>Weight: </b>{detail.weight}{" "}kg</Card.Title>
-                <Card.Title><b>Birth Date:</b> {detail.birth_date}</Card.Title>
-            
+                <Card.Title><b>Birth Date:</b> {detail.birth_date}</Card.Title>            
               
               </Card.Body>
             </Card>

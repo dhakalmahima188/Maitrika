@@ -6,22 +6,25 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useState } from "react";
 import Card from "react-bootstrap/Card";
+import InputColor from 'react-input-color';
 
 // import Slider from "@mui/material/Slider";
 
 export default function MyDetail(props) {
   const [temp, settemp] = useState("");
-
-  const [weight, setweight] = useState("");
+  const [pulse, setpulse] = useState("");
+  const [color, setcolor] = useState("");
+  const [breastfeeding, setbreastfeeding] = useState("");
+  const [cry, setcry] = useState("normally");
+  const [teeth, setteeth] = useState("");
 
   const { onCancel } = props;
 
   const submit = () => {
-    if (!temp ) {
+    if (!temp) {
       alert("Blank detected");
     } else {
-      props.adddetail(temp);
-      
+      props.adddetail(temp, pulse, cry, breastfeeding, teeth,color);
     }
   };
   return (
@@ -46,26 +49,32 @@ export default function MyDetail(props) {
                 <h3 id="labels">Pulse Rate</h3>
                 <Form.Control
                   size="lg"
-                  value={temp}
+                  value={pulse}
                   type="number"
                   onChange={(e) => {
-                    settemp(e.target.value);
+                    setpulse(e.target.value);
                   }}
                   placeholder="Enter Pulse Rate"
                 />
               </Form.Group>
+
+
               <Form.Group
                 className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
+             
               >
                 <h3 id="labels">Body Color</h3>
                 <Row>
                   <Col>
+                  {/* <option> */}
                     <div
+
                       className="body_color"
                       style={{ backgroundColor: "#F1C27D" }}
                     ></div>
+                    {/* </option> */}
                     <h6 id="labels">Proper</h6>
+                 
                   </Col>
                   <Col>
                     <div
@@ -101,6 +110,9 @@ export default function MyDetail(props) {
                       type="color"
                       id="exampleColorInput"
                       defaultValue="#E0AC69"
+                      onChange={(e) => {
+                        setcolor(e.target.value);
+                      }}
                     />
                     <h6 id="labels">Pick_Color</h6>
                   </Col>
@@ -137,11 +149,18 @@ export default function MyDetail(props) {
               >
                 {" "}
                 <h3 id="labels">How often baby cries?</h3>
-                <Form.Select aria-label="Default select example">
-                  <option value="1">Normally</option>
-                  <option value="2">Abnormally high</option>
-                  <option value="3">Quite less</option>
-                </Form.Select>
+                <Form.Control
+                  as="select"
+                  custom
+                  value={cry}
+                  onChange={(e) => {
+                    setcry(e.target.value);
+                  }}
+                >
+                  <option value="Normally">Normally</option>
+                  <option value="Abnormally high">Abnormally high</option>
+                  <option value="Quite less">Quite less</option>
+                </Form.Control>
               </Form.Group>
 
               <Form.Group
@@ -150,19 +169,38 @@ export default function MyDetail(props) {
               >
                 {" "}
                 <h3 id="labels">Teeth and Gums?</h3>
-                <Form.Select aria-label="Default select example">
-                  <option value="1">Normall</option>
-                  <option value="2">Swelling</option>
-                  <option value="3">Yellowish</option>
-                </Form.Select>
+                <Form.Control
+                  as='select'
+                  custom
+                  value={teeth}
+                  onChange={(e) => {
+                    setteeth(e.target.value);
+                  }}
+                >
+                  <option value="Normal">Normal</option>
+                  <option value="Swelling">Swelling</option>
+                  <option value="Yellowish">Yellowish</option>
+                </Form.Control>
               </Form.Group>
 
               <Form.Group>
                 <h3 id="labels">Is Breastfeeding continued?</h3>
 
                 <div className="mb-3">
-                  <Form.Check type="checkbox" label={`Yes`} />
-                  <Form.Check type="checkbox" label={`No`} />
+
+                <Form.Control
+                  as="radio"
+                  custom
+                  size='lg'
+                  value={breastfeeding}
+                  onChange={(e) => {
+                    setbreastfeeding(e.target.value);
+                  }}
+                >
+                  <Form.Check type="checkbox"  value='Yes' label={`Yes`} />
+                  <Form.Check type="checkbox" value='No' label={`No`} />
+                
+                  </Form.Control>
                 </div>
               </Form.Group>
             </div>
@@ -185,27 +223,47 @@ export default function MyDetail(props) {
         </Modal.Footer>
       </Modal>
 
-
       {props.details.map((detail) => {
         return (
           <>
-          <div style={{ width: "20rem" }}>
-            <Card style={{ flex:1}} >
-              <Card.Header>
-                Detail <b>{detail.sn}</b>{" "}
-              </Card.Header>
-              <Card.Body>
-                <Card.Title>{detail.temp}</Card.Title>
-            
-              
-              </Card.Body>
-            </Card>
+            <div style={{ width: "50rem" }}>
+              <Card>
+                <Card.Header>
+                  Details <b></b>{" "}
+                </Card.Header>
+                <Card.Body>
+                  <Card.Title>
+                    <b>Temperature: </b>
+                    {detail.temp}
+                  </Card.Title>
+                  <Card.Title>
+                    <b>Pulse: </b>
+                    {detail.pulse}
+                  </Card.Title>
+                  <Card.Title>
+                    <b>How often baby cries?: </b>
+                    {detail.cry}
+                  </Card.Title>
+                  <Card.Title>
+                    <b>Breastfeeding Continiued?: </b>
+                    {detail.breastfeeding}
+                  </Card.Title>
+                  <Card.Title>
+                    <b>Teeth and Gums: </b>
+                    {detail.teeth}
+                  </Card.Title>
+                  <Card.Title>
+                    <b>Color: </b>   {detail.color}               
+
+                   
+                  </Card.Title>
+                </Card.Body>
+              </Card>
             </div>
             <br></br>
           </>
         );
       })}
-      
     </>
   );
 }
