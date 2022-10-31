@@ -133,6 +133,16 @@ function App() {
           />
 
           <Route
+            path="/target"
+            element={
+              <>
+                <Sidebar />
+                <Target />
+              </>
+            }
+          />  
+
+          <Route
             path="/events"
             element={
               <>
