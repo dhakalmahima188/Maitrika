@@ -33,7 +33,7 @@ export const InputField = (props) => {
               onChange={(e) => {
                 setTitle(e.target.value);
               }}
-              placeholder="Event Name"
+              placeholder=" Name"
             />
           </Col>
           <Col>
@@ -64,7 +64,7 @@ export const InputField = (props) => {
         <Row>
           <Col>
             <div className="btn">
-              <Button variant="primary" type="button" onClick={submit}>
+              <Button variant="primary" type="button" onClick={submit} className='btn_prop'>
                 ADD
               </Button>{" "}
             </div>

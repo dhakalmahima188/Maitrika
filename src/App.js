@@ -8,8 +8,6 @@ import { Target } from "./Components/Target/Target";
 import { Doctor } from "./Components/Doctor/Doctor";
 import { useTranslation } from "react-i18next";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { addNewPatient, getAllPatient } from "./server"
-import { Navigate } from "react-router";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import { Tasks } from "./Components/Tasks/Tasks";
@@ -44,17 +42,8 @@ function App() {
   const onEdit = (event) => {};
 
   const [events, setevents] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      let serverEvents = await getAllPatient()
-      return serverEvents
-    }
-    /*
-    * Mahima server bata as a promise data aauxa teslai kasari render garne hera haii
-    */
-    // setevents([...events, fetchData()])
-  }, [])
 
+  const [vitals, setvitals] = useState([]);
   const addEvent = (title, desc, age, xyz) => {
     if (events.length === 0) {
       var sn = 1;
@@ -69,8 +58,32 @@ function App() {
       xyz: xyz,
     };
     setevents([...events, myevent]);
-    console.log(addNewPatient(myevent))
+    // console.log(addNewPatient(myevent))
   };
+
+
+
+
+  const addVital = (title,  age) => {
+    if (vitals.length === 0) {
+      var sn = 1;
+    } else {
+      sn = vitals[vitals.length - 1].sn + 1;
+    }
+
+    const myvitals = {
+      sn: sn,
+      title: title, 
+      age: age,
+  
+    };
+    setvitals([...vitals, myvitals]);
+    console.log(myvitals);
+  }
+
+
+
+
   return (
     <div className="App">
       {/* hi
@@ -111,18 +124,10 @@ function App() {
             path="/person/:name"
             element={
               <>
-              <Sidebar />
-              <Person/>  
-              </>
-            }
-          />
- 
-          <Route
-            path="/target"
-            element={
-              <>
-                <Sidebar />
-                <Target />
+                  <Sidebar />
+              <Person addVital={addVital} vitals={vitals}/>
+            
+                
               </>
             }
           />
