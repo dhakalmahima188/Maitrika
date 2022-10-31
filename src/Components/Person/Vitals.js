@@ -5,20 +5,20 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useState } from "react";
+import Card from "react-bootstrap/Card";
 
 export default function MyVital(props) {
   const [height, setheight] = useState("");
-
   const [weight, setweight] = useState("");
   const [birth_date, setbirth_date] = useState("");
-
 
   const { onCancel } = props;
 
   const submit = () => {
-    if (!height || !weight) {
+    if (!height ) {
       alert("Blank detected");
     } else {
+        props.addvitaldetail(height)
       console.log("sucess");
     }
   };
@@ -37,7 +37,7 @@ export default function MyVital(props) {
           <Form>
             <div className="vital_form">
               <Form.Group className="option_area">
-              <h1 id='labels'>Gender</h1>
+                <h1 id="labels">Gender</h1>
                 {/* <Form.Control size="lg" placeholder=" Gender" /> */}
 
                 <Form.Select size="lg" aria-label="Default select example">
@@ -49,7 +49,7 @@ export default function MyVital(props) {
               </Form.Group>
 
               <Form.Group className="mb-3">
-              <h1 id='labels'> Height</h1>
+                <h1 id="labels"> Height</h1>
                 <Form.Control
                   size="lg"
                   value={height}
@@ -62,8 +62,10 @@ export default function MyVital(props) {
 
               <Form.Group
                 className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              > <h1 id='labels'> Weight</h1>
+              
+              >
+                {" "}
+                <h1 id="labels"> Weight</h1>
                 <Form.Control
                   size="lg"
                   value={weight}
@@ -76,20 +78,17 @@ export default function MyVital(props) {
               </Form.Group>
               <Form.Group
                 className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
+             
               >
-                   
-                   <h1 id='labels'> Birth Date</h1>
-                    <Form.Control
+                <h1 id="labels"> Birth Date</h1>
+                <Form.Control
                   size="lg"
                   value={birth_date}
                   type="date"
                   onChange={(e) => {
                     setbirth_date(e.target.value);
                   }}
-                
                 />
-              
               </Form.Group>
             </div>
           </Form>
@@ -110,6 +109,25 @@ export default function MyVital(props) {
           </Button>
         </Modal.Footer>
       </Modal>
+      {props.vitaldetails.map((detail) => {
+        return (
+          <>
+          <div style={{ width: "20rem" }}>
+            <Card style={{ flex:1}} >
+              <Card.Header>
+                HEight <b>{detail.sn}</b>{" "}
+              </Card.Header>
+              <Card.Body>
+                <Card.Title>{detail.height}</Card.Title>
+            
+              
+              </Card.Body>
+            </Card>
+            </div>
+            <br></br>
+          </>
+        );
+      })}
     </>
   );
 }

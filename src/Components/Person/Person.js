@@ -75,10 +75,14 @@ export const Person = (props) => {
       </Button>
       <br></br>
       <MyVital
+      addvitaldetail={props.addvitaldetail}
+      vitaldetails={props.vitaldetails}
         show={showVitalModal}
         onCancel={() => setShowVItalModal(false)}
       />
  <MyDetail
+adddetail={props.adddetail}
+details={props.details}
         show={showDetailModal}
         onCancel={() => setShowDetailModal(false)}
       />

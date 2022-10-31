@@ -42,10 +42,7 @@ function App() {
     // console.log(addNewPatient(myevent))
   };
 
-
-
-
-  const addVital = (title,  age) => {
+  const addVital = (title, age) => {
     if (vitals.length === 0) {
       var sn = 1;
     } else {
@@ -54,22 +51,50 @@ function App() {
 
     const myvitals = {
       sn: sn,
-      title: title, 
+      title: title,
       age: age,
-  
     };
     setvitals([...vitals, myvitals]);
     console.log(myvitals);
-  }
+  };
 
+  const [details, setdetails] = useState([]);
+  const [vitaldetails, vitalsetdetails] = useState([]);
 
+  const adddetail = (temp) => {
+    if (details.length === 0) {
+      var sn = 1;
+    } else {
+      sn = details[details.length - 1].sn + 1;
+    }
 
+    const mydetails = {
+      sn: sn,
+      temp: temp,
+    };
+    setdetails([...vitals, mydetails]);
+    console.log(mydetails);
+  };
+
+  const addvitaldetail = (height) => {
+    if (vitaldetails.length === 0) {
+      var sn = 1;
+    } else {
+      sn = vitaldetails[vitaldetails.length - 1].sn + 1;
+    }
+
+    const myvitaldetails = {
+      sn: sn,
+      height: height,
+    };
+    vitalsetdetails([...vitaldetails, myvitaldetails]);
+    console.log(myvitaldetails);
+  };
 
   return (
     <div className="App">
       <Router>
         <Routes>
-
           <Route
             path="/tasks"
             element={
@@ -92,14 +117,19 @@ function App() {
             }
           />
 
-           <Route
+          <Route
             path="/person/:name"
             element={
               <>
-                  <Sidebar />
-              <Person addVital={addVital} vitals={vitals}/>
-            
-                
+                <Sidebar />
+                <Person
+                  addVital={addVital}
+                  vitaldetails={vitaldetails}
+                  vitals={vitals}
+                  adddetail={adddetail}
+                  details={details}
+                  addvitaldetail={addvitaldetail}
+                />
               </>
             }
           />
@@ -111,9 +141,9 @@ function App() {
                 <Sidebar />
               </>
             }
-          />  
-         
-         <Route
+          />
+
+          <Route
             path="/doctor"
             element={
               <>
@@ -121,17 +151,15 @@ function App() {
                 <Doctor />
               </>
             }
-          />  
-               <Route
+          />
+          <Route
             path="/"
             element={
               <>
                 <Sidebar />
-              
               </>
             }
-          />  
-         
+          />
         </Routes>
       </Router>
     </div>

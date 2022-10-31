@@ -5,10 +5,11 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useState } from "react";
+import Card from "react-bootstrap/Card";
 
 // import Slider from "@mui/material/Slider";
 
-export default function MyVital(props) {
+export default function MyDetail(props) {
   const [temp, settemp] = useState("");
 
   const [weight, setweight] = useState("");
@@ -16,10 +17,11 @@ export default function MyVital(props) {
   const { onCancel } = props;
 
   const submit = () => {
-    if (!temp || !weight) {
+    if (!temp ) {
       alert("Blank detected");
     } else {
-      console.log("sucess");
+      props.adddetail(temp);
+      
     }
   };
   return (
@@ -182,6 +184,28 @@ export default function MyVital(props) {
           </Button>
         </Modal.Footer>
       </Modal>
+
+
+      {props.details.map((detail) => {
+        return (
+          <>
+          <div style={{ width: "20rem" }}>
+            <Card style={{ flex:1}} >
+              <Card.Header>
+                Detail <b>{detail.sn}</b>{" "}
+              </Card.Header>
+              <Card.Body>
+                <Card.Title>{detail.temp}</Card.Title>
+            
+              
+              </Card.Body>
+            </Card>
+            </div>
+            <br></br>
+          </>
+        );
+      })}
+      
     </>
   );
 }
