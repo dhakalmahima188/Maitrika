@@ -10,6 +10,7 @@ export const targetData = [
         image: pregnantLady,
         name: "Mahima dhakal",
         subject: 'pregnancy follow up',
+        time: '1 day left',
         category: "text",
         description: <div>
             Some Extra text <br></br>
@@ -30,6 +31,7 @@ export const targetData = [
         image: birth,
         name: "Radha Acharya",
         subject: 'Expected Date',
+        time: '3 days left',
         important: 1,
         category: "text",
         description: <div>
@@ -47,6 +49,7 @@ export const targetData = [
         image: vaccine,
         name: "Radha Acharya",
         subject: 'Polio Dosage to child',
+        time: 'In 2 weeks',
         important: 0,
         category: "fourm",
         description:  [

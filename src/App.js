@@ -117,7 +117,7 @@ function App() {
           />
 
           <Route
-            path="/people"
+            path="/"
             element={
               <>
                 <Sidebar />

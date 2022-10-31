@@ -35,7 +35,7 @@ export const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/people">
+            <Link to="/">
               <MdOutlinePeopleOutline /> People
             </Link>
           </li>
