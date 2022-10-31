@@ -6,8 +6,6 @@ import { SearchBar } from "./Components/Home/SearchBar";
 import { InputField } from "./Components/Home/InputField";
 import { Target } from "./Components/Target/Target";
 import { Doctor } from "./Components/Doctor/Doctor";
-import { removePeople, getPeople, addPeople } from "./localstorage";
-
 import { useTranslation } from "react-i18next";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
