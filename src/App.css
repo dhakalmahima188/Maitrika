@@ -21,11 +21,29 @@ body {
   display: flex;
   align-items: left;
 }
-.btn {
+.btn_prop {
   position: relative;
   float: right;
 }
 
+
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #302222;
+  display: block;
+}
+
+
+.vital_form{
+  padding: 20px;
+
+}
+.sidenav a:hover {
+  color: #f1f1f1;
+}
 
 a {
   display: inline;
@@ -65,4 +83,13 @@ a {
   background: #ffffff;
   border-radius: 18px;
   border: 1px solid #cfcece;
+}
+.patient__name{
+ 
+  background-color: rgb(115, 191, 239);
+  width:100%;
+  display:flex;
+  justify-content: center;
+
+
 }
