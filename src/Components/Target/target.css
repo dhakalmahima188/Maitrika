@@ -1,14 +1,6 @@
-.area__name {
-    right: 0;
-    display: block;
-    text-align: center;
-    margin-left: 150px;
-    background-color: #43AED9;
-    padding: 20px;
-}
-
 .target__container {
-    margin-left: 250px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 20px;
     display: flex;
     flex-wrap: wrap;

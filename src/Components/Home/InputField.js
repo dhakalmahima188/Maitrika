@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import './inputField.css';
 
 export const InputField = (props) => {
   const [title, setTitle] = useState("");
@@ -23,7 +24,8 @@ export const InputField = (props) => {
   };
 
   return (
-    <div className="Form_area">
+    <>
+    <div className="Form_area home__container inputfield__container">
       <h4>{t('Add New Patient')}</h4>
       <br></br>
       <Form>
@@ -66,10 +68,11 @@ export const InputField = (props) => {
         </Row>
         <Row>
           <Col>
-           <div id="labels">{t('Recently Gave Birth')}</div>
+           <div id="labels" className="birthCheckInput">{t('Recently Gave Birth')}</div>
             <Form.Control
-              size="lg"
+              size="sm"
               type="checkbox"
+              className="checkbox"
               value={recentlyGaveBirth}
               onChange={(e) => {
                 setRecentlyGaveBirth(e.target.value);
@@ -77,10 +80,12 @@ export const InputField = (props) => {
             />
           </Col>
           <Col>
-           <div id="labels">{t('Pregnant')}</div>
+           <div id="labels" className="pregnancyCheckInput">{t('Pregnant')}</div>
             <Form.Control
-              size="lg"
+              size="sm"
               type="checkbox"
+              className="checkbox"
+              
               value={pregnant}
               onChange={(e) => {
                 setpregnant(e.target.value);
@@ -100,5 +105,6 @@ export const InputField = (props) => {
       </Form>
       <br></br>
     </div>
+    </>
   );
 };

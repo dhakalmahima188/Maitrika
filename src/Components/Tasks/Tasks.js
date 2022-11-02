@@ -31,7 +31,6 @@ export const Tasks = () => {
 
   return (
     <>
-      <h4 className='area__name'>Amrita's Area, {t('Sadar Marga')}, {t('Ramaroshan')} {t('Gaupalika')}, {t('Achham')}</h4>
       <div className='tasks__container'>
         <div className='task__list'>
           {targetData.map(data => {
