@@ -15,7 +15,6 @@ export const EventItem = (props) => {
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
       <TableCell component="th" scope="row">
-        <input type="checkbox" />
       </TableCell>
       <TableCell align="left">
       <Link to={`/person/${props.event.title}`} className="clickable-blue">
@@ -32,7 +31,7 @@ export const EventItem = (props) => {
       <TableCell align="left">
         <h6>{props.event.age}</h6>
       </TableCell>
-      <TableCell align="left">
+      <TableCell align="center">
         <Button
           variant="danger"
           href="#"

@@ -38,7 +38,7 @@
     "Gaupalika": "गाउँपालिका",
     "Active Pregnancies": "सक्रिय गर्भावस्था",
     "Births": "जन्महरू",
-    "Deliveries at Facility": "सुविधा मा गर्भवती प्रसव",
+    "Deliveries at Facility": "सुविधामा गर्भवती प्रसव",
     "Children Vaccinated": "बालबालिकालाई खोप लगाइयो",
     "Family planning follow-up": "परिवार नियोजन पुन: कुराकानी",
     "Deaths reported": "मृत्यु गणना",
@@ -49,5 +49,8 @@
     "3": "३",
     "0": "०",
     "90%": "९०%",
-    "In ": ""
+    "In ": "",
+    "Sadar Marga": "सदर मार्ग",
+    "Amrita Baskota": "अमृता बास्कोटा",
+    "Ramaroshan": "रामारोशन"
 }

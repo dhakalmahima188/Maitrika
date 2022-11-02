@@ -38,4 +38,14 @@
     height: 50px;
     margin-top: auto;
     margin-bottom: auto;
+    cursor: pointer;
+}
+
+.call:hover {
+    border: 2px solid green;
+    border-radius: 50%;
+}
+
+.online__status {
+    font-weight: bold;
 }
