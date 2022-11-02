@@ -1,17 +1,17 @@
 import React from "react";
 import MyModal from "./Modal";
 import MyVital from "./Vitals";
-import MyDetail from "./Details";
+
 import { BrowserRouter as Router, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import LineChart from "./LineChart";
+
 export const Person = (props) => {
   let { name } = useParams();
 
   const [showDeleteModal, setShowDeleteModal] = React.useState(false);
   const [showVitalModal, setShowVItalModal] = React.useState(false);
-  const [showDetailModal, setShowDetailModal] = React.useState(false);
+
   // const tasks=[1,2,3]
   const tasks = [
     {
@@ -52,17 +52,9 @@ export const Person = (props) => {
                         setShowVItalModal(true);
                       }}
                     >
-                      ADD Vitals
-                    </Button>{" "}
-                    <Button
-                      size="sm"
-                      variant="primary"
-                      onClick={() => {
-                        setShowDetailModal(true);
-                      }}
-                    >
                       ADD Details
-                    </Button>
+                    </Button>{" "}
+                   
                   </Card.Body>
                 </Card>
                 <br></br>
@@ -94,12 +86,7 @@ export const Person = (props) => {
         />
         <br></br>
 
-        <MyDetail
-          adddetail={props.adddetail}
-          details={props.details}
-          show={showDetailModal}
-          onCancel={() => setShowDetailModal(false)}
-        />
+      
 
         <br></br>
         <div style={{ flexDirection: "row" }}>

@@ -3,6 +3,7 @@ import "./doctor.css";
 import { gynecologistData, pediatricianData } from './Data';
 import videoCall from '../../assets/videoCall.png'
 import { useTranslation } from "react-i18next";
+import {Link} from 'react-router-dom'
 
 export const Doctor = () => {
   const { t } = useTranslation()
