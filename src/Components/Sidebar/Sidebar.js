@@ -25,7 +25,6 @@ export const Sidebar = () => {
   const {t} = useTranslation()
   return (
     <>
-    <div>
       <div className="sidenav">
         <a href="/">
           <img src={logo} className="logo" />
@@ -34,27 +33,27 @@ export const Sidebar = () => {
         <ul className="taskbar__items">
           <li>
             <Link to="/tasks">
-              <MdOutlineNotificationsActive /> {t('Tasks')}
+              <MdOutlineNotificationsActive /><br /> {t('Tasks')}
             </Link>
           </li>
           <li>
             <Link to="/">
-              <MdOutlinePeopleOutline /> {t('People')}
+              <MdOutlinePeopleOutline /><br /> {t('People')}
             </Link>
           </li>
           <li>
               <Link to="/target">
-                <MdTaskAlt /> {t('Target') }
+                <MdTaskAlt /><br /> {t('Target') }
               </Link>
           </li>
           <li>
             <Link to="/events">
-              <MdOutlineEventAvailable /> {t('Events') }
+              <MdOutlineEventAvailable /><br /> {t('Events') }
             </Link>
           </li>
           <li>
             <Link to="/doctor">
-              <MdOutlineLocalHospital /> {t('Doctor') }
+              <MdOutlineLocalHospital /><br /> {t('Doctor') }
             </Link>
           </li>
         </ul>
@@ -71,9 +70,8 @@ export const Sidebar = () => {
             ))}
           </ul>
         </button>
-
-      </div>
     </div>
+    <h4 className='area__name'>{t('Amrita Baskota')}, {t('Sadar Marga')}, {t('Ramaroshan')} {t('Gaupalika')}, {t('Achham')}</h4>
     </>
   );
 };
