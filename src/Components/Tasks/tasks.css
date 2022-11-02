@@ -1,26 +1,73 @@
-.task-list {
+.tasks__container {
     margin-left: 250px;
-}
-.imgAndText{
+    margin-right: 10%;
+    padding: 20px;
     display: flex;
 }
-.name{
-    margin-bottom: 2px;
+
+.task__list {
+    flex: 1;
+    margin-right: 20px;
 }
-.subject {
-    margin-bottom: 5px;
+
+.box {
+   border: 1px solid #e3f0f5;
+   height: 100px;
+   display: flex;
 }
-.img {
+
+.task__detail {
+    flex: 2;
+}
+
+.tasks__img {
     width: 40px;
     height: 40px;
     margin-right: 15px;
     margin-top: 5px;
+    margin: 15px 15px 0 15px;
 }
-.box {
-    width: 30%;
-}
-.description {
-    margin-left: 50%;
-    display: flex;
 
+.tasks__textbox {
+    flex: 1;
+    margin-top: 10px;
+}
+
+.tasks__name{
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+
+.tasks__subject {
+    margin-bottom: 0px;
+}
+
+.urgency {
+    color: red;
+}
+
+.tasks__time {
+    margin-top: 10px;
+    margin-right: 20px;
+    color: green;
+}
+
+.img_option{
+    width: 40px;
+    height: 40px;
+    margin: 8px;
+}
+
+.inner {
+    overflow: hidden;
+}
+.option {
+    display: block;
+    float: left;
+    border: 2px solid;
+    border-radius: 10px;
+    text-align: center;
+}
+.prompt {
+    display: block;
 }

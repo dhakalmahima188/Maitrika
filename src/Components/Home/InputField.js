@@ -4,51 +4,54 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const InputField = (props) => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [age, setAge] = useState("");
-
+  const [recentlyGaveBirth, setRecentlyGaveBirth] = useState(false)
+  const [pregnant, setpregnant] = useState(false)
+  const {t} = useTranslation()
 
   const submit = () => {
     if (!title || !desc || !age ) {
       alert("Blank detected");
     } else {
-      props.addEvent(title, desc, age, 'xyz');
+      props.addEvent(title, desc, age, recentlyGaveBirth, pregnant, 'xyz');
     }
   };
 
   return (
     <div className="Form_area">
-      <h4>Add New Patient</h4>
+      <h4>{t('Add New Patient')}</h4>
       <br></br>
       <Form>
         <Row>
           <Col>
-            <div id="labels">Patient name</div>
+            <div id="labels">{t('Patient name')}</div>
             <Form.Control
               size="lg"
               value={title}
               onChange={(e) => {
                 setTitle(e.target.value);
               }}
-              placeholder=" Name"
+              placeholder={t(' Name')}
             />
           </Col>
           <Col>
-            <div id="labels">Location</div>
+            <div id="labels">{t('Location')}</div>
             <Form.Control
               size="lg"
               value={desc}
               onChange={(e) => {
                 setDesc(e.target.value);
               }}
-              placeholder="Location"
+              placeholder={t("Location")}
             />
           </Col>
           <Col>
-            <div id="labels">Age</div>
+            <div id="labels">{t('Age')}</div>
             <Form.Control
               size="lg"
               type="number"
@@ -56,16 +59,40 @@ export const InputField = (props) => {
               onChange={(e) => {
                 setAge(e.target.value);
               }}
-              placeholder="Mother's Age"
+              placeholder={t("Mother's Age")}
             />
           </Col>
        
         </Row>
         <Row>
           <Col>
+           <div id="labels">{t('Recently Gave Birth')}</div>
+            <Form.Control
+              size="lg"
+              type="checkbox"
+              value={recentlyGaveBirth}
+              onChange={(e) => {
+                setRecentlyGaveBirth(e.target.value);
+              }}
+            />
+          </Col>
+          <Col>
+           <div id="labels">{t('Pregnant')}</div>
+            <Form.Control
+              size="lg"
+              type="checkbox"
+              value={pregnant}
+              onChange={(e) => {
+                setpregnant(e.target.value);
+              }}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             <div className="btn">
               <Button variant="primary" type="button" onClick={submit} className='btn_prop'>
-                ADD
+	  	{t('ADD')}
               </Button>{" "}
             </div>
           </Col>
