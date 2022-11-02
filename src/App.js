@@ -49,7 +49,6 @@ function App() {
     setevents(getPeople())
   }, [])
 
-  const [vitals, setvitals] = useState([]);
   const addEvent = (title, desc, age, recentlyGaveBirth, pregnant, xyz) => {
     if (events.length === 0) {
       var sn = 1;
@@ -70,65 +69,7 @@ function App() {
   };
 
 
-
-
-  const addVital = (title, age) => {
-    if (vitals.length === 0) {
-      var sn = 1;
-    } else {
-      sn = vitals[vitals.length - 1].sn + 1;
-    }
-
-    const myvitals = {
-      sn: sn,
-      title: title,
-      age: age,
-
-    };
-    setvitals([...vitals, myvitals]);
-    console.log(myvitals);
-  };
-
-  const [details, setdetails] = useState([]);
-  const [vitaldetails, vitalsetdetails] = useState([]);
-
-  const adddetail = (temp,pulse,cry,breastfeeding,teeth,color) => {
-    if (details.length === 0) {
-      var sn = 1;
-    } else {
-      sn = details[details.length - 1].sn + 1;
-    }
-
-    const mydetails = {
-      sn: sn,
-      temp: temp,
-      pulse:pulse,
-      cry:cry,
-      breastfeeding:breastfeeding,
-      teeth:teeth,
-      color:color
-      
-    };
-    setdetails([...vitals, mydetails]);
-    console.log(mydetails);
-  };
-
-  const addvitaldetail = (height,weight,birth_date) => {
-    if (vitaldetails.length === 0) {
-      var sn = 1;
-    } else {
-      sn = vitaldetails[vitaldetails.length - 1].sn + 1;
-    }
-
-    const myvitaldetails = {
-      sn: sn,
-      height: height,
-      weight:weight,
-      birth_date:birth_date
-    };
-    vitalsetdetails([...vitaldetails, myvitaldetails]);
-    console.log(myvitaldetails);
-  };
+  
 
   return (
     <div className="App">
@@ -171,16 +112,7 @@ function App() {
               <>
                 <Sidebar />
                 <Person
-                  addVital={addVital}
-                  vitaldetails={vitaldetails}
-                  vitals={vitals}
-                  adddetail={adddetail}
-                  details={details}
-                  addvitaldetail={addvitaldetail}
                 />
-               
-
-
               </>
             }
           />

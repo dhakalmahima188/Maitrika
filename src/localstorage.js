@@ -15,13 +15,18 @@ export function addPeople(person) {
     localStorage.setItem(localStorageItemKey, JSON.stringify({ patients: [...people, person] }))
 }
 
-export function addChild(parentName, childInfo) {
+function getMother(person) {
     let people = getPeople()
-    const index = people.findIndex(p => p.title == parentName)
-    if (index > -1) {
-        let person = people[index]
+    const index = people.findIndex(p => p.title == person)
+    return { people: people, motherIndex: index }
+}
+
+export function addChild(parentName, childInfo) {
+    let { people, motherIndex } = getMother(parentName)
+    if (motherIndex > -1) {
+        let person = people[motherIndex]
         if (person.children) {
-            people[index].children.push(childInfo)
+            people[motherIndex].children.push(childInfo)
         }
         else {
             person.children = [childInfo]
@@ -31,12 +36,52 @@ export function addChild(parentName, childInfo) {
     }
     return []
 }
+
+export function addChildDetails(parentName, childName, childInfo) {
+    let { people, motherIndex } = getMother(parentName);
+    if (motherIndex > -1) {
+        if (!people[motherIndex].children) return;
+        const childIndex = people[motherIndex].children.findIndex(c => c.name == childName)
+        people[motherIndex].children[childIndex].details = childInfo
+        localStorage.setItem(localStorageItemKey, JSON.stringify({ patients: [...people] }))
+    }
+}
+export function addChildVitals(parentName, childName, childVitals) {
+    let { people, motherIndex } = getMother(parentName);
+    if (motherIndex > -1) {
+        if (!people[motherIndex].children) return;
+        const childIndex = people[motherIndex].children.findIndex(c => c.name == childName)
+        if (people[motherIndex].children[childIndex].vitals) {
+            childVitals.sn = people[motherIndex].children[childIndex].vitals.length + 1
+            people[motherIndex].children[childIndex].vitals.push(childVitals)
+        }
+        else {
+            childVitals.sn = 1
+            people[motherIndex].children[childIndex].vitals = [childVitals]
+        }
+        localStorage.setItem(localStorageItemKey, JSON.stringify({ patients: [...people] }))
+        return people[motherIndex].children
+    }
+}
+export function addMotherVitals(parentName, motherVitals) {
+    let { people, motherIndex } = getMother(parentName);
+    if (motherIndex > -1) {
+        if (!people[motherIndex].vitals) {
+            people[motherIndex].vitals.push(motherVitals)
+        }
+        else {
+            people[motherIndex].vitals = [motherVitals]
+        }
+    }
+}
+
 export function getChildren(parentName) {
     let people = getPeople();
     const index = people.findIndex(p => p.title == parentName)
     if (index > -1) {
         let person = people[index]
-        return person.children
+        console.log(person)
+        return person.children || []
     }
     else {
         return []

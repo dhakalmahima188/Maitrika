@@ -1,16 +1,74 @@
 import React from "react";
 import MyModal from "./Modal";
-import MyVital from "./Vitals";
-import MyDetail from "./Details";
+import MyDetails from "./Details";
+import MyVitals from "./Vitals";
 import { BrowserRouter as Router, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import { t } from "i18next";
+import { addChildVitals, getChildren, getPeople } from "../../localstorage";
 export const Person = (props) => {
   let { name } = useParams();
 
   const [showDeleteModal, setShowDeleteModal] = React.useState(false);
   const [showVitalModal, setShowVItalModal] = React.useState(false);
   const [showDetailModal, setShowDetailModal] = React.useState(false);
+
+  const [localChildren, setLocalChildren] = React.useState(getChildren(name));
+  // const [details, setdetails] = useState([]);
+  // const [vitals, setVitals] = useState([]);
+  const [newChildName, setNewChildName] = React.useState("");
+  function handleNameChange(name) {
+    setNewChildAge(name)
+  }
+  const [newChildAge, setNewChildAge] = React.useState("");
+  function handleAgeChange(age){
+    setNewChildAge(age)
+  }
+
+  function addChild(name, age) {
+    console.log("called")
+    if (localChildren.length == 0) {
+      var sn = 1;
+    } else {
+      sn = localChildren[localChildren.length - 1].sn + 1;
+    }
+
+    const newChild = {
+      sn: sn,
+      name: name,
+      age: age,
+    }
+    setLocalChildren([...localChildren, newChild])
+  }
+  const addVitals = (mumName, childName, height,weight, temp, pulse, cry, breastfeeding, teeth, color) => {
+    const myVitals = {
+      height: height,
+      weight: weight,
+      temp: temp,
+      pulse:pulse,
+      cry:cry,
+      breastfeeding:breastfeeding,
+      teeth:teeth,
+      color:color,
+      time: Date.now()
+    };
+    // setdetails([...vitals, mydetails]);
+    const childrensTemp = addChildVitals(mumName, childName, myVitals)
+    setLocalChildren(childrensTemp)
+    console.log(getPeople())
+  };
+  const f = () => {
+    return 1;
+  }
+
+  const addDetails = (birth_date) => {
+    const myvitaldetails = {
+      birth_date:birth_date
+    };
+    // vitalsetdetails([...vitaldetails, myvitaldetails]);
+    console.log(myvitaldetails);
+  };
   // const tasks=[1,2,3]
   const tasks = [
     {
@@ -31,17 +89,17 @@ export const Person = (props) => {
         <h3>Children</h3>
 
         <div>
-          {props.vitals.map((vital) => {
+          {localChildren.map((child) => {
             return (
               <>
                 <Card style={{ width: "18rem" }}>
                   <Card.Body>
                     <p>
                       <b>Name: </b>
-                      {vital.title}
+                      {child.title}
                     </p>
                     <b>Age: </b>
-                    {vital.age}
+                    {child.age}
                     <br></br>
                     <br></br>
                     <Button
@@ -51,7 +109,7 @@ export const Person = (props) => {
                         setShowVItalModal(true);
                       }}
                     >
-                      ADD Vitals
+                      {t('ADD Vitals')}
                     </Button>{" "}
                     <Button
                       size="sm"
@@ -60,16 +118,18 @@ export const Person = (props) => {
                         setShowDetailModal(true);
                       }}
                     >
-                      ADD Details
+                      {t('ADD Details')}
                     </Button>
                   </Card.Body>
                 </Card>
                 <br></br>
 
-                <MyVital
-                  child_name={vital.title}
-                  addvitaldetail={props.addvitaldetail}
-                  vitaldetails={props.vitaldetails}
+                {/* Detail Stuff */}
+                <MyDetails
+                  mum_name={name}
+                  child_name={child.name}
+                  adddetail={addVitals}
+                  vitaldetails={child.vitals || []}
                   show={showVitalModal}
                   onCancel={() => setShowVItalModal(false)}
                 />
@@ -86,16 +146,21 @@ export const Person = (props) => {
         <br></br>
 
         <MyModal
-          addVital={props.addVital}
+          person={name}
+          age={newChildAge}
+          name={newChildName}
+          handleAgeChange={handleAgeChange}
+          handleNameChange={handleNameChange}
+          addVital={addChild}
           show={showDeleteModal}
           onCancel={() => setShowDeleteModal(false)}
-          person={name}
         />
         <br></br>
 
-        <MyDetail
+          {/* Vital Bala window  */}
+        <MyVitals
           adddetail={props.adddetail}
-          details={props.details}
+          details={[]}
           show={showDetailModal}
           onCancel={() => setShowDetailModal(false)}
         />

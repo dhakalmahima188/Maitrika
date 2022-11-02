@@ -17,6 +17,7 @@ export default function MyModal(props) {
     if (!title || !age) {
       alert("Blank detected");
     } else {
+      console.log("calling ")
       props.addVital(title, age);
     }
   };
