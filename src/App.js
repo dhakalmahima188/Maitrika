@@ -5,11 +5,14 @@ import { Sidebar } from "./Components/Sidebar/Sidebar";
 import { SearchBar } from "./Components/Home/SearchBar";
 import { InputField } from "./Components/Home/InputField";
 import { Target } from "./Components/Target/Target";
+import { Doctor } from "./Components/Doctor/Doctor";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { addNewPatient, getAllPatient } from "./server"
 import { Navigate } from "react-router";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
+import { Tasks } from "./Components/Tasks/Tasks";
 
 function App() {
   const onDelete = (event) => {
@@ -59,6 +62,7 @@ function App() {
             element={
               <>
                 <Sidebar />
+                <Tasks />
               </>
             }
           />
@@ -109,6 +113,7 @@ function App() {
             element={
               <>
                 <Sidebar />
+                <Doctor />
               </>
             }
           />  

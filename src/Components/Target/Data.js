@@ -5,8 +5,6 @@ import healthPost from '../../assets/healthPost.png';
 import death from '../../assets/death.png';
 import health from '../../assets/health.png';
 
-
-
 export const targetData = [
     {
         image: pregnantLady,
