@@ -4,7 +4,9 @@ export const BinaryChoice = (props) => {
     let [selected, setSelected] = useState(0)
     return (
         <>
-            <h5 className="prompt">{props.name}</h5>
+            <div>
+                <h5 className="prompt">{props.name}</h5>
+            </div>
             <div className="inner">
                 <div className="option" style={{ borderColor: (selected === 0) ? 'blue' : "#e5e5e5" }} onClick={() => setSelected(0)}>
                     <img src={props.icons[0]} alt={props.options[0]} className='img_option' />

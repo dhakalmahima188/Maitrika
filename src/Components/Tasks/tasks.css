@@ -35,7 +35,15 @@
 
 .tasks__name{
     margin-bottom: 0px;
-    font-weight: bold;
+    font-weight: bold;}
+.img_option{
+    width: 40px;
+    height: 40px;
+    margin: 8px;
+ 
+}
+.box {
+    width: 30%;
 }
 
 .tasks__subject {

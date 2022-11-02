@@ -29,6 +29,7 @@ export const Tasks = () => {
   const {t} = useTranslation()
 
 
+
   return (
     <>
       <h4 className='area__name'>Amrita's Area, {t('Sadar Marga')}, {t('Ramaroshan')} {t('Gaupalika')}, {t('Achham')}</h4>
@@ -43,6 +44,16 @@ export const Tasks = () => {
         <div className='task__detail'>
           {dataToHTML(targetData.find(item => item.key === selected))}
         </div>
+        </div>
+      <div className='task-list'>
+        {targetData.map(data => {
+          return (<>
+            <Box key={data.key} item={data} selected={selected} onClick={updateSelected} />
+          </>)
+        })}
+      </div>
+      <div className='description'>
+        {dataToHTML(targetData.find(item => item.key === selected))}
       </div>
     </>
   )

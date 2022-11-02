@@ -8,6 +8,8 @@ import { Target } from "./Components/Target/Target";
 import { Doctor } from "./Components/Doctor/Doctor";
 import { useTranslation } from "react-i18next";
 import { getPeople, addPeople, removePeople } from "./localstorage";
+
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
