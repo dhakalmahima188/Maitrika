@@ -2,8 +2,21 @@ import React from "react";
 import "./sidebar.css"
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
-
+import i18next from 'i18next';
 import { MdOutlinePeopleOutline, MdTaskAlt, MdOutlineNotificationsActive, MdOutlineLocalHospital, MdOutlineEventAvailable } from "react-icons/md";
+
+const languages = [
+  {
+    code: 'en',
+    name: 'English',
+    country_code: 'gb'
+  },
+  {
+    code: 'ne',
+    name: 'Nepali',
+    country_code: 'np'
+  },
+]
 
 export const Sidebar = () => {
   return (
@@ -40,8 +53,19 @@ export const Sidebar = () => {
               <MdOutlineLocalHospital /> Doctor
             </Link>
           </li>
-
         </ul>
+
+        <button className="dropdown">
+          <span>Language</span>
+          <ul className="dropdown-content">
+            {languages.map(({code, name, country_code}) => (
+              <button onClick = {() => i18next.changeLanguage(code)}>
+                {name}
+              </button>
+            ))}
+          </ul>
+        </button>
+
       </div>
     </div>
     </>

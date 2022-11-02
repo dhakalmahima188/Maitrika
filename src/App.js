@@ -6,31 +6,36 @@ import { SearchBar } from "./Components/Home/SearchBar";
 import { InputField } from "./Components/Home/InputField";
 import { Target } from "./Components/Target/Target";
 import { Doctor } from "./Components/Doctor/Doctor";
+import { removePeople, getPeople, addPeople } from "./localstorage";
 
+import { useTranslation } from "react-i18next";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import { Tasks } from "./Components/Tasks/Tasks";
 
-const localStorageItemKey = "patient"
-function getPeople() {
-  let data = localStorage.getItem(localStorageItemKey)
-  if (data) {
-    let jsondata = JSON.parse(data)
-    return jsondata.patients
-  }
-  else{
-    localStorage.setItem(localStorageItemKey, JSON.stringify({patients: []}))
-    return []
-  }
-}
-function addPeople(person) {
-  let people = getPeople()
-  localStorage.setItem(localStorageItemKey, JSON.stringify({patients: [...people, person]}))
-}
+// const languages = [
+//   { value: '', text: "Options" },
+//   { value: 'en', text: "English" },
+//   { value: 'ne', text: "Nepali" },
+//   { value: 'hi', text: "Hindi" },
+// ]
 
 function App() {
+
+  // const {t} = useTranslation();
+  // const [lang, setLang] = useState('en');
+
+  // // This function put query that helps to 
+  // // change the language
+  // const handleChange = e => { 
+  //   setLang(e.target.value);
+  //   let loc = "http://localhost:3000/";
+  //   window.location.replace(loc + "?lng=" + e.target.value);
+  // }
+
   const onDelete = (event) => {
+    removePeople(event)
     setevents(
       events.filter((e) => {
         return e !== event;
@@ -46,7 +51,7 @@ function App() {
   }, [])
 
   const [vitals, setvitals] = useState([]);
-  const addEvent = (title, desc, age, xyz) => {
+  const addEvent = (title, desc, age, recentlyGaveBirth, pregnant, xyz) => {
     if (events.length === 0) {
       var sn = 1;
     } else {
@@ -57,6 +62,8 @@ function App() {
       title: title,
       desc: desc,
       age: age,
+      recentlyGaveBirth: recentlyGaveBirth,
+      pregnant: pregnant,
       xyz: xyz,
     };
     setevents([...events, myevent]);
@@ -88,6 +95,15 @@ function App() {
 
   return (
     <div className="App">
+      {/* hi
+      <h1>{t('welcome')}</h1>
+      <label>{t('choose')}</label>
+      <select value={lang} onChange={handleChange}>
+        {languages.map(item => {
+            return (<option key={item.value} 
+            value={item.value}>{item.text}</option>);
+        })}
+      </select> */}
       <Router>
         <Routes>
 
@@ -124,6 +140,16 @@ function App() {
               </>
             }
           />
+
+          <Route
+            path="/target"
+            element={
+              <>
+                <Sidebar />
+                <Target />
+              </>
+            }
+          />  
 
           <Route
             path="/events"
