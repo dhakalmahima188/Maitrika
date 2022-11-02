@@ -14,7 +14,7 @@ const languages = [
   },
   {
     code: 'ne',
-    name: 'नेपाली',
+    name: 'Nepali',
     country_code: 'np'
   },
 ]

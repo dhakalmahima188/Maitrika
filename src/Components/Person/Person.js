@@ -5,7 +5,6 @@ import { BrowserRouter as Router, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 export const Person = (props) => {
-  console.log(props.addVital);
   let { name } = useParams();
 
   const [showDeleteModal, setShowDeleteModal] = React.useState(false);
@@ -70,6 +69,7 @@ export const Person = (props) => {
         addVital={props.addVital}
         show={showDeleteModal}
         onCancel={() => setShowDeleteModal(false)}
+        person={name}
       />
       <br></br>
 
