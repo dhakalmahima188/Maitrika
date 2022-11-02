@@ -25,7 +25,6 @@ export const InputField = (props) => {
 
   return (
     <>
-    <h4 className='area__name'>{t('Amrita Baskota')}, {t('Sadar Marga')}, {t('Ramaroshan')} {t('Gaupalika')}, {t('Achham')}</h4>
     <div className="Form_area home__container">
       <h4>{t('Add New Patient')}</h4>
       <br></br>
