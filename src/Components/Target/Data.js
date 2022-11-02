@@ -4,6 +4,9 @@ import vaccine from '../../assets/vaccine.png';
 import healthPost from '../../assets/healthPost.png';
 import death from '../../assets/death.png';
 import health from '../../assets/health.png';
+import jaundice from '../../assets/jaundice.png';
+import cold from '../../assets/cold.png';
+import risk from '../../assets/risk.png';
 
 export const targetData = [
     {
@@ -41,5 +44,22 @@ export const targetData = [
         title: 'Deaths reported',
         duration: 'This month',
         number: 0,
+    },    {
+        image: cold,
+        title: 'Cold and Flu',
+        duration: 'This month',
+        number: 3,
+    },
+    {
+        image: jaundice,
+        title: 'Jaundice',
+        duration: 'This Week',
+        number: 0,
+    },
+    {
+        image: risk,
+        title: 'High Risk Patient',
+        duration: 'These 2 days',
+        number: 1,
     },
 ]
