@@ -12,6 +12,23 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Tasks } from "./Components/Tasks/Tasks";
 
+const localStorageItemKey = "patient"
+function getPeople() {
+  let data = localStorage.getItem(localStorageItemKey)
+  if (data) {
+    let jsondata = JSON.parse(data)
+    return jsondata.patients
+  }
+  else{
+    localStorage.setItem(localStorageItemKey, JSON.stringify({patients: []}))
+    return []
+  }
+}
+function addPeople(person) {
+  let people = getPeople()
+  localStorage.setItem(localStorageItemKey, JSON.stringify({patients: [...people, person]}))
+}
+
 function App() {
   const onDelete = (event) => {
     setevents(
@@ -20,9 +37,13 @@ function App() {
       })
     );
   };
-  const onEdit = (event) => {};
+  const onEdit = (event) => { };
 
   const [events, setevents] = useState([]);
+
+  useEffect(() => {
+    setevents(getPeople())
+  }, [])
 
   const [vitals, setvitals] = useState([]);
   const addEvent = (title, desc, age, xyz) => {
@@ -39,13 +60,13 @@ function App() {
       xyz: xyz,
     };
     setevents([...events, myevent]);
-    // console.log(addNewPatient(myevent))
+    addPeople(myevent)
   };
 
 
 
 
-  const addVital = (title,  age) => {
+  const addVital = (title, age) => {
     if (vitals.length === 0) {
       var sn = 1;
     } else {
@@ -54,9 +75,9 @@ function App() {
 
     const myvitals = {
       sn: sn,
-      title: title, 
+      title: title,
       age: age,
-  
+
     };
     setvitals([...vitals, myvitals]);
     console.log(myvitals);
@@ -92,14 +113,14 @@ function App() {
             }
           />
 
-           <Route
+          <Route
             path="/person/:name"
             element={
               <>
-                  <Sidebar />
-              <Person addVital={addVital} vitals={vitals}/>
-            
-                
+                <Sidebar />
+                <Person addVital={addVital} vitals={vitals} />
+
+
               </>
             }
           />
@@ -111,9 +132,9 @@ function App() {
                 <Sidebar />
               </>
             }
-          />  
-         
-         <Route
+          />
+
+          <Route
             path="/doctor"
             element={
               <>
@@ -121,8 +142,8 @@ function App() {
                 <Doctor />
               </>
             }
-          />  
-         
+          />
+
         </Routes>
       </Router>
     </div>
