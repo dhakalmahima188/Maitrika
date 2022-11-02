@@ -2,8 +2,11 @@ import React from 'react';
 import "./doctor.css";
 import {gynecologistData, pediatricianData} from './Data';
 import videoCall from '../../assets/videoCall.png'
+import { useTranslation } from "react-i18next";
 
 export const Doctor = () => {
+  const {t} = useTranslation()
+
   return (
     <>
         <h4 className='area__name'>Amrita's Area, Sadar Marga, Ramaroshan Gaupalika, Achham</h4>
@@ -11,7 +14,7 @@ export const Doctor = () => {
         <div className='container doctor__container'>
 
             <h2 className='doctor__type'>
-            Gynecologist 
+            {t('Gynaecologist')}
             </h2>
             {gynecologistData.map((item) => {
               return (
@@ -29,8 +32,8 @@ export const Doctor = () => {
               )
             })}
 
-<h2 className='doctor__type'>
-            Pediatrician 
+            <h2 className='doctor__type'>
+              {t('Pediatrician')} 
             </h2>
             {pediatricianData.map((item) => {
               return (
