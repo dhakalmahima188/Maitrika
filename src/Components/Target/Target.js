@@ -7,7 +7,7 @@ export const Target = () => {
   const {t} = useTranslation()
   return (
     <>
-        <h4 className='area__name'>Amrita's Area, Sadar Marga, Ramaroshan Gaupalika, Achham</h4>
+        <h4 className='area__name'>{t('Amrita Baskota')}, {t('Sadar Marga')}, {t('Ramaroshan')} {t('Gaupalika')}, {t('Achham')}</h4>
 
         <div className='container target__container'>
             {targetData.map((item) => {

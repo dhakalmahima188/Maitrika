@@ -9,7 +9,7 @@ export const Doctor = () => {
 
   return (
     <>
-        <h4 className='area__name'>Amrita's Area, Sadar Marga, Ramaroshan Gaupalika, Achham</h4>
+        <h4 className='area__name'>{t('Amrita Baskota')}, {t('Sadar Marga')}, {t('Ramaroshan')} {t('Gaupalika')}, {t('Achham')}</h4>
 
         <div className='container doctor__container'>
 
@@ -25,7 +25,7 @@ export const Doctor = () => {
                         <h4 className="doctor__title">{t(item.title)}</h4>
                         <h6 className="doctor__contact">{item.contact}</h6>
                         <span className="online__status"
-                          style={{color: item.status == "Online"? "darkgreen": "black"}}
+                          style={{color: item.status == "Online"? "#41A029": "black"}}
                         >{t(item.status)}</span>
                     </div>
                     <img src={videoCall} className="call"></img>
@@ -46,7 +46,7 @@ export const Doctor = () => {
                         <h4 className="doctor__title">{t(item.title)}</h4>
                         <h6 className="doctor__contact">{item.contact}</h6>
                         <span className="online__status"
-                          style={{color: item.status == "Online"? "darkgreen": "black"}}
+                          style={{color: item.status == "Online"? "#41A029": "grey"}}
                         >{t(item.status)}</span>
                     </div>
                     <img src={videoCall} className="call"></img>

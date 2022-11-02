@@ -14,14 +14,13 @@ import { useTranslation } from "react-i18next";
 export const Event = (props) => {
   const {t} = useTranslation()
   return (
-    <div>
-      <div className="Form_area">
+    <>
+      <div className="Form_area home__container">
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>
-                  <input type="checkbox" />
                 </TableCell>
                 <TableCell>
             
@@ -52,6 +51,6 @@ export const Event = (props) => {
           </Table>
         </TableContainer>
       </div>
-    </div>
+      </>
   );
 };

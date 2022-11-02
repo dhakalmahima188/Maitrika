@@ -1,1 +1,3 @@
-# Team-Trynamic-Trio
+
+
+### `npm start`

@@ -1,0 +1,23 @@
+.home__container {
+    width: 1200px;
+    margin-left: 250px;
+}
+
+.birthCheckInput {
+    display: inline-block;
+}
+
+.pregnancyCheckInput {
+    display: inline-block;
+    margin-left: -200px;
+}
+
+.checkbox {
+    display: inline-block;
+    width: 50px;
+    margin: auto;
+    bottom: 2px;
+    /* margin-left: -20px; */
+    margin-top: 20px;
+    padding: 30px;
+}

@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 
 export const SearchBar = () => {
   return (
-    <div className="Form_area">
+    <div className="Form_area home__container">
       <Form>
         <Row>
           <Col>

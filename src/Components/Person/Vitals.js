@@ -6,45 +6,27 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useState } from "react";
 import Card from "react-bootstrap/Card";
-import baby from "../../assets/baby.jpg";
+import baby from '../../assets/baby.jpg'
 
 export default function MyVital(props) {
   const [height, setheight] = useState("");
   const [weight, setweight] = useState("");
   const [birth_date, setbirth_date] = useState("");
-  const { onCancel, child_name } = props;
-  const [bmi,setbmi]=useState(0)
-  const[msg,setmsg]=useState('error ')
-  console.log("name", child_name);
 
+  const { onCancel,child_name } = props;
+  console.log('name',child_name);
 
   const submit = () => {
-    if (!height) {
+    if (!height ) {
       alert("Blank detected");
     } else {
-      console.log("yeha xam");
-      props.addvitaldetail(height, weight, birth_date);
-      var temp_bmi= weight / (height * height);
-      setbmi(temp_bmi)
-      console.log("Bmi:", bmi);
-      if (bmi < 18.5) {
-       setmsg("Underweight")
-       
-      } else if (bmi > 18.5 && bmi < 24.9) {
-        setmsg("Normal Weight")
-      } else if (bmi > 25 && bmi < 29.9) {
-        setmsg("Overweight")
-      } else if (bmi >= 30) {
-        setmsg("Obesity")
-      } else {
-        console.log("kaam gareena");
-      }
+        props.addvitaldetail(height,weight,birth_date)
+      console.log("sucess");
     }
 
   };
   return (
     <>
-    
       <Modal
         {...props}
         size="lg"
@@ -81,7 +63,10 @@ export default function MyVital(props) {
                 />
               </Form.Group>
 
-              <Form.Group className="mb-3">
+              <Form.Group
+                className="mb-3"
+              
+              >
                 {" "}
                 <h1 id="labels"> Weight</h1>
                 <Form.Control
@@ -93,9 +78,11 @@ export default function MyVital(props) {
                   }}
                   placeholder="Enter Weight"
                 />
-          
               </Form.Group>
-              <Form.Group className="mb-3">
+              <Form.Group
+                className="mb-3"
+             
+              >
                 <h1 id="labels"> Birth Date</h1>
                 <Form.Control
                   size="lg"
@@ -128,42 +115,23 @@ export default function MyVital(props) {
       {props.vitaldetails.map((detail) => {
         return (
           <>
-            <div style={{ width: "20rem" }}>
-              <Card style={{ flex: 1 }}>
-                <Card.Header>
-                  <b> {child_name}</b>{" "}
-                </Card.Header>
-                <Card.Body>
-                  <img src={baby} className="baby_img"></img>
+          <div style={{ width: "20rem" }}>
+            <Card style={{ flex:1}} >
+              <Card.Header>
+              <b> {child_name}</b> {" "}
+              </Card.Header>
+              <Card.Body>
 
-                  <Card.Title>
-                    {" "}
-                    <br></br>
-                    <b>Height: </b>
-                    {detail.height} ft
-                  </Card.Title>
-                  <Card.Title>
-                    <b>Weight: </b>
-                    {detail.weight} kg
-                  </Card.Title>
-                  <Card.Title>
-                    <b>Birth Date:</b> {detail.birth_date}
-                  </Card.Title>
-                  <Card.Title>
-                    <b>BMI: </b> {bmi}
-                  </Card.Title>
-                  <Card.Title>
-                    <b>Msg: </b> {msg}
-                  </Card.Title>
-                  
-
-                </Card.Body>
-              </Card>
+              <img src={baby} className="baby_img"></img>
+            
+                <Card.Title>  <br></br><b>Height: </b>{detail.height}{" "}ft</Card.Title>
+                <Card.Title><b>Weight: </b>{detail.weight}{" "}kg</Card.Title>
+                <Card.Title><b>Birth Date:</b> {detail.birth_date}</Card.Title>            
+              
+              </Card.Body>
+            </Card>
             </div>
             <br></br>
-            <div>
-         
-          </div>
           </>
         );
       })}
