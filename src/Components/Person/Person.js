@@ -5,6 +5,7 @@ import MyDetail from "./Details";
 import { BrowserRouter as Router, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import LineChart from "./LineChart";
 export const Person = (props) => {
   let { name } = useParams();
 
