@@ -1,6 +1,7 @@
 import React from "react";
 import MyModal from "./Modal";
 import MyVital from "./Vitals";
+import "./person.css";
 
 import { BrowserRouter as Router, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -27,11 +28,10 @@ export const Person = (props) => {
   ];
   return (
     <>
-      <h2 className="area__name"> {name}</h2>
-      <div className="Form_area ">
+      <div className="Form_area patient__container">
+      <h2 className="patient__name"> {name}</h2>
+      <br />
         <h3>Children</h3>
-
-        <div>
           {props.vitals.map((vital) => {
             return (
               <>
@@ -57,7 +57,6 @@ export const Person = (props) => {
                    
                   </Card.Body>
                 </Card>
-                <br></br>
 
                 <MyVital
                   child_name={vital.title}
@@ -69,11 +68,9 @@ export const Person = (props) => {
               </>
             );
           })}
-        </div>
-        <br></br>
 
-        <br></br>
-        <Button size="sm" onClick={() => setShowDeleteModal(true)}>
+        <br />
+        <Button size="md" variant="primary" onClick={() => setShowDeleteModal(true)}>
           ADD Child
         </Button>
         <br></br>

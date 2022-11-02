@@ -6,7 +6,7 @@ import { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
+import { useTranslation } from "react-i18next";
 import baby from "../../assets/baby.jpg";
 import LineChart from "./LineChart";
 
@@ -57,6 +57,8 @@ export default function MyVital(props) {
       }
     }
   };
+  const { t } = useTranslation()
+
   return (
     <>
       <Modal
@@ -66,24 +68,24 @@ export default function MyVital(props) {
         centered
       >
         <Modal.Header>
-          <Modal.Title id="contained-modal-title-vcenter">Add</Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter">{t('Add Details')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <div className="vital_form">
-              <Form.Group className="option_area">
+              <Form.Group className="option_area mb-3">
                 <h1 id="labels">Gender</h1>
                 {/* <Form.Control size="lg" placeholder=" Gender" /> */}
 
-                <Form.Select size="lg" aria-label="Default select example">
+                <Form.Control as="select" size="lg" aria-label="Default select example">
                   {/* <option>Gender</option> */}
                   <option value="1">Male</option>
                   <option value="2">Female</option>
                   <option value="3">Other</option>
-                </Form.Select>
+                </Form.Control>
               </Form.Group>
               <Form.Group className="mb-3">
-                <h1 id="labels"> Height</h1>
+                <h1 id="labels">Height</h1>
                 <Form.Control
                   size="lg"
                   value={height}
@@ -192,7 +194,7 @@ export default function MyVital(props) {
                 controlId="exampleForm.ControlTextarea1"
               >
                 {" "}
-                <h3 id="labels">Body Temperature *C</h3>
+                <h3 id="labels">Body Temperature (℃)</h3>
                 <Form.Control
                   size="lg"
                   value={temp}
@@ -251,19 +253,9 @@ export default function MyVital(props) {
               <Form.Group>
                 <h3 id="labels">Is Breastfeeding continued?</h3>
 
-                <div className="mb-3">
-                  <Form.Control
-                    as="radio"
-                    custom
-                    size="lg"
-                    value={breastfeeding}
-                    onChange={(e) => {
-                      setbreastfeeding(e.target.value);
-                    }}
-                  >
-                    <Form.Check type="checkbox" value="Yes" label={`Yes`} />
-                    <Form.Check type="checkbox" value="No" label={`No`} />
-                  </Form.Control>
+                <div className="mb-3 checkbox__details">
+                <Form.Check size="lg" type="checkbox" value="Yes" label={`Yes`} />
+                <Form.Check size="lg" type="checkbox" value="No" label={`No`} />
                 </div>
               </Form.Group>
             </div>

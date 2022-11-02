@@ -58,9 +58,6 @@ export const Sidebar = () => {
           </li>
         </ul>
 
-        <button className="dropdown">
-          <span><MdLanguage />&nbsp;भाषा</span>
-          <ul className="dropdown-content">
             {languages.map(({code, name, country_code}) => (
               <>
               <button className="dropdown-item" onClick = {() => i18next.changeLanguage(code)}>
@@ -68,8 +65,6 @@ export const Sidebar = () => {
               </button> 
               </>
             ))}
-          </ul>
-        </button>
     </div>
     <h4 className='area__name'>{t('Amrita Baskota')}, {t('Sadar Marga')}, {t('Ramaroshan')} {t('Gaupalika')}, {t('Achham')}</h4>
     </>
