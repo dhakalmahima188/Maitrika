@@ -1,22 +1,20 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import React from "react";
-import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
 import { useState } from "react";
 import Card from "react-bootstrap/Card";
 import baby from "../../assets/baby.jpg";
+import LineChart from "./LineChart";
 
 export default function MyVital(props) {
   const [height, setheight] = useState("");
   const [weight, setweight] = useState("");
   const [birth_date, setbirth_date] = useState("");
   const { onCancel, child_name } = props;
-  const [bmi,setbmi]=useState(0)
-  const[msg,setmsg]=useState('error ')
+  const [bmi, setbmi] = useState(0);
+  const [msg, setmsg] = useState("error ");
   console.log("name", child_name);
-
 
   const submit = () => {
     if (!height) {
@@ -24,27 +22,24 @@ export default function MyVital(props) {
     } else {
       console.log("yeha xam");
       props.addvitaldetail(height, weight, birth_date);
-      var temp_bmi= weight / (height * height);
-      setbmi(temp_bmi)
+      var temp_bmi = weight / (height * height);
+      setbmi(temp_bmi);
       console.log("Bmi:", bmi);
       if (bmi < 18.5) {
-       setmsg("Underweight")
-       
+        setmsg("Underweight");
       } else if (bmi > 18.5 && bmi < 24.9) {
-        setmsg("Normal Weight")
+        setmsg("Normal Weight");
       } else if (bmi > 25 && bmi < 29.9) {
-        setmsg("Overweight")
+        setmsg("Overweight");
       } else if (bmi >= 30) {
-        setmsg("Obesity")
+        setmsg("Obesity");
       } else {
         console.log("kaam gareena");
       }
     }
-
   };
   return (
     <>
-    
       <Modal
         {...props}
         size="lg"
@@ -93,7 +88,6 @@ export default function MyVital(props) {
                   }}
                   placeholder="Enter Weight"
                 />
-          
               </Form.Group>
               <Form.Group className="mb-3">
                 <h1 id="labels"> Birth Date</h1>
@@ -151,19 +145,16 @@ export default function MyVital(props) {
                   </Card.Title>
                   <Card.Title>
                     <b>BMI: </b> {bmi}
+<LineChart bmi={bmi}/>
                   </Card.Title>
                   <Card.Title>
                     <b>Msg: </b> {msg}
                   </Card.Title>
-                  
-
                 </Card.Body>
               </Card>
             </div>
             <br></br>
-            <div>
-         
-          </div>
+            <div></div>
           </>
         );
       })}
