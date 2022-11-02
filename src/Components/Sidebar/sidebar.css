@@ -7,23 +7,24 @@
 }
 
 .sidenav {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    background-color: rgb(255, 255, 255);
+    display: flex;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .taskbar__items {
     text-decoration: none;
     list-style: none;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin: auto;
 }
-
 
 .taskbar__items a {
     padding-bottom: 6px 8px 6px 6px;
+    margin: 10px;
     font-size: 24px;
     text-decoration: none;
     color: #302222;
@@ -37,14 +38,14 @@
 .dropdown {
     position: relative;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
     width: 120px;
     height: 40px;
     background-color: #C0E9F2;
     border-bottom: 2px solid #0062BD;
     border-radius: 5px;
     font-weight: bold;
+    margin-top: auto;
+    margin-bottom: auto;
 }
   
 .dropdown-content {
@@ -70,4 +71,16 @@
     padding: 5px;
     font-weight: bold;
     border-radius: 5px;
+}
+
+.area__name {
+    /* width: 1000px; */
+    display: block;
+    /* margin-left: auto;
+    margin-right: auto; */
+    text-align: center;
+    background-color: #43AED9;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
 }

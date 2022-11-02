@@ -9,8 +9,6 @@ export const Doctor = () => {
 
   return (
     <>
-        <h4 className='area__name'>{t('Amrita Baskota')}, {t('Sadar Marga')}, {t('Ramaroshan')} {t('Gaupalika')}, {t('Achham')}</h4>
-
         <div className='container doctor__container'>
 
             <h2 className='doctor__type'>

@@ -1,6 +1,7 @@
 .tasks__container {
-    margin-left: 250px;
-    margin-right: 10%;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 20px;
     display: flex;
 }
