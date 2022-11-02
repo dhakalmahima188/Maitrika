@@ -29,43 +29,42 @@ export default function MyModal(props) {
         centered
       >
         <Modal.Header>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Add 
-          </Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter">Add</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Form>
-          <div className='vital_form'>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Control
-              size="lg"
-              value={title}
-              onChange={(e) => {
-                setTitle(e.target.value);
-              }}
-              placeholder=" Name"
-            />
-          </Form.Group>
+          <Form>
+            <div className="vital_form">
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Control
+                  size="lg"
+                  value={title}
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                  }}
+                  placeholder=" Name"
+                />
+              </Form.Group>
 
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Control
-              size="lg"
-              value={age}
-              type="number"
-              onChange={(e) => {
-                setAge(e.target.value);
-              }}
-              placeholder="Age"
-            />
-          </Form.Group>
-        
-        
-
-
-          </div>
-        </Form>
-
-      </Modal.Body>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <Form.Control
+                  size="lg"
+                  value={age}
+                  type="number"
+                  onChange={(e) => {
+                    setAge(e.target.value);
+                  }}
+                  placeholder="Age"
+                />
+              </Form.Group>
+            </div>
+          </Form>
+        </Modal.Body>
 
         <Modal.Footer>
           <Button

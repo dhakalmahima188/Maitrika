@@ -27,7 +27,7 @@ export const Sidebar = () => {
     <>
     <div>
       <div className="sidenav">
-        <a href="#">
+        <a href="/">
           <img src={logo} className="logo" />
         </a>
         <br></br>

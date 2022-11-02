@@ -8,8 +8,6 @@ import { Target } from "./Components/Target/Target";
 import { Doctor } from "./Components/Doctor/Doctor";
 import { useTranslation } from "react-i18next";
 import { getPeople, addPeople, removePeople } from "./localstorage";
-
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
@@ -89,10 +87,48 @@ function App() {
     };
     setvitals([...vitals, myvitals]);
     console.log(myvitals);
-  }
+  };
 
+  const [details, setdetails] = useState([]);
+  const [vitaldetails, vitalsetdetails] = useState([]);
 
+  const adddetail = (temp,pulse,cry,breastfeeding,teeth,color) => {
+    if (details.length === 0) {
+      var sn = 1;
+    } else {
+      sn = details[details.length - 1].sn + 1;
+    }
 
+    const mydetails = {
+      sn: sn,
+      temp: temp,
+      pulse:pulse,
+      cry:cry,
+      breastfeeding:breastfeeding,
+      teeth:teeth,
+      color:color
+      
+    };
+    setdetails([...vitals, mydetails]);
+    console.log(mydetails);
+  };
+
+  const addvitaldetail = (height,weight,birth_date) => {
+    if (vitaldetails.length === 0) {
+      var sn = 1;
+    } else {
+      sn = vitaldetails[vitaldetails.length - 1].sn + 1;
+    }
+
+    const myvitaldetails = {
+      sn: sn,
+      height: height,
+      weight:weight,
+      birth_date:birth_date
+    };
+    vitalsetdetails([...vitaldetails, myvitaldetails]);
+    console.log(myvitaldetails);
+  };
 
   return (
     <div className="App">
@@ -107,7 +143,6 @@ function App() {
       </select> */}
       <Router>
         <Routes>
-
           <Route
             path="/tasks"
             element={
@@ -135,7 +170,15 @@ function App() {
             element={
               <>
                 <Sidebar />
-                <Person addVital={addVital} vitals={vitals} />
+                <Person
+                  addVital={addVital}
+                  vitaldetails={vitaldetails}
+                  vitals={vitals}
+                  adddetail={adddetail}
+                  details={details}
+                  addvitaldetail={addvitaldetail}
+                />
+               
 
 
               </>
@@ -167,6 +210,14 @@ function App() {
               <>
                 <Sidebar />
                 <Doctor />
+              </>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <>
+                <Sidebar />
               </>
             }
           />
