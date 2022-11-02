@@ -21,33 +21,32 @@ import { Tasks } from "./Components/Tasks/Tasks";
 // ]
 
 function App() {
-
   // const {t} = useTranslation();
   // const [lang, setLang] = useState('en');
 
-  // // This function put query that helps to 
+  // // This function put query that helps to
   // // change the language
-  // const handleChange = e => { 
+  // const handleChange = e => {
   //   setLang(e.target.value);
   //   let loc = "http://localhost:3000/";
   //   window.location.replace(loc + "?lng=" + e.target.value);
   // }
 
   const onDelete = (event) => {
-    removePeople(event)
+    removePeople(event);
     setevents(
       events.filter((e) => {
         return e !== event;
       })
     );
   };
-  const onEdit = (event) => { };
+  const onEdit = (event) => {};
 
   const [events, setevents] = useState([]);
 
   useEffect(() => {
-    setevents(getPeople())
-  }, [])
+    setevents(getPeople());
+  }, []);
 
   const [vitals, setvitals] = useState([]);
   const addEvent = (title, desc, age, recentlyGaveBirth, pregnant, xyz) => {
@@ -66,11 +65,8 @@ function App() {
       xyz: xyz,
     };
     setevents([...events, myevent]);
-    addPeople(myevent)
+    addPeople(myevent);
   };
-
-
-
 
   const addVital = (title, age) => {
     if (vitals.length === 0) {
@@ -83,37 +79,24 @@ function App() {
       sn: sn,
       title: title,
       age: age,
-
     };
     setvitals([...vitals, myvitals]);
     console.log(myvitals);
   };
 
-  const [details, setdetails] = useState([]);
   const [vitaldetails, vitalsetdetails] = useState([]);
 
-  const adddetail = (temp,pulse,cry,breastfeeding,teeth,color) => {
-    if (details.length === 0) {
-      var sn = 1;
-    } else {
-      sn = details[details.length - 1].sn + 1;
-    }
-
-    const mydetails = {
-      sn: sn,
-      temp: temp,
-      pulse:pulse,
-      cry:cry,
-      breastfeeding:breastfeeding,
-      teeth:teeth,
-      color:color
-      
-    };
-    setdetails([...vitals, mydetails]);
-    console.log(mydetails);
-  };
-
-  const addvitaldetail = (height,weight,birth_date) => {
+  const addvitaldetail = (
+    height,
+    weight,
+    birth_date,
+    temp,
+    pulse,
+    cry,
+    breastfeeding,
+    teeth,
+    color
+  ) => {
     if (vitaldetails.length === 0) {
       var sn = 1;
     } else {
@@ -123,8 +106,14 @@ function App() {
     const myvitaldetails = {
       sn: sn,
       height: height,
-      weight:weight,
-      birth_date:birth_date
+      weight: weight,
+      birth_date: birth_date,
+      temp: temp,
+      pulse: pulse,
+      cry: cry,
+      breastfeeding: breastfeeding,
+      teeth: teeth,
+      color: color,
     };
     vitalsetdetails([...vitaldetails, myvitaldetails]);
     console.log(myvitaldetails);
@@ -174,13 +163,8 @@ function App() {
                   addVital={addVital}
                   vitaldetails={vitaldetails}
                   vitals={vitals}
-                  adddetail={adddetail}
-                  details={details}
                   addvitaldetail={addvitaldetail}
                 />
-               
-
-
               </>
             }
           />
@@ -193,7 +177,7 @@ function App() {
                 <Target />
               </>
             }
-          />  
+          />
 
           <Route
             path="/events"
@@ -221,7 +205,6 @@ function App() {
               </>
             }
           />
-
         </Routes>
       </Router>
     </div>
