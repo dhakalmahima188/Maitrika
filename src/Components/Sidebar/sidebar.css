@@ -1,0 +1,35 @@
+.logo {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    background-color: rgb(255, 255, 255);
+}
+
+.taskbar__items {
+    text-decoration: none;
+    list-style: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.taskbar__items a {
+    padding-bottom: 6px 8px 6px 6px;
+    font-size: 24px;
+    text-decoration: none;
+    color: #302222;
+    display: block;
+}
+
+.taskbar__items a:hover {
+    color: #0062BD;
+}
