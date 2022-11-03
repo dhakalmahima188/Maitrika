@@ -16,28 +16,7 @@ export const Event = (props) => {
   return (
     <>
       <div className="Form_area home__container">
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>
-                </TableCell>
-                <TableCell>
-            
-                  <h5>{t('Patient Name')}</h5>
-                </TableCell>
-                <TableCell align="left">
-                  <h5>{t('Location')}</h5>
-                </TableCell>
-                <TableCell align="left">
-                  <h5>{t('Age')}</h5>
-                </TableCell>
-                <TableCell align="center">
-                  <h5>{t('Action')}</h5>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
+       
               {props.events.map((event) => {
                 return (
                   <EventItem
@@ -45,11 +24,9 @@ export const Event = (props) => {
                     event={event}
                     onDelete={props.onDelete}
                   />
+
                 );
               })}
-            </TableBody>
-          </Table>
-        </TableContainer>
       </div>
       </>
   );

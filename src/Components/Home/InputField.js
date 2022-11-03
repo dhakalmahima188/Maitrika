@@ -31,7 +31,7 @@ export const InputField = (props) => {
       <Form>
         <Row>
           <Col>
-            <div id="labels">{t('Patient name')}</div>
+            <div id="labels">{t("Mother's name")}</div>
             <Form.Control
               size="lg"
               value={title}
