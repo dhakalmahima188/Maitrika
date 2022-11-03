@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import { Tasks } from "./Components/Tasks/Tasks";
+import VideoCall from "./Components/Video/VideoCall"
 
 // const languages = [
 //   { value: '', text: "Options" },
@@ -198,10 +199,11 @@ function App() {
             }
           />
           <Route
-            path="/"
+            path="/video"
             element={
               <>
                 <Sidebar />
+                <VideoCall />
               </>
             }
           />

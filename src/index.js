@@ -6,6 +6,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from "react-i18next";
 import App from './App';
 import './i18n.js';
+import { ContextProvider } from './Context';
 
 i18n
   .use(initReactI18next)
@@ -34,7 +35,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Suspense fallback = {loadingMarkup}>
-      <App />
+    <ContextProvider>
+    <App />
+    </ContextProvider>,
     </Suspense>
   </React.StrictMode>
 );
