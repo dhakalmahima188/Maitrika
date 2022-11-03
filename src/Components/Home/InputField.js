@@ -25,15 +25,6 @@ export const InputField = (props) => {
 
   return (
     <>
-<<<<<<< HEAD
-      <div className="Form_area home__container inputfield__container">
-        <h4 className="input__title">{t("Add New Patient")}</h4>
-        <hr />
-        <br />
-        <Form>
-          <Row>
-            <div id="labels">{t("Patient name")}</div>
-=======
     <div className="Form_area home__container inputfield__container">
       <h4 className="input__title">{t('Add New Patient')}</h4>
       <hr /><br />
@@ -41,7 +32,6 @@ export const InputField = (props) => {
         <Row>
           <Col>
             <div id="labels">{t("Mother's name")}</div>
->>>>>>> d9051c58ee11117e99fce8f65459ed64f539720c
             <Form.Control
               size="lg"
               value={title}
@@ -51,6 +41,7 @@ export const InputField = (props) => {
               }}
               placeholder={t(" Name")}
             />
+            </Col>
           </Row>
           <Row>
             <div id="labels">{t("Location")}</div>
