@@ -3,6 +3,7 @@ import { Button, TextField, Grid, Typography, Container, Paper } from '@material
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Assignment, Phone, PhoneDisabled } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
+import { useTranslation } from "react-i18next";
 import { io } from 'socket.io-client';
 
 import { SocketContext } from '../../Context';
@@ -43,6 +44,7 @@ const Sidebar = ({ children }) => {
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
   const [idToCall, setIdToCall] = useState('');
   const classes = useStyles();
+  const {t} = useTranslation()
 
   useEffect(() => {
     tempSocket.on("ready", (data) => {
@@ -67,7 +69,7 @@ const Sidebar = ({ children }) => {
               <div onClick={sendData}>
               <CopyToClipboard text={me} className={classes.margin}>
                 <Button variant="contained" color="primary" fullWidth startIcon={<Assignment fontSize="large" />}>
-                  Copy Your ID
+                {t("Ready")}
                 </Button>
               </CopyToClipboard>
               </div>
@@ -77,11 +79,11 @@ const Sidebar = ({ children }) => {
               <TextField label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />
               {callAccepted && !callEnded ? (
                 <Button variant="contained" color="secondary" startIcon={<PhoneDisabled fontSize="large" />} fullWidth onClick={leaveCall} className={classes.margin}>
-                  Hang Up
+                 {     t(  "Hang Up")}
                 </Button>
               ) : (
                 <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => callUser(idToCall)} className={classes.margin}>
-                  Call
+                      {     t(  "Call")}
                 </Button>
               )}
             </Grid>
