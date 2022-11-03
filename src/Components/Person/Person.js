@@ -29,9 +29,11 @@ export const Person = (props) => {
   return (
     <>
       <div className="Form_area patient__container">
-      <h2 className="patient__name"> {name}</h2>
-      <br />
-        <h3>Children</h3>
+        <h2 className="patient__name"> {name}</h2>
+        <br />
+
+        <div>
+          <h3>Children</h3>
           {props.vitals.map((vital) => {
             return (
               <>
@@ -54,7 +56,6 @@ export const Person = (props) => {
                     >
                       ADD Details
                     </Button>{" "}
-                   
                   </Card.Body>
                 </Card>
 
@@ -68,9 +69,13 @@ export const Person = (props) => {
               </>
             );
           })}
-
+        </div>
         <br />
-        <Button size="md" variant="primary" onClick={() => setShowDeleteModal(true)}>
+        <Button
+          size="md"
+          variant="primary"
+          onClick={() => setShowDeleteModal(true)}
+        >
           ADD Child
         </Button>
         <br></br>

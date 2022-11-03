@@ -51,14 +51,14 @@
 }
 
 /* mobile view */
-@media screen and (max-width: 380px) {
+@media only screen and (max-device-width: 420px) {
 
-    .doctor__container {
+    .doctor__container__small {
         padding: 0px;
         width: 375px;
     }
 
-    .doctor__box {
+    .doctor__box__small {
         padding: 10px;
         margin: 10px;
     }

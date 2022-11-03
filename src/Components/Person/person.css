@@ -1,5 +1,5 @@
 .patient__container {
-    width: 1000px;
+    width: 370px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -7,6 +7,8 @@
 .patient__name {
     background-color: rgb(178, 228, 178);
     padding: 4px;
+    width: 350px;
+    margin-left: 10px;
 }
 
 .checkbox__details {

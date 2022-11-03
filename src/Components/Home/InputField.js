@@ -5,21 +5,21 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import './inputField.css';
+import "./inputField.css";
 
 export const InputField = (props) => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [age, setAge] = useState("");
-  const [recentlyGaveBirth, setRecentlyGaveBirth] = useState(false)
-  const [pregnant, setpregnant] = useState(false)
-  const {t} = useTranslation()
+  const [recentlyGaveBirth, setRecentlyGaveBirth] = useState(false);
+  const [pregnant, setpregnant] = useState(false);
+  const { t } = useTranslation();
 
   const submit = () => {
-    if (!title || !desc || !age ) {
+    if (!title || !desc || !age) {
       alert("Blank detected");
     } else {
-      props.addEvent(title, desc, age, recentlyGaveBirth, pregnant, 'xyz');
+      props.addEvent(title, desc, age, recentlyGaveBirth, pregnant, "xyz");
     }
   };
 
@@ -31,18 +31,20 @@ export const InputField = (props) => {
       <Form>
         <Row>
           <Col>
-            <div id="labels">{t('Patient name')}</div>
+            <div id="labels">{t("Mother's name")}</div>
             <Form.Control
               size="lg"
               value={title}
+              className="formInput"
               onChange={(e) => {
                 setTitle(e.target.value);
               }}
-              placeholder={t(' Name')}
+              placeholder={t(" Name")}
             />
-          </Col>
-          <Col>
-            <div id="labels">{t('Location')}</div>
+            </Col>
+          </Row>
+          <Row>
+            <div id="labels">{t("Location")}</div>
             <Form.Control
               size="lg"
               value={desc}
@@ -51,9 +53,9 @@ export const InputField = (props) => {
               }}
               placeholder={t("Location")}
             />
-          </Col>
-          <Col>
-            <div id="labels">{t('Age')}</div>
+          </Row>
+          <Row>
+            <div id="labels">{t("Age")}</div>
             <Form.Control
               size="lg"
               type="number"
@@ -63,12 +65,12 @@ export const InputField = (props) => {
               }}
               placeholder={t("Mother's Age")}
             />
-          </Col>
-       
-        </Row>
-        <Row>
-          <Col>
-           <div id="labels" className="birthCheckInput">{t('Recently Gave Birth')}</div>
+          </Row>
+
+          <Row>
+            <div id="labels" className="birthCheckInput">
+              {t("Recently Gave Birth")}
+            </div>
             <Form.Control
               size="sm"
               type="checkbox"
@@ -78,33 +80,36 @@ export const InputField = (props) => {
                 setRecentlyGaveBirth(e.target.value);
               }}
             />
-          </Col>
-          <Col>
-           <div id="labels" className="pregnancyCheckInput">{t('Pregnant')}</div>
+          </Row>
+          <Row>
+            <div id="labels" className="pregnancyCheckInput">
+              {t("Pregnant")}
+            </div>
             <Form.Control
               size="sm"
               type="checkbox"
               className="checkbox"
-              
               value={pregnant}
               onChange={(e) => {
                 setpregnant(e.target.value);
               }}
             />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+          </Row>
+          <Row>
             <div className="btn">
-              <Button variant="primary" type="button" onClick={submit} className='btn_prop'>
-	  	{t('ADD')}
+              <Button
+                variant="primary"
+                type="button"
+                onClick={submit}
+                className="btn_prop"
+              >
+                {t("ADD")}
               </Button>{" "}
             </div>
-          </Col>
-        </Row>
-      </Form>
-      <br></br>
-    </div>
+          </Row>
+        </Form>
+        <br></br>
+      </div>
     </>
   );
 };
