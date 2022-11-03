@@ -2,7 +2,6 @@ import React from "react";
 import MyModal from "./Modal";
 import MyVital from "./Vitals";
 import "./person.css";
-
 import { BrowserRouter as Router, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
