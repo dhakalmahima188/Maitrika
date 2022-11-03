@@ -24,6 +24,46 @@ export async function addNewPatient(userInfo) {
     return response.json();
 }
 
+export async function sendDocID(id) {
+    let url = "http://localhost:5001/"
+    let patient = {
+        "doc": id
+    }
+
+    const response =  await fetch(url, {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(patient) // body data type must match "Content-Type" header
+    })
+}
+
+export async function sendPatID(id) {
+    let url = "http://localhost:5001/"
+    let patient = {
+        "pat": id
+    }
+    console.log(patient)
+
+    const response =  await fetch(url, {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(patient) // body data type must match "Content-Type" header
+    })
+}
 export async function getAllPatient() {
     let url = "http://localhost:5000/data"
     const response = await fetch(url)
