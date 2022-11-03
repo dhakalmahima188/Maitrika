@@ -6,6 +6,14 @@ import { SearchBar } from "./Components/Home/SearchBar";
 import { InputField } from "./Components/Home/InputField";
 import { Target } from "./Components/Target/Target";
 import { Doctor } from "./Components/Doctor/Doctor";
+// doctor page
+import { DpSidebar } from "./Components/DoctorPage/DpSidebar/DpSidebar"
+import { DpFCHV } from "./Components/DoctorPage/DpFCHV/DpFCHV"
+import { DpSearchBar } from "./Components/DoctorPage/DpHome/DpSearchBar"
+import { DpEvent } from "./Components/DoctorPage/DpHome/DpEvent"
+import { DpPerson } from "./Components/DoctorPage/DpPerson/DpPerson"
+
+
 import { useTranslation } from "react-i18next";
 import { getPeople, addPeople, removePeople } from "./localstorage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -198,6 +206,7 @@ function App() {
               </>
             }
           />
+
           <Route
             path="/video"
             element={
@@ -207,7 +216,57 @@ function App() {
               </>
             }
           />
+
+        {/* Doctor page beginssss */}
+        <Route
+            path="/doctorpage"
+            element={
+              <>
+                <DpSidebar />
+                <DpSearchBar />
+                <DpEvent events={events} onDelete={onDelete} onEdit={onEdit} />
+              </>
+            }
+        />
+
+          <Route
+            path="doctorpage/person/:name"
+            element={
+              <>
+                <DpSidebar />
+                <DpPerson
+                  addVital={addVital}
+                  vitaldetails={vitaldetails}
+                  vitals={vitals}
+                  addvitaldetail={addvitaldetail}
+                />
+              </>
+            }
+          />
+
+        <Route
+            path="/doctorpage/target"
+            element={
+              <>
+                <DpSidebar />
+                <Target />
+              </>
+            }
+        />
+
+        <Route
+            path="/doctorpage/fchv"
+            element={
+              <>
+                <DpSidebar />
+                <DpFCHV />
+              </>
+            }
+        />
+
+
         </Routes>
+
       </Router>
     </div>
   );
