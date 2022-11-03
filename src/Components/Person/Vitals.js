@@ -37,6 +37,26 @@ export default function MyVital(props) {
       alert("Blank detected");
     } else {
       console.log("yeha xam");
+      
+      var temp_bmi = weight / (height * height);
+      setbmi(temp_bmi);
+      console.log("Bmi:", bmi);
+      let message = ""
+      if (bmi < 18.5) {
+        setmsg("Underweight");
+        message = "Underweight"
+      } else if (bmi > 18.5 && bmi < 24.9) {
+        setmsg("Normal Weight");
+        message = "Normal Weight"
+      } else if (bmi > 25 && bmi < 29.9) {
+        setmsg("Overweight");
+        message = "Overweight"
+      } else if (bmi >= 30) {
+        setmsg("Obesity");
+        message = "Obesity"
+      } else {
+        console.log("kaam gareena");
+      }
       props.addvitaldetail(
         height,
         weight,
@@ -46,22 +66,10 @@ export default function MyVital(props) {
         cry,
         breastfeeding,
         teeth,
-        colorval
+        colorval,
+        temp_bmi, 
+        message
       );
-      var temp_bmi = weight / (height * height);
-      setbmi(temp_bmi);
-      console.log("Bmi:", bmi);
-      if (bmi < 18.5) {
-        setmsg("Underweight");
-      } else if (bmi > 18.5 && bmi < 24.9) {
-        setmsg("Normal Weight");
-      } else if (bmi > 25 && bmi < 29.9) {
-        setmsg("Overweight");
-      } else if (bmi >= 30) {
-        setmsg("Obesity");
-      } else {
-        console.log("kaam gareena");
-      }
     }
   };
 

@@ -22,25 +22,7 @@ import React, { useEffect, useState } from "react";
 import { Tasks } from "./Components/Tasks/Tasks";
 import VideoCall from "./Components/Video/VideoCall";
 
-// const languages = [
-//   { value: '', text: "Options" },
-//   { value: 'en', text: "English" },
-//   { value: 'ne', text: "Nepali" },
-//   { value: 'hi', text: "Hindi" },
-// ]
-
 function App() {
-  // const {t} = useTranslation();
-  // const [lang, setLang] = useState('en');
-
-  // // This function put query that helps to
-  // // change the language
-  // const handleChange = e => {
-  //   setLang(e.target.value);
-  //   let loc = "http://localhost:3000/";
-  //   window.location.replace(loc + "?lng=" + e.target.value);
-  // }
-
   const onDelete = (event) => {
     removePeople(event);
     setevents(
@@ -96,8 +78,6 @@ function App() {
     localAddVitals(myvitals)
   };
 
-
-
   const addvitaldetail = (
     height,
     weight,
@@ -107,7 +87,7 @@ function App() {
     cry,
     breastfeeding,
     teeth,
-    color
+    color, bmi, message
   ) => {
     if (vitaldetails.length === 0) {
       var sn = 1;
@@ -126,6 +106,8 @@ function App() {
       breastfeeding: breastfeeding,
       teeth: teeth,
       color: color,
+      bmi: bmi,
+      message: message
     };
     vitalsetdetails([...vitaldetails, myvitaldetails]);
     console.log(myvitaldetails);
