@@ -16,7 +16,7 @@ import DpVideoCall from "./Components/DoctorPage/DpVideo/VideoCall"
 
 
 import { useTranslation } from "react-i18next";
-import { getPeople, addPeople, removePeople } from "./localstorage";
+import { getPeople, addPeople, removePeople, localAddDetails, getChildren, getDetails, localAddVitals } from "./localstorage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
@@ -53,12 +53,15 @@ function App() {
   const onEdit = (event) => {};
 
   const [events, setevents] = useState([]);
-
+  const [vitals, setvitals] = useState([]);
+  const [vitaldetails, vitalsetdetails] = useState([]);
   useEffect(() => {
     setevents(getPeople());
+    setvitals(getChildren());
+    vitalsetdetails(getDetails());
   }, []);
 
-  const [vitals, setvitals] = useState([]);
+
   const addEvent = (title, desc, age, recentlyGaveBirth, pregnant, xyz) => {
     if (events.length === 0) {
       var sn = 1;
@@ -91,10 +94,10 @@ function App() {
       age: age,
     };
     setvitals([...vitals, myvitals]);
-    console.log(myvitals);
+    localAddVitals(myvitals)
   };
 
-  const [vitaldetails, vitalsetdetails] = useState([]);
+
 
   const addvitaldetail = (
     height,
@@ -127,6 +130,7 @@ function App() {
     };
     vitalsetdetails([...vitaldetails, myvitaldetails]);
     console.log(myvitaldetails);
+    localAddDetails(myvitaldetails)
   };
 
   return (

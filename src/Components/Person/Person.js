@@ -83,8 +83,6 @@ export const Person = (props) => {
         />
         <br></br>
 
-      
-
         <br></br>
         <div style={{ flexDirection: "row" }}>
           {tasks.map((task) => {
