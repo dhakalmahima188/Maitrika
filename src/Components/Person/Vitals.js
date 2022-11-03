@@ -544,7 +544,9 @@ export default function MyVital(props) {
               </Card>
             </div>
             <br></br>
-            <div className="finalDiagnosisResult">{verdicts[index]}</div>
+            <div className="finalDiagnosisResult" ><h5>{verdicts[index]} !</h5></div>
+          
+        
           </>
         );
       })}
