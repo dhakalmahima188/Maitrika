@@ -16,11 +16,12 @@ export default function MyVital(props) {
   const [birth_date, setbirth_date] = useState("");
   const { onCancel, child_name } = props;
   const [bmi, setbmi] = useState(0);
-  const [msg, setmsg] = useState("error ");
+  const [msg, setmsg] = useState(props.vitaldetails ? (props.vitaldetails.length > 0 ? props.vitaldetails[0].message : "Error") : "Error");
 
   console.log("name", child_name);
 
   const { t } = useTranslation();
+  console.log(props.vitaldetails);
 
   return (
     <>
@@ -45,8 +46,11 @@ export default function MyVital(props) {
                 <Card style={{ flex: 1 }}>
                   <Card.Body>
                     <img src={baby} className="baby_img"></img>
-                    <br />
-                    <br />
+                    <div>
+                      {t('Name')}: {detail.child_name}
+                      {t('Age')}: {detail.child_age}
+                      {t("Mother's Name")}: {detail.parent_name}
+                    </div>
                     <Card.Title>
                       {" "}
                       <b>{t("Height")}: </b>
@@ -118,7 +122,7 @@ export default function MyVital(props) {
                       <b>How often baby cries?: </b>
                       {detail.cry}
                       &nbsp;&nbsp;&nbsp;
-                      {detail.cry == "Normally" ? (
+                      {detail.cry == "normally" ? (
                         <Button variant="success" size="sm">
                           {" "}
                           Normal
@@ -132,9 +136,9 @@ export default function MyVital(props) {
                     </Card.Title>
                     <Card.Title>
                       <b>{t("Breastfeeding Continiued")}?: </b>
-                      {detail.breastfeeding}
+                      {detail.breastfeeding ? "Yes" : "No"}
                       &nbsp;&nbsp;&nbsp;
-                      {detail.breastfeeding == "Yes" ? (
+                      {detail.breastfeeding ? (
                         <Button variant="success" size="sm">
                           {" "}
                           Normal
@@ -193,10 +197,10 @@ export default function MyVital(props) {
           })}
         </Modal.Body>
 
-          <Button variant="primary" onClick={onCancel}>
-            OK
-          </Button>
-       
+        <Button variant="primary" onClick={onCancel}>
+          OK
+        </Button>
+
       </Modal>
     </>
   );

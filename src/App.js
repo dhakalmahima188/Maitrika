@@ -87,7 +87,7 @@ function App() {
     cry,
     breastfeeding,
     teeth,
-    color, bmi, message
+    color, bmi, message, parent_name, child_name, child_age
   ) => {
     if (vitaldetails.length === 0) {
       var sn = 1;
@@ -107,7 +107,10 @@ function App() {
       teeth: teeth,
       color: color,
       bmi: bmi,
-      message: message
+      message: message,
+      parent_name: parent_name,
+      child_name: child_name,
+      child_age: child_age
     };
     vitalsetdetails([...vitaldetails, myvitaldetails]);
     console.log(myvitaldetails);
