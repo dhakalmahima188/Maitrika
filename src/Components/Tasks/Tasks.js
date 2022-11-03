@@ -1,48 +1,92 @@
-import React, { useEffect, useState } from 'react';
-import { targetData } from './Data';
-import { Box } from "./Box"
-import "./tasks.css";
-import { BinaryChoice } from './binary';
-
-import birth from '../../assets/newBorn.png';
-import vaccine from '../../assets/vaccine.png';
-import { useTranslation } from 'react-i18next';
-
-function dataToHTML(item) {
-  if (item.category === "text") {
-    return <>{item.description}
-    </>
-  }
-  else if (item.category === "fourm") {
-    return <>
-      <BinaryChoice name={"Gender"} icons={[birth, vaccine]} options={["male", "female"]} />
-    </>
-  }
-}
+import React from "react";
+import pregnantLady from "../../assets/pregnantLady.png";
+import birth from "../../assets/newBorn.png";
+import vaccine from "../../assets/vaccine.png";
+import service from "../../assets/health.png";
+import { Button } from "react-bootstrap";
+import { MdDone } from "react-icons/md";
 
 export const Tasks = () => {
-  const [selected, setSelected] = useState(targetData[0].key);
+const [targetData, settargetData] = React.useState([
+    {
+        key: 0,
+        image: pregnantLady,
+        name: "Mahima Dhakal",
+        subject: "Pregnancy Follow Up",
+        time: "1 day left",
+        category: "text",
+  
+        important: 0,
+      },
+  
+      {
+        key: 1,
+        image: birth,
+        name: "Radha Acharya",
+        subject: "Expected Date",
+        time: "3 days left",
+        important: 1,
+        category: "text",
+      },
+      {
+        key: 2,
+        image: vaccine,
+        name: "Radha Acharya",
+        subject: "Polio Dosage to Child",
+        time: "In 2 weeks",
+        important: 0,
+        category: "fourm",
+      },
+      {
+        key: 3,
+        image: service,
+        name: "Yunika BAjracharya",
+        subject: "Whole Body CheckUp",
+        time: "In 2 weeks",
+        important: 1,
+        category: "fourm",
+      },
 
-  const updateSelected = (key) => {
-    setSelected(key)
-  }
-  const {t} = useTranslation()
-
+]);
+ 
+  
+  const onDelete = (item) => {
+    console.log(item);
+    settargetData(
+        targetData.filter((e) => {
+        return e !== item;
+      })
+    );
+  };
 
   return (
-    <>
-      <div className='tasks__container'>
-        <div className='task__list'>
-          {targetData.map(data => {
-            return (<>
-              <Box key={data.key} item={data} selected={selected} onClick={updateSelected} />
-            </>)
-          })}
-        </div>
-        <div className='task__detail'>
-          {dataToHTML(targetData.find(item => item.key === selected))}
-        </div>
-      </div>
-    </>
-  )
+    <div>
+
+      {targetData.map((task) => {
+        return (
+          <>
+            <div style={{ width: "20rem" }} className="box">
+              <img className=" tasks__img " src={task.image} />
+              <h4> {task.name}</h4>
+              <div> {task.subject}</div>
+              <div> {task.time}</div>
+              <div>
+                <Button
+                  className="done_btn"
+                  variant="success"
+                  size="sm"
+                  onClick={() => {
+                    onDelete(task);
+                  }}
+                >
+                  <MdDone />
+                </Button>
+              </div>
+            </div>
+          </>
+        );
+      })}
+    </div>
+  );
 };
+export default Tasks;
