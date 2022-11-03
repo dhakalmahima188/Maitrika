@@ -26,9 +26,7 @@ export const DpSidebar = () => {
   return (
     <>
       <div className="sidenav">
-        <a href="/">
           <img src={logo} className="logo" />
-        </a>
         <br></br>
         <ul className="taskbar__items">
           <li>

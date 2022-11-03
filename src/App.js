@@ -7,12 +7,11 @@ import { InputField } from "./Components/Home/InputField";
 import { Target } from "./Components/Target/Target";
 import { Doctor } from "./Components/Doctor/Doctor";
 // doctor page
-import { DpSidebar } from "./Components/DoctorPage/DpSidebar/DpSidebar"
-import { DpFCHV } from "./Components/DoctorPage/DpFCHV/DpFCHV"
-import { DpSearchBar } from "./Components/DoctorPage/DpHome/DpSearchBar"
-import { DpEvent } from "./Components/DoctorPage/DpHome/DpEvent"
-import { DpPerson } from "./Components/DoctorPage/DpPerson/DpPerson"
-
+import { DpSidebar } from "./Components/DoctorPage/DpSidebar/DpSidebar";
+import { DpFCHV } from "./Components/DoctorPage/DpFCHV/DpFCHV";
+import { DpSearchBar } from "./Components/DoctorPage/DpHome/DpSearchBar";
+import { DpEvent } from "./Components/DoctorPage/DpHome/DpEvent";
+import { DpPerson } from "./Components/DoctorPage/DpPerson/DpPerson";
 
 import { useTranslation } from "react-i18next";
 import { getPeople, addPeople, removePeople } from "./localstorage";
@@ -20,7 +19,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import { Tasks } from "./Components/Tasks/Tasks";
-import VideoCall from "./Components/Video/VideoCall"
+import VideoCall from "./Components/Video/VideoCall";
 
 // const languages = [
 //   { value: '', text: "Options" },
@@ -217,8 +216,8 @@ function App() {
             }
           />
 
-        {/* Doctor page beginssss */}
-        <Route
+          {/* Doctor page beginssss */}
+          <Route
             path="/doctorpage"
             element={
               <>
@@ -227,7 +226,7 @@ function App() {
                 <DpEvent events={events} onDelete={onDelete} onEdit={onEdit} />
               </>
             }
-        />
+          />
 
           <Route
             path="doctorpage/person/:name"
@@ -244,7 +243,7 @@ function App() {
             }
           />
 
-        <Route
+          <Route
             path="/doctorpage/target"
             element={
               <>
@@ -252,9 +251,9 @@ function App() {
                 <Target />
               </>
             }
-        />
+          />
 
-        <Route
+          <Route
             path="/doctorpage/fchv"
             element={
               <>
@@ -262,11 +261,8 @@ function App() {
                 <DpFCHV />
               </>
             }
-        />
-
-
+          />
         </Routes>
-
       </Router>
     </div>
   );

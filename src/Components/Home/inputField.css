@@ -21,19 +21,32 @@
 
 .birthCheckInput {
     display: inline-block;
+    margin-top: 5px;
+
 }
 
 .pregnancyCheckInput {
     display: inline-block;
-    margin-left: -200px;
+    margin-top: 5px;
 }
 
 .checkbox {
     display: inline-block;
     width: 50px;
-    margin: auto;
-    bottom: 2px;
-    /* margin-left: -20px; */
-    margin-top: 20px;
+    /* margin: auto; */
+    /* bottom: 2px; */
+    margin-left: -10px;
+    margin-top: 15px;
     padding: 30px;
+}
+
+@media only screen and (max-device-width: 420px) {
+    .home__container {
+        width: 375px;
+    }
+    
+    .inputfield__container {
+        /* width: 960px; */
+        padding: 25px;
+    }
 }

@@ -19,7 +19,14 @@
     display: flex;
     text-align: center;
     align-items: center;
+    flex-direction: row;
     margin: auto;
+}
+.taskbar__items--col {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color: red;
 }
 
 .taskbar__items a {

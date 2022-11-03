@@ -1,16 +1,17 @@
+
+.sidenav {
+    display: block;
+    /* display: flex; */
+    /* width: 10px; */
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
 .logo {
     width: 100px;
     height: 100px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.sidenav {
-    display: flex;
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+    position: absolute;
 }
 
 .taskbar__items {
@@ -50,6 +51,7 @@
     text-align: center;
     margin-top: auto;
     margin-bottom: auto;
+    background-color: red;
 }
 
 .area__name {
@@ -57,13 +59,13 @@
     text-align: center;
     background-color: #43AED9;
     padding: 15px;
+    
     color: white;
     font-weight: bold;
 }
 
 /* Mobile View */
-@media screen and (max-width: 380px) {
-
+@media only screen and (max-width: 380px) {
     .area__name {
         padding: 5px;
         line-height: 20px;
@@ -80,7 +82,7 @@
     }
     
     .sidenav {
-        width: 375px;
+        width: 305px;
         height: 100px;
         border: 2px solid blue;
     }
@@ -102,8 +104,14 @@
         display: none;
     }
 
-    .taskbar__items {
-        margin-left: -28px;
+    .taskbar__itemscol a {
+        text-decoration: none;
+        list-style: none;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        margin: auto;
+        display: flex;
     }
 
     .taskbar__items a {

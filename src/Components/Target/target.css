@@ -34,3 +34,19 @@
     color: red;
     font-weight: bold;
 }
+
+@media only screen and (max-width: 420px) {
+    .target__container {
+        padding: 20px;
+        display: block;
+        width: 375px;
+    }
+
+    .target__box {
+        width: 100%;
+        padding: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+} 
