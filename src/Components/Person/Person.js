@@ -60,6 +60,8 @@ export const Person = (props) => {
 
                 <MyVital
                   child_name={vital.title}
+                  child_age={vital.age}
+                  parent_name={name}
                   addvitaldetail={props.addvitaldetail}
                   vitaldetails={props.vitaldetails}
                   show={showVitalModal}

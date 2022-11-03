@@ -22,8 +22,8 @@ export default function MyVital(props) {
   const [temp, settemp] = useState("");
   const [pulse, setpulse] = useState("");
   const [breastfeeding, setbreastfeeding] = useState(false);
-  const [cry, setcry] = useState("normally");
-  const [teeth, setteeth] = useState("normal");
+  const [cry, setcry] = useState("Normally");
+  const [teeth, setteeth] = useState("Normal");
   const [colorval, setcolorval] = useState("Proper ");
 
   useEffect(() => {
@@ -99,6 +99,7 @@ export default function MyVital(props) {
       console.log("yeha xam");
 
       var temp_bmi = weight / (height * height);
+      console.log(temp_bmi)
       setbmi(temp_bmi);
       console.log("Bmi:", bmi);
       let message = "";
@@ -128,7 +129,11 @@ export default function MyVital(props) {
         teeth,
         colorval,
         temp_bmi,
-        message
+        message,
+        props.parent_name,
+        props.child_name,
+        props.child_age
+        
       );
     }
   };
