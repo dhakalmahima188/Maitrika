@@ -98,7 +98,8 @@ export default function MyVital(props) {
     } else {
       console.log("yeha xam");
 
-      var temp_bmi = weight / (height * height);
+      var temp_bmi = weight*10000 / (height * height);
+
       console.log(temp_bmi)
       setbmi(temp_bmi);
       console.log("Bmi:", bmi);
