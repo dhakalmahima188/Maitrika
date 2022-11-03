@@ -50,6 +50,12 @@
     font-weight: bold;
 }
 
+.schedule {
+    border: 2px solid blue;
+    padding: 5px;
+    border-radius: 10px;
+}
+
 /* mobile view */
 @media only screen and (max-device-width: 420px) {
 

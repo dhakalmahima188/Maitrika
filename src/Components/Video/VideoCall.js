@@ -6,7 +6,7 @@ import VideoPlayer from './VideoPlayer';
 import Sidebar from './Sidebar';
 import Notifications from './Notifications';
 import { ContextProvider } from '../../Context';
-
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -36,12 +36,13 @@ const useStyles = makeStyles((theme) => ({
 
 const VideoCall = () => {
   const classes = useStyles();
+  const {t} = useTranslation()
 
   return (
     <ContextProvider>
     <div className={classes.wrapper}>
       <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography variant="h2" align="center">Video Chat</Typography>
+        <Typography variant="h4" align="center">{t("Video Chat")}</Typography>
       </AppBar>
       <VideoPlayer />
       <Sidebar>
