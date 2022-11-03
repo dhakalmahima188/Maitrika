@@ -25,7 +25,35 @@ export default function MyVital(props) {
   const [cry, setcry] = useState("normally");
   const [teeth, setteeth] = useState("");
   const [colorval, setcolorval] = useState("Proper ");
-  const [verdicts, setVerdicts] = useState([]);
+
+  // Really bad code, sorry
+  const calVerdict = (height, weight, temp, pulse, cry, breastfeeding, teeth, colorval) => {
+    let good = 0;
+    let bad = 0;
+    if (height <= 19) bad++; else good++;
+    if (weight >= 4 && weight <= 5) good++; else bad++;
+    if (temp >= 36 && temp < 38) good++; else bad++;
+    if (pulse >= 80 && pulse <= 160) good++; else bad++;
+    if (cry == "Normally") good++; else bad++;
+    if (breastfeeding == "Yes") good++; else bad++;
+    if (teeth == "Normal") good++; else bad++;
+    if (colorval == "proper") good++; else bad++;
+
+    if (good + bad == 0) {
+      return "Consult App developers";
+    }
+
+    const risk = bad / (good + bad);
+
+    if (risk < 0.5) {
+      return "Normal";
+    }
+    else if (risk < 0.8) {
+      return "Consult a doctor";
+    }
+    else return "Visit a Hospital"
+  }
+  const [verdicts, setVerdicts] = useState(props.vitaldetails.map(m => calVerdict(m.height, m.weight, m.temp, m.pulse, m.cry, m.breastfeeding, m.teech, m.colorval)));
 
   const colorvalue = (value) => {
     var temp = value;
@@ -37,7 +65,7 @@ export default function MyVital(props) {
       alert("Blank detected");
     } else {
       console.log("yeha xam");
-      
+
       var temp_bmi = weight / (height * height);
       setbmi(temp_bmi);
       console.log("Bmi:", bmi);
@@ -67,40 +95,13 @@ export default function MyVital(props) {
         breastfeeding,
         teeth,
         colorval,
-        temp_bmi, 
+        temp_bmi,
         message
       );
     }
   };
 
-  // Really bad code, sorry
-  const calVerdict = (height, weight, temp, pulse, cry, breastfeeding, teeth, colorval) => {
-  let good = 0;
-  let bad = 0;
- 
-    if (height <= 19) bad++; else good++;
-    if (weight >= 4 && weight <=5) good++; else bad++;
-    if (temp >= 36 && temp < 38) good++; else bad++;
-    if (pulse >= 80 && pulse <= 160) good++; else bad++;
-    if (cry == "Normally") good++; else bad++;
-    if (breastfeeding == "Yes") good++; else bad++;
-    if (teeth == "Normal") good++; else bad++;
-    if (colorval == "proper") good++ ; else bad++;
-    
-    if (good + bad == 0){
-      return "Consult App developers";
-    }
 
-    const risk = bad / (good + bad);
-    
-    if(risk < 0.5){
-      return "Normal";
-    }
-    else if (risk < 0.8){
-      return "Consult a doctor";
-    }
-    else return "Visit a Hospital"
-  }
   return (
     <>
       <Modal
@@ -491,8 +492,7 @@ export default function MyVital(props) {
               </Card>
             </div>
             <br></br>
-
-            <div></div>
+            <div>{verdicts[index]}</div>
           </>
         );
       })}
