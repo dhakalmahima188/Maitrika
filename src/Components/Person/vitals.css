@@ -2,3 +2,14 @@
     display: flex;
     justify-content: space-between;
 }
+
+.finalDiagnosisResult {
+    border: 2px solid red;
+    display: inline-block;
+    position: absolute;
+    right: 350px;
+    top: 490px;
+    width: 350px;
+    height: 250px;
+
+}

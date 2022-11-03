@@ -27,21 +27,38 @@ export default function MyVital(props) {
   const [colorval, setcolorval] = useState("Proper ");
 
   useEffect(() => {
-    console.log(teeth)
-  }, [teeth])
+    console.log(teeth);
+  }, [teeth]);
 
   // Really bad code, sorry
-  const calVerdict = (height, weight, temp, pulse, cry, breastfeeding, teeth, colorval) => {
+  const calVerdict = (
+    height,
+    weight,
+    temp,
+    pulse,
+    cry,
+    breastfeeding,
+    teeth,
+    colorval
+  ) => {
     let good = 0;
     let bad = 0;
-    if (height <= 19) bad++; else good++;
-    if (weight >= 4 && weight <= 5) good++; else bad++;
-    if (temp >= 36 && temp < 38) good++; else bad++;
-    if (pulse >= 80 && pulse <= 160) good++; else bad++;
-    if (cry == "Normally") good++; else bad++;
-    if (breastfeeding == "Yes") good++; else bad++;
-    if (teeth == "Normal") good++; else bad++;
-    if (colorval == "proper") good++; else bad++;
+    if (height <= 19) bad++;
+    else good++;
+    if (weight >= 4 && weight <= 5) good++;
+    else bad++;
+    if (temp >= 36 && temp < 38) good++;
+    else bad++;
+    if (pulse >= 80 && pulse <= 160) good++;
+    else bad++;
+    if (cry == "Normally") good++;
+    else bad++;
+    if (breastfeeding == "Yes") good++;
+    else bad++;
+    if (teeth == "Normal") good++;
+    else bad++;
+    if (colorval == "proper") good++;
+    else bad++;
 
     if (good + bad == 0) {
       return "Consult App developers";
@@ -51,13 +68,24 @@ export default function MyVital(props) {
 
     if (risk < 0.5) {
       return "Normal";
-    }
-    else if (risk < 0.8) {
+    } else if (risk < 0.8) {
       return "Consult a doctor";
-    }
-    else return "Visit a Hospital"
-  }
-  const [verdicts, setVerdicts] = useState(props.vitaldetails.map(m => calVerdict(m.height, m.weight, m.temp, m.pulse, m.cry, m.breastfeeding, m.teech, m.colorval)));
+    } else return "Visit a Hospital";
+  };
+  const [verdicts, setVerdicts] = useState(
+    props.vitaldetails.map((m) =>
+      calVerdict(
+        m.height,
+        m.weight,
+        m.temp,
+        m.pulse,
+        m.cry,
+        m.breastfeeding,
+        m.teech,
+        m.colorval
+      )
+    )
+  );
 
   const colorvalue = (value) => {
     var temp = value;
@@ -73,19 +101,19 @@ export default function MyVital(props) {
       var temp_bmi = weight / (height * height);
       setbmi(temp_bmi);
       console.log("Bmi:", bmi);
-      let message = ""
+      let message = "";
       if (bmi < 18.5) {
         setmsg("Underweight");
-        message = "Underweight"
+        message = "Underweight";
       } else if (bmi > 18.5 && bmi < 24.9) {
         setmsg("Normal Weight");
-        message = "Normal Weight"
+        message = "Normal Weight";
       } else if (bmi > 25 && bmi < 29.9) {
         setmsg("Overweight");
-        message = "Overweight"
+        message = "Overweight";
       } else if (bmi >= 30) {
         setmsg("Obesity");
-        message = "Obesity"
+        message = "Obesity";
       } else {
         console.log("kaam gareena");
       }
@@ -104,7 +132,6 @@ export default function MyVital(props) {
       );
     }
   };
-
 
   return (
     <>
@@ -299,19 +326,19 @@ export default function MyVital(props) {
                 </Form.Control>
               </Form.Group>
               <Form.Group>
-            <div id="labels" className="birthCheckInput">
-              {t("BreastFeeding")}
-            </div>
-            <Form.Control
-              size="sm"
-              type="checkbox"
-              className="checkbox"
-              value={breastfeeding}
-              onChange={(e) => {
-                console.log(!breastfeeding)
-                setbreastfeeding(!breastfeeding);
-              }}
-            />
+                <div id="labels" className="birthCheckInput">
+                  {t("BreastFeeding")}
+                </div>
+                <Form.Control
+                  size="sm"
+                  type="checkbox"
+                  className="checkbox"
+                  value={breastfeeding}
+                  onChange={(e) => {
+                    console.log(!breastfeeding);
+                    setbreastfeeding(!breastfeeding);
+                  }}
+                />
                 {/* <h3 id="labels">Is Breastfeeding continued?</h3>
 
                 <div className="mb-3 checkbox__details">
@@ -331,8 +358,17 @@ export default function MyVital(props) {
           <Button
             variant="primary"
             onClick={() => {
-              const calcedVerdict = calVerdict(height, weight, temp, pulse, cry, breastfeeding, teeth, colorval)
-              setVerdicts([...verdicts, calcedVerdict])
+              const calcedVerdict = calVerdict(
+                height,
+                weight,
+                temp,
+                pulse,
+                cry,
+                breastfeeding,
+                teeth,
+                colorval
+              );
+              setVerdicts([...verdicts, calcedVerdict]);
               submit();
               onCancel();
             }}
@@ -442,7 +478,7 @@ export default function MyVital(props) {
                   </Card.Title>
                   <Card.Title>
                     <b>{t("Breastfeeding Continiued")}?: </b>
-                    {detail.breastfeeding ? "Yes": "No"}
+                    {detail.breastfeeding ? "Yes" : "No"}
                     &nbsp;&nbsp;&nbsp;
                     {detail.breastfeeding == true ? (
                       <Button variant="success" size="sm">
@@ -503,7 +539,7 @@ export default function MyVital(props) {
               </Card>
             </div>
             <br></br>
-            <div>{verdicts[index]}</div>
+            <div className="finalDiagnosisResult">{verdicts[index]}</div>
           </>
         );
       })}
