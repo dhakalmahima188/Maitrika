@@ -11,6 +11,8 @@ import baby from "../../assets/baby.jpg";
 import LineChart from "./LineChart";
 
 export default function MyVital(props) {
+
+  const {t} = useTranslation()
   const [height, setheight] = useState("");
   const [weight, setweight] = useState("");
   const [birth_date, setbirth_date] = useState("");
@@ -19,7 +21,6 @@ export default function MyVital(props) {
   const [msg, setmsg] = useState("error ");
   const [temp, settemp] = useState("");
   const [pulse, setpulse] = useState("");
-  const [color, setcolor] = useState("");
   const [breastfeeding, setbreastfeeding] = useState("");
   const [cry, setcry] = useState("normally");
   const [teeth, setteeth] = useState("");
@@ -27,6 +28,8 @@ export default function MyVital(props) {
   console.log("name", child_name);
 
   const colorvalue = (value) => {
+
+
     var temp = value;
     setcolorval(temp);
   };
@@ -63,8 +66,7 @@ export default function MyVital(props) {
       }
     }
   };
-  const { t } = useTranslation();
-
+ 
   return (
     <>
       <Modal
@@ -82,7 +84,7 @@ export default function MyVital(props) {
           <Form>
             <div className="vital_form">
               <Form.Group className="option_area mb-3">
-                <h1 id="labels">Gender</h1>
+                <h1 id="labels">{t("Gender")}</h1>
                 {/* <Form.Control size="lg" placeholder=" Gender" /> */}
 
                 <Form.Control
@@ -91,13 +93,13 @@ export default function MyVital(props) {
                   aria-label="Default select example"
                 >
                   {/* <option>Gender</option> */}
-                  <option value="1">Male</option>
-                  <option value="2">Female</option>
-                  <option value="3">Other</option>
+                  <option value="1">{t("Male")}</option>
+                  <option value="2">{t("Female")}</option>
+                  <option value="3">{t("Other")}</option>
                 </Form.Control>
               </Form.Group>
               <Form.Group className="mb-3">
-                <h1 id="labels">Height</h1>
+                <h1 id="labels">{t("Height")}</h1>
                 <Form.Control
                   size="lg"
                   value={height}
@@ -109,7 +111,7 @@ export default function MyVital(props) {
               </Form.Group>
               <Form.Group className="mb-3">
                 {" "}
-                <h1 id="labels"> Weight</h1>
+                <h1 id="labels"> {t("Weight")}</h1>
                 <Form.Control
                   size="lg"
                   value={weight}
@@ -121,7 +123,7 @@ export default function MyVital(props) {
                 />
               </Form.Group>
               <Form.Group className="mb-3">
-                <h1 id="labels"> Birth Date</h1>
+                <h1 id="labels"> {t("Birth Date")}</h1>
                 <Form.Control
                   size="lg"
                   value={birth_date}
@@ -136,7 +138,7 @@ export default function MyVital(props) {
                 controlId="exampleForm.ControlTextarea1"
               >
                 {" "}
-                <h3 id="labels">Pulse Rate</h3>
+                <h3 id="labels">{t("Pulse Rate")}</h3>
                 <Form.Control
                   size="lg"
                   value={pulse}
@@ -148,18 +150,18 @@ export default function MyVital(props) {
                 />
               </Form.Group>
               <Form.Group className="mb-3">
-                <h3 id="labels">Body Color</h3>
+                <h3 id="labels">{t("Body Color")}</h3>
                 <Row>
                   <Col>
                     {/* <option> */}
                     <Button
                       className="body_color"
                       style={{ backgroundColor: "#F1C27D" }}
-                      onClick={() => colorvalue("proper")}
+                      onClick={() => colorvalue("Normal")}
                     ></Button>
                     {/* </option> */}
                     <h6 id="labels" on>
-                      Proper
+                      {t("Normal")}
                     </h6>
                   </Col>
                   <Col>
@@ -168,7 +170,7 @@ export default function MyVital(props) {
                       style={{ backgroundColor: "#FFDBAC" }}
                       onClick={() => colorvalue("Pale")}
                     ></Button>
-                    <h6 id="labels">Pale</h6>
+                    <h6 id="labels"> {t("Pale")}</h6>
                   </Col>
                   <Col>
                     <Button
@@ -176,7 +178,7 @@ export default function MyVital(props) {
                       style={{ backgroundColor: "#E0AC69" }}
                       onClick={() => colorvalue("Brownish")}
                     ></Button>
-                    <h6 id="labels">Brownish</h6>
+                    <h6 id="labels"> {t("Brownish")}</h6>
                   </Col>
                   <Col>
                     <Button
@@ -192,7 +194,7 @@ export default function MyVital(props) {
                       style={{ backgroundColor: "#f7e8a9" }}
                       onClick={() => colorvalue("Yellowish")}
                     ></Button>
-                    <h6 id="labels">Yellowish</h6>
+                    <h6 id="labels"> {t("Yellowish")}</h6>
                   </Col>
                 </Row>
               </Form.Group>
@@ -201,7 +203,7 @@ export default function MyVital(props) {
                 controlId="exampleForm.ControlTextarea1"
               >
                 {" "}
-                <h3 id="labels">Body Temperature (℃)</h3>
+                <h3 id="labels"> {t("Body Temperature")}(℃)</h3>
                 <Form.Control
                   size="lg"
                   value={temp}
@@ -287,10 +289,10 @@ export default function MyVital(props) {
               onCancel();
             }}
           >
-            ADD
+           { t('ADD')}
           </Button>
           <Button variant="danger" onClick={onCancel}>
-            Cancel
+              { t('Cancel')}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -309,25 +311,25 @@ export default function MyVital(props) {
                   <Card.Title>
                     {" "}
                     <br></br>
-                    <b>Height: </b>
-                    {detail.height} inch
+                    <b>{t("Height")}: </b>
+                    {detail.height}   { t('inch')}
                     {detail.height <= 19 ? (
-                      <Button variant="danger"> High Risk</Button>
+                      <Button variant="danger"> {t("High Risk")}</Button>
                     ) : (
-                      <Button> Low Risk</Button>
+                      <Button>  {t("Low Risk")}</Button>
                     )}
                   </Card.Title>
                   <Card.Title>
-                    <b>Weight: </b>
+                    <b> {t("Weight")}: </b>
                     {detail.weight} kg
                     {detail.weight <= 5 && detail.weight >= 4 ? (
-                      <Button> Low Risk</Button>
+                      <Button>{t("Low Risk")}</Button>
                     ) : (
-                      <Button variant="danger"> High Risk</Button>
+                      <Button variant="danger"> {t("High Risk")}</Button>
                     )}
                   </Card.Title>
                   <Card.Title>
-                    <b>Birth Date:</b> {detail.birth_date}
+                    <b>{t("Birth Date")}:</b> {detail.birth_date}
                   </Card.Title>
 
                   <Card.Title>
@@ -336,7 +338,7 @@ export default function MyVital(props) {
                     {detail.temp <= 38 && detail.temp >= 36 ? (
                       <Button> Low Risk</Button>
                     ) : (
-                      <Button variant="danger"> High Risk</Button>
+                      <Button variant="danger"> {t("High Risk")}</Button>
                     )}
                   </Card.Title>
                   <Card.Title>
@@ -356,35 +358,35 @@ export default function MyVital(props) {
                     {detail.cry == "Normally" ? (
                       <Button> Low Risk</Button>
                     ) : (
-                      <Button variant="danger"> High Risk</Button>
+                      <Button variant="danger"> {t("High Risk")}</Button>
                     )}
                   </Card.Title>
                   <Card.Title>
-                    <b>Breastfeeding Continiued?: </b>
+                    <b>{t('Breastfeeding Continiued')}?: </b>
                     {detail.breastfeeding}
 
                     {detail.breastfeeding == "Yes" ? (
                       <Button> Low Risk</Button>
                     ) : (
-                      <Button variant="danger"> High Risk</Button>
+                      <Button variant="danger"> {t("High Risk")}</Button>
                     )}
                   </Card.Title>
                   <Card.Title>
-                    <b>Teeth and Gums: </b>
+                    <b>{t("Teeth and Gums:")} </b>
                     {detail.teeth}
 
                     {detail.teeth == "Normal" ? (
                       <Button> Low Risk</Button>
                     ) : (
-                      <Button variant="danger"> High Risk</Button>
+                      <Button variant="danger"> {t("High Risk")}</Button>
                     )}
                   </Card.Title>
                   <Card.Title>
-                    <b>Color: </b> {detail.color}
+                    <b>{t('Color')}: </b> {detail.color}
                     {detail.color == "proper" ? (
                       <Button> Low Risk</Button>
                     ) : (
-                      <Button variant="danger"> High Risk</Button>
+                      <Button variant="danger">{t("High Risk")}</Button>
                     )}
                   </Card.Title>
 
