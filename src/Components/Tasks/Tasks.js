@@ -5,6 +5,8 @@ import vaccine from "../../assets/vaccine.png";
 import service from "../../assets/health.png";
 import { Button } from "react-bootstrap";
 import { MdDone } from "react-icons/md";
+import Card from "react-bootstrap/Card";
+import './Tasks.css'
 
 export const Tasks = () => {
 const [targetData, settargetData] = React.useState([
@@ -64,14 +66,17 @@ const [targetData, settargetData] = React.useState([
 
       {targetData.map((task) => {
         return (
-          <>
-            <div style={{ width: "20rem" }} className="box">
-              <img className=" tasks__img " src={task.image} />
-              <h4> {task.name}</h4>
-              <div> {task.subject}</div>
-              <div> {task.time}</div>
+       <div className=''>
+          <div className=' doctor__container '>
+            <div  className="doctor__box">
+              <img className=" doctor__img " src={task.image} />
               <div>
-                <Button
+              <h4 className=''> {task.name}</h4>
+              <div className=''> {task.subject}</div>
+              <div className=''> {task.time}</div>
+              </div>
+              <div>
+                <Button 
                   className="done_btn"
                   variant="success"
                   size="sm"
@@ -83,7 +88,9 @@ const [targetData, settargetData] = React.useState([
                 </Button>
               </div>
             </div>
-          </>
+          </div>
+          </div>
+
         );
       })}
     </div>
