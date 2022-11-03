@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import React from "react";
+import React, { useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Card from "react-bootstrap/Card";
@@ -21,10 +21,14 @@ export default function MyVital(props) {
   const [msg, setmsg] = useState("error ");
   const [temp, settemp] = useState("");
   const [pulse, setpulse] = useState("");
-  const [breastfeeding, setbreastfeeding] = useState("");
+  const [breastfeeding, setbreastfeeding] = useState(false);
   const [cry, setcry] = useState("normally");
-  const [teeth, setteeth] = useState("");
+  const [teeth, setteeth] = useState("normal");
   const [colorval, setcolorval] = useState("Proper ");
+
+  useEffect(() => {
+    console.log(teeth)
+  }, [teeth])
 
   // Really bad code, sorry
   const calVerdict = (height, weight, temp, pulse, cry, breastfeeding, teeth, colorval) => {
@@ -295,7 +299,20 @@ export default function MyVital(props) {
                 </Form.Control>
               </Form.Group>
               <Form.Group>
-                <h3 id="labels">Is Breastfeeding continued?</h3>
+            <div id="labels" className="birthCheckInput">
+              {t("BreastFeeding")}
+            </div>
+            <Form.Control
+              size="sm"
+              type="checkbox"
+              className="checkbox"
+              value={breastfeeding}
+              onChange={(e) => {
+                console.log(!breastfeeding)
+                setbreastfeeding(!breastfeeding);
+              }}
+            />
+                {/* <h3 id="labels">Is Breastfeeding continued?</h3>
 
                 <div className="mb-3 checkbox__details">
                   <Form.Check
@@ -304,13 +321,7 @@ export default function MyVital(props) {
                     value="Yes"
                     label={`Yes`}
                   />
-                  <Form.Check
-                    size="lg"
-                    type="checkbox"
-                    value="No"
-                    label={`No`}
-                  />
-                </div>
+                </div> */}
               </Form.Group>
             </div>
           </Form>
@@ -431,9 +442,9 @@ export default function MyVital(props) {
                   </Card.Title>
                   <Card.Title>
                     <b>{t("Breastfeeding Continiued")}?: </b>
-                    {detail.breastfeeding}
+                    {detail.breastfeeding ? "Yes": "No"}
                     &nbsp;&nbsp;&nbsp;
-                    {detail.breastfeeding == "Yes" ? (
+                    {detail.breastfeeding == true ? (
                       <Button variant="success" size="sm">
                         {" "}
                         Normal
