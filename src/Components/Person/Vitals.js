@@ -23,7 +23,13 @@ export default function MyVital(props) {
   const [breastfeeding, setbreastfeeding] = useState("");
   const [cry, setcry] = useState("normally");
   const [teeth, setteeth] = useState("");
+  const [colorval, setcolorval] = useState("Proper ");
   console.log("name", child_name);
+
+  const colorvalue = (value) => {
+    var temp = value;
+    setcolorval(temp);
+  };
 
   const submit = () => {
     if (!height) {
@@ -39,7 +45,7 @@ export default function MyVital(props) {
         cry,
         breastfeeding,
         teeth,
-        color
+        colorval
       );
       var temp_bmi = weight / (height * height);
       setbmi(temp_bmi);
@@ -57,7 +63,7 @@ export default function MyVital(props) {
       }
     }
   };
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <>
@@ -68,7 +74,9 @@ export default function MyVital(props) {
         centered
       >
         <Modal.Header>
-          <Modal.Title id="contained-modal-title-vcenter">{t('Add Details')}</Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter">
+            {t("Add Details")}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -77,7 +85,11 @@ export default function MyVital(props) {
                 <h1 id="labels">Gender</h1>
                 {/* <Form.Control size="lg" placeholder=" Gender" /> */}
 
-                <Form.Control as="select" size="lg" aria-label="Default select example">
+                <Form.Control
+                  as="select"
+                  size="lg"
+                  aria-label="Default select example"
+                >
                   {/* <option>Gender</option> */}
                   <option value="1">Male</option>
                   <option value="2">Female</option>
@@ -140,52 +152,47 @@ export default function MyVital(props) {
                 <Row>
                   <Col>
                     {/* <option> */}
-                    <div
+                    <Button
                       className="body_color"
                       style={{ backgroundColor: "#F1C27D" }}
-                    ></div>
+                      onClick={() => colorvalue("proper")}
+                    ></Button>
                     {/* </option> */}
-                    <h6 id="labels">Proper</h6>
+                    <h6 id="labels" on>
+                      Proper
+                    </h6>
                   </Col>
                   <Col>
-                    <div
+                    <Button
                       className="body_color"
                       style={{ backgroundColor: "#FFDBAC" }}
-                    ></div>
+                      onClick={() => colorvalue("Pale")}
+                    ></Button>
                     <h6 id="labels">Pale</h6>
                   </Col>
                   <Col>
-                    <div
+                    <Button
                       className="body_color"
                       style={{ backgroundColor: "#E0AC69" }}
-                    ></div>
+                      onClick={() => colorvalue("Brownish")}
+                    ></Button>
                     <h6 id="labels">Brownish</h6>
                   </Col>
                   <Col>
-                    <div
+                    <Button
                       className="body_color"
                       style={{ backgroundColor: "#f2d3e1" }}
-                    ></div>
+                      onClick={() => colorvalue("Pinkish")}
+                    ></Button>
                     <h6 id="labels">Pinkish</h6>
                   </Col>
                   <Col>
-                    <div
+                    <Button
                       className="body_color"
                       style={{ backgroundColor: "#f7e8a9" }}
-                    ></div>
+                      onClick={() => colorvalue("Yellowish")}
+                    ></Button>
                     <h6 id="labels">Yellowish</h6>
-                  </Col>
-                  <Col>
-                    <Form.Control
-                      size="lg"
-                      type="color"
-                      id="exampleColorInput"
-                      defaultValue="#E0AC69"
-                      onChange={(e) => {
-                        setcolor(e.target.value);
-                      }}
-                    />
-                    <h6 id="labels">Pick_Color</h6>
                   </Col>
                 </Row>
               </Form.Group>
@@ -254,8 +261,18 @@ export default function MyVital(props) {
                 <h3 id="labels">Is Breastfeeding continued?</h3>
 
                 <div className="mb-3 checkbox__details">
-                <Form.Check size="lg" type="checkbox" value="Yes" label={`Yes`} />
-                <Form.Check size="lg" type="checkbox" value="No" label={`No`} />
+                  <Form.Check
+                    size="lg"
+                    type="checkbox"
+                    value="Yes"
+                    label={`Yes`}
+                  />
+                  <Form.Check
+                    size="lg"
+                    type="checkbox"
+                    value="No"
+                    label={`No`}
+                  />
                 </div>
               </Form.Group>
             </div>
@@ -277,10 +294,11 @@ export default function MyVital(props) {
           </Button>
         </Modal.Footer>
       </Modal>
+      <br></br>
       {props.vitaldetails.map((detail) => {
         return (
           <>
-            <div style={{ width: "20rem" }}>
+            <div style={{ width: "30rem" }}>
               <Card style={{ flex: 1 }}>
                 <Card.Header>
                   <b> {child_name}</b>{" "}
@@ -292,11 +310,21 @@ export default function MyVital(props) {
                     {" "}
                     <br></br>
                     <b>Height: </b>
-                    {detail.height} ft
+                    {detail.height} inch
+                    {detail.height <= 19 ? (
+                      <Button variant="danger"> High Risk</Button>
+                    ) : (
+                      <Button> Low Risk</Button>
+                    )}
                   </Card.Title>
                   <Card.Title>
                     <b>Weight: </b>
                     {detail.weight} kg
+                    {detail.weight <= 5 && detail.weight >= 4 ? (
+                      <Button> Low Risk</Button>
+                    ) : (
+                      <Button variant="danger"> High Risk</Button>
+                    )}
                   </Card.Title>
                   <Card.Title>
                     <b>Birth Date:</b> {detail.birth_date}
@@ -305,29 +333,60 @@ export default function MyVital(props) {
                   <Card.Title>
                     <b>Temperature: </b>
                     {detail.temp}
+                    {detail.temp <= 38 && detail.temp >= 36 ? (
+                      <Button> Low Risk</Button>
+                    ) : (
+                      <Button variant="danger"> High Risk</Button>
+                    )}
                   </Card.Title>
                   <Card.Title>
                     <b>Pulse: </b>
                     {detail.pulse}
+
+                    {detail.pulse <= 160 && detail.pulse >= 80 ? (
+                      <Button> Low Risk</Button>
+                    ) : (
+                      <Button variant="danger"> High Risk</Button>
+                    )}
                   </Card.Title>
                   <Card.Title>
                     <b>How often baby cries?: </b>
                     {detail.cry}
+
+                    {detail.cry == "Normally" ? (
+                      <Button> Low Risk</Button>
+                    ) : (
+                      <Button variant="danger"> High Risk</Button>
+                    )}
                   </Card.Title>
                   <Card.Title>
                     <b>Breastfeeding Continiued?: </b>
                     {detail.breastfeeding}
+
+                    {detail.breastfeeding == "Yes" ? (
+                      <Button> Low Risk</Button>
+                    ) : (
+                      <Button variant="danger"> High Risk</Button>
+                    )}
                   </Card.Title>
                   <Card.Title>
                     <b>Teeth and Gums: </b>
                     {detail.teeth}
+
+                    {detail.teeth == "Normal" ? (
+                      <Button> Low Risk</Button>
+                    ) : (
+                      <Button variant="danger"> High Risk</Button>
+                    )}
                   </Card.Title>
                   <Card.Title>
                     <b>Color: </b> {detail.color}
+                    {detail.color == "proper" ? (
+                      <Button> Low Risk</Button>
+                    ) : (
+                      <Button variant="danger"> High Risk</Button>
+                    )}
                   </Card.Title>
-
-
-
 
                   <Card.Title>
                     <b>BMI: </b> {bmi}
@@ -336,11 +395,16 @@ export default function MyVital(props) {
                   <Card.Title>
                     <b>Msg: </b> {msg}
                   </Card.Title>
-                  
                 </Card.Body>
+                <Card.Footer>
+                  <Button size="md" variant="primary">
+                    Edit
+                  </Button>
+                </Card.Footer>
               </Card>
             </div>
             <br></br>
+
             <div></div>
           </>
         );
