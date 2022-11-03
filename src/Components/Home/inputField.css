@@ -13,6 +13,12 @@
     padding: 25px;
 }
 
+.input__title {
+    font-weight: bold;
+    color: green;
+    text-align: center;
+}
+
 .birthCheckInput {
     display: inline-block;
 }

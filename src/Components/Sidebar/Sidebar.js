@@ -11,12 +11,12 @@ import { useTranslation } from "react-i18next";
 const languages = [
   {
     code: 'en',
-    name: 'English',
+    name: 'En',
     country_code: 'gb'
   },
   {
     code: 'ne',
-    name: 'नेपाली',
+    name: 'ने',
     country_code: 'np'
   },
 ]
@@ -33,27 +33,32 @@ export const Sidebar = () => {
         <ul className="taskbar__items">
           <li>
             <Link to="/tasks">
-              <MdOutlineNotificationsActive /><br /> {t('Tasks')}
+              <MdOutlineNotificationsActive /><br /> 
+              <span className="nav__text">{t('Tasks')}</span>
             </Link>
           </li>
           <li>
             <Link to="/">
-              <MdOutlinePeopleOutline /><br /> {t('People')}
+              <MdOutlinePeopleOutline /><br /> 
+              <span className="nav__text">{t('People')}</span>
             </Link>
           </li>
           <li>
               <Link to="/target">
-                <MdTaskAlt /><br /> {t('Target') }
+                <MdTaskAlt /><br /> 
+              <span className="nav__text">{t('Target') }</span>
               </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/events">
-              <MdOutlineEventAvailable /><br /> {t('Events') }
+              <MdOutlineEventAvailable /><br />
+              <span className="nav__text">{t('Events') }</span>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/doctor">
-              <MdOutlineLocalHospital /><br /> {t('Doctor') }
+              <MdOutlineLocalHospital /><br /> 
+              <span className="nav__text">{t('Doctor') }</span>
             </Link>
           </li>
         </ul>

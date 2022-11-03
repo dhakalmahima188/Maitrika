@@ -7,7 +7,6 @@
 
 .doctor__type {
     display: block;
-    /* text-align: center; */
     padding: 10px;
     background-color: #C0E9F2;
     font-weight: bold;
@@ -49,4 +48,18 @@
 
 .online__status {
     font-weight: bold;
+}
+
+/* mobile view */
+@media screen and (max-width: 380px) {
+
+    .doctor__container {
+        padding: 0px;
+        width: 375px;
+    }
+
+    .doctor__box {
+        padding: 10px;
+        margin: 10px;
+    }
 }
