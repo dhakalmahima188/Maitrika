@@ -1,9 +1,7 @@
 import React from "react";
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
-
  const labels = ["10", "20", "30", "40", "50", "60"];
-
 
 
 const data = {

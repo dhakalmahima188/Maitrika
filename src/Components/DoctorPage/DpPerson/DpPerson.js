@@ -29,86 +29,48 @@ export const DpPerson = (props) => {
   return (
     <>
       <div className="Form_area patient__container">
-      <h2 className="patient__name"> {name}</h2>
-      <br />
-        <h3>Children</h3>
-          {props.vitals.map((vital) => {
-            return (
-              <>
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <p>
-                      <b>Name: </b>
-                      {vital.title}
-                    </p>
-                    <b>Age: </b>
-                    {vital.age}
-                    <br></br>
-                    <br></br>
-                    <Button
-                      size="sm"
-                      variant="primary"
-                      onClick={() => {
-                        setShowVItalModal(true);
-                      }}
-                    >
-                      ADD Details
-                    </Button>{" "}
-                   
-                  </Card.Body>
-                </Card>
+        <h2 className="patient__name"> {name}</h2>
+        <br />
 
-                <MyVital
-                  child_name={vital.title}
-                  addvitaldetail={props.addvitaldetail}
-                  vitaldetails={props.vitaldetails}
-                  show={showVitalModal}
-                  onCancel={() => setShowVItalModal(false)}
-                />
-              </>
-            );
-          })}
+        {props.vitals.map((vital) => {
+          return (
+            <>
+              <Card style={{ width: "18rem" }}>
+                <Card.Body>
+                  <p>
+                    <b>Name: </b>
+                    {vital.title}
+                  </p>
+                  <b>Age: </b>
+                  {vital.age} months
+                  <br></br>
+                  <br></br>
+                  <Button
+                    size="sm"
+                    variant="primary"
+                    onClick={() => {
+                      setShowVItalModal(true);
+                    }}
+                  >
+                    Show Report
+                  </Button>{" "}
+                </Card.Body>
+              </Card>
+
+              <MyVital
+                child_name={vital.title}
+                addvitaldetail={props.addvitaldetail}
+                vitaldetails={props.vitaldetails}
+                show={showVitalModal}
+                onCancel={() => setShowVItalModal(false)}
+              />
+            </>
+          );
+        })}
 
         <br />
-        <Button size="md" variant="primary" onClick={() => setShowDeleteModal(true)}>
-          ADD Child
-        </Button>
-        <br></br>
-
-        <MyModal
-          addVital={props.addVital}
-          show={showDeleteModal}
-          onCancel={() => setShowDeleteModal(false)}
-          person={name}
-        />
-        <br></br>
-
-      
 
         <br></br>
-        <div style={{ flexDirection: "row" }}>
-          {tasks.map((task) => {
-            return (
-              <>
-                <div style={{ width: "20rem" }}>
-                  <Card style={{ flex: 1 }}>
-                    <Card.Header>
-                      Tasks <b>{task.sn}</b>{" "}
-                    </Card.Header>
-                    <Card.Body>
-                      <Card.Title>{task.head}</Card.Title>
-                      <Card.Text>{task.time}</Card.Text>
-                      <Button variant="primary" size="sm">
-                        Doctor
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                </div>
-                <br></br>
-              </>
-            );
-          })}
-        </div>
       </div>
     </>
   );
