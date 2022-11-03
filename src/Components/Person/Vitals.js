@@ -25,7 +25,7 @@ export default function MyVital(props) {
   const [cry, setcry] = useState("normally");
   const [teeth, setteeth] = useState("");
   const [colorval, setcolorval] = useState("Proper ");
-  console.log("name", child_name);
+  const [verdicts, setVerdicts] = useState([]);
 
   const colorvalue = (value) => {
     var temp = value;
@@ -73,6 +73,34 @@ export default function MyVital(props) {
     }
   };
 
+  // Really bad code, sorry
+  const calVerdict = (height, weight, temp, pulse, cry, breastfeeding, teeth, colorval) => {
+  let good = 0;
+  let bad = 0;
+ 
+    if (height <= 19) bad++; else good++;
+    if (weight >= 4 && weight <=5) good++; else bad++;
+    if (temp >= 36 && temp < 38) good++; else bad++;
+    if (pulse >= 80 && pulse <= 160) good++; else bad++;
+    if (cry == "Normally") good++; else bad++;
+    if (breastfeeding == "Yes") good++; else bad++;
+    if (teeth == "Normal") good++; else bad++;
+    if (colorval == "proper") good++ ; else bad++;
+    
+    if (good + bad == 0){
+      return "Consult App developers";
+    }
+
+    const risk = bad / (good + bad);
+    
+    if(risk < 0.5){
+      return "Normal";
+    }
+    else if (risk < 0.8){
+      return "Consult a doctor";
+    }
+    else return "Visit a Hospital"
+  }
   return (
     <>
       <Modal
@@ -291,6 +319,8 @@ export default function MyVital(props) {
           <Button
             variant="primary"
             onClick={() => {
+              const calcedVerdict = calVerdict(height, weight, temp, pulse, cry, breastfeeding, teeth, colorval)
+              setVerdicts([...verdicts, calcedVerdict])
               submit();
               onCancel();
             }}
@@ -303,7 +333,7 @@ export default function MyVital(props) {
         </Modal.Footer>
       </Modal>
       <br></br>
-      {props.vitaldetails.map((detail) => {
+      {props.vitaldetails.map((detail, index) => {
         return (
           <>
             <div style={{ width: "30rem" }}>
