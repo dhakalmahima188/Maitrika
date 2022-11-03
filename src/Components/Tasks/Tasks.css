@@ -34,3 +34,9 @@ cursor: pointer;
 .tasks__title {
 font-weight: bold;
 }
+
+@media only screen and (max-width: 420px) {
+    .tasks__box {
+        width: 370px;
+    }
+}
