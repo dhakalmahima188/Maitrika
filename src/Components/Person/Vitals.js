@@ -9,10 +9,10 @@ import Col from "react-bootstrap/Col";
 import { useTranslation } from "react-i18next";
 import baby from "../../assets/baby.jpg";
 import LineChart from "./LineChart";
+import "./vitals.css";
 
 export default function MyVital(props) {
-
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const [height, setheight] = useState("");
   const [weight, setweight] = useState("");
   const [birth_date, setbirth_date] = useState("");
@@ -28,8 +28,6 @@ export default function MyVital(props) {
   console.log("name", child_name);
 
   const colorvalue = (value) => {
-
-
     var temp = value;
     setcolorval(temp);
   };
@@ -66,7 +64,7 @@ export default function MyVital(props) {
       }
     }
   };
- 
+
   return (
     <>
       <Modal
@@ -289,10 +287,10 @@ export default function MyVital(props) {
               onCancel();
             }}
           >
-           { t('ADD')}
+            {t("ADD")}
           </Button>
           <Button variant="danger" onClick={onCancel}>
-              { t('Cancel')}
+            {t("Cancel")}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -307,86 +305,135 @@ export default function MyVital(props) {
                 </Card.Header>
                 <Card.Body>
                   <img src={baby} className="baby_img"></img>
-
+                  <br />
+                  <br />
                   <Card.Title>
                     {" "}
-                    <br></br>
                     <b>{t("Height")}: </b>
-                    {detail.height}   { t('inch')}
+                    {detail.height} {t("inch")}
+                    &nbsp;&nbsp;&nbsp;
                     {detail.height <= 19 ? (
-                      <Button variant="danger"> {t("High Risk")}</Button>
+                      <Button variant="danger" size="sm">
+                        {" "}
+                        {t("High Risk")}
+                      </Button>
                     ) : (
-                      <Button>  {t("Low Risk")}</Button>
+                      <Button variant="success" size="sm">
+                        {" "}
+                        {t("Normal")}
+                      </Button>
                     )}
                   </Card.Title>
                   <Card.Title>
                     <b> {t("Weight")}: </b>
-                    {detail.weight} kg
+                    {detail.weight} kg &nbsp;&nbsp;&nbsp;
                     {detail.weight <= 5 && detail.weight >= 4 ? (
-                      <Button>{t("Low Risk")}</Button>
+                      <Button variant="success" size="sm">
+                        {t("Normal")}
+                      </Button>
                     ) : (
-                      <Button variant="danger"> {t("High Risk")}</Button>
+                      <Button variant="danger" size="sm">
+                        {" "}
+                        {t("High Risk")}
+                      </Button>
                     )}
                   </Card.Title>
                   <Card.Title>
-                    <b>{t("Birth Date")}:</b> {detail.birth_date}
+                    <b>{t("Birth Date")}:</b> {detail.birth_date}{" "}
+                    &nbsp;&nbsp;&nbsp;
                   </Card.Title>
 
                   <Card.Title>
                     <b>Temperature: </b>
-                    {detail.temp}
+                    {detail.temp} &nbsp;&nbsp;&nbsp;
                     {detail.temp <= 38 && detail.temp >= 36 ? (
-                      <Button> Low Risk</Button>
+                      <Button variant="success" size="sm">
+                        {" "}
+                        Normal
+                      </Button>
                     ) : (
-                      <Button variant="danger"> {t("High Risk")}</Button>
+                      <Button variant="danger" size="sm">
+                        {" "}
+                        {t("High Risk")}
+                      </Button>
                     )}
                   </Card.Title>
                   <Card.Title>
                     <b>Pulse: </b>
                     {detail.pulse}
-
+                    &nbsp;&nbsp;&nbsp;
                     {detail.pulse <= 160 && detail.pulse >= 80 ? (
-                      <Button> Low Risk</Button>
+                      <Button variant="success" size="sm">
+                        {" "}
+                        Normal
+                      </Button>
                     ) : (
-                      <Button variant="danger"> High Risk</Button>
+                      <Button variant="danger" size="sm">
+                        {" "}
+                        High Risk
+                      </Button>
                     )}
                   </Card.Title>
                   <Card.Title>
                     <b>How often baby cries?: </b>
                     {detail.cry}
-
+                    &nbsp;&nbsp;&nbsp;
                     {detail.cry == "Normally" ? (
-                      <Button> Low Risk</Button>
+                      <Button variant="success" size="sm">
+                        {" "}
+                        Normal
+                      </Button>
                     ) : (
-                      <Button variant="danger"> {t("High Risk")}</Button>
+                      <Button variant="danger" size="sm">
+                        {" "}
+                        {t("High Risk")}
+                      </Button>
                     )}
                   </Card.Title>
                   <Card.Title>
-                    <b>{t('Breastfeeding Continiued')}?: </b>
+                    <b>{t("Breastfeeding Continiued")}?: </b>
                     {detail.breastfeeding}
-
+                    &nbsp;&nbsp;&nbsp;
                     {detail.breastfeeding == "Yes" ? (
-                      <Button> Low Risk</Button>
+                      <Button variant="success" size="sm">
+                        {" "}
+                        Normal
+                      </Button>
                     ) : (
-                      <Button variant="danger"> {t("High Risk")}</Button>
+                      <Button variant="danger" size="sm">
+                        {" "}
+                        {t("High Risk")}
+                      </Button>
                     )}
                   </Card.Title>
                   <Card.Title>
                     <b>{t("Teeth and Gums:")} </b>
                     {detail.teeth}
-
+                    &nbsp;&nbsp;&nbsp;
                     {detail.teeth == "Normal" ? (
-                      <Button> Low Risk</Button>
+                      <Button variant="success" size="sm">
+                        {" "}
+                        Normal
+                      </Button>
                     ) : (
-                      <Button variant="danger"> {t("High Risk")}</Button>
+                      <Button variant="danger" size="sm">
+                        {" "}
+                        {t("High Risk")}
+                      </Button>
                     )}
                   </Card.Title>
                   <Card.Title>
-                    <b>{t('Color')}: </b> {detail.color}
+                    <b>{t("Color")}: </b> {detail.color}
+                    &nbsp;&nbsp;&nbsp;
                     {detail.color == "proper" ? (
-                      <Button> Low Risk</Button>
+                      <Button variant="success" size="sm">
+                        {" "}
+                        Normal
+                      </Button>
                     ) : (
-                      <Button variant="danger">{t("High Risk")}</Button>
+                      <Button variant="danger" size="sm">
+                        {t("High Risk")}
+                      </Button>
                     )}
                   </Card.Title>
 
