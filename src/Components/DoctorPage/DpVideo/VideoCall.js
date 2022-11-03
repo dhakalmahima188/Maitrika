@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, AppBar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { useTranslation } from "react-i18next";
 import VideoPlayer from './VideoPlayer';
 import Sidebar from './Sidebar';
 import Notifications from './Notifications';
@@ -36,12 +36,13 @@ const useStyles = makeStyles((theme) => ({
 
 const DpVideoCall = () => {
   const classes = useStyles();
+  const {t} = useTranslation()
 
   return (
     <ContextProvider>
     <div className={classes.wrapper}>
       <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography variant="h2" align="center">Video Chat</Typography>
+        <Typography variant="h4" align="center">{t("Video Chat")}</Typography>
       </AppBar>
       <VideoPlayer />
       <Sidebar>

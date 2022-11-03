@@ -1,31 +1,38 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Button, TextField, Grid, Typography, Container, Paper } from '@material-ui/core';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { Assignment, Phone, PhoneDisabled } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState, useContext, useEffect } from "react";
+import {
+  Button,
+  TextField,
+  Grid,
+  Typography,
+  Container,
+  Paper,
+} from "@material-ui/core";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Assignment, Phone, PhoneDisabled } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core/styles";
 import { useTranslation } from "react-i18next";
-import { io } from 'socket.io-client';
+import { io } from "socket.io-client";
 
-import { SocketContext } from '../../Context';
-import { sendPatID } from '../../server';
+import { SocketContext } from "../../Context";
+import { sendPatID } from "../../server";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
   },
   gridContainer: {
-    width: '100%',
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column',
+    width: "100%",
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
     },
   },
   container: {
-    width: '600px',
-    margin: '35px 0',
+    width: "600px",
+    margin: "35px 0",
     padding: 0,
-    [theme.breakpoints.down('xs')]: {
-      width: '80%',
+    [theme.breakpoints.down("xs")]: {
+      width: "80%",
     },
   },
   margin: {
@@ -35,28 +42,27 @@ const useStyles = makeStyles((theme) => ({
     padding: 20,
   },
   paper: {
-    padding: '10px 20px',
-    border: '2px solid black',
+    padding: "10px 20px",
+    border: "2px solid black",
   },
 }));
-let tempSocket = io('http://localhost:5000');
+let tempSocket = io("http://localhost:5000");
 const Sidebar = ({ children }) => {
-  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
-  const [idToCall, setIdToCall] = useState('');
+  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
+    useContext(SocketContext);
+  const [idToCall, setIdToCall] = useState("");
   const classes = useStyles();
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
   useEffect(() => {
     tempSocket.on("ready", (data) => {
-      setIdToCall(data.doc)
-      console.log(data)
-
-    })
-  }, [])
+      setIdToCall(data.doc);
+      console.log(data);
+    });
+  }, []);
   const sendData = () => {
-    tempSocket.emit("pat", me)
-  }
-
+    tempSocket.emit("pat", me);
+  };
 
   return (
     <Container className={classes.container}>
@@ -64,26 +70,51 @@ const Sidebar = ({ children }) => {
         <form className={classes.root} noValidate autoComplete="off">
           <Grid container className={classes.gridContainer}>
             <Grid item xs={12} md={6} className={classes.padding}>
-              <Typography gutterBottom variant="h6">Account Info</Typography>
-              <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)} fullWidth />
+              <TextField
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                fullWidth
+              />
               <div onClick={sendData}>
-              <CopyToClipboard text={me} className={classes.margin}>
-                <Button variant="contained" color="primary" fullWidth startIcon={<Assignment fontSize="large" />}>
-                {t("Ready")}
-                </Button>
-              </CopyToClipboard>
+                <CopyToClipboard text={me} className={classes.margin}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    startIcon={<Assignment fontSize="large" />}
+                  >
+                    {t("Ready")}
+                  </Button>
+                </CopyToClipboard>
               </div>
             </Grid>
             <Grid item xs={12} md={6} className={classes.padding}>
-              <Typography gutterBottom variant="h6">Make a call</Typography>
-              <TextField label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />
+              <TextField
+                value={idToCall}
+                onChange={(e) => setIdToCall(e.target.value)}
+                fullWidth
+              />
               {callAccepted && !callEnded ? (
-                <Button variant="contained" color="secondary" startIcon={<PhoneDisabled fontSize="large" />} fullWidth onClick={leaveCall} className={classes.margin}>
-                 {     t(  "Hang Up")}
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  startIcon={<PhoneDisabled fontSize="large" />}
+                  fullWidth
+                  onClick={leaveCall}
+                  className={classes.margin}
+                >
+                  {t("Hang Up")}
                 </Button>
               ) : (
-                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => callUser(idToCall)} className={classes.margin}>
-                      {     t(  "Call")}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  startIcon={<Phone fontSize="large" />}
+                  fullWidth
+                  onClick={() => callUser(idToCall)}
+                  className={classes.margin}
+                >
+                  {t("Call")}
                 </Button>
               )}
             </Grid>
