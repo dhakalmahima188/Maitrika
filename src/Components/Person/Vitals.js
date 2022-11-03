@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import React from "react";
+import React, { useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Card from "react-bootstrap/Card";
@@ -21,11 +21,43 @@ export default function MyVital(props) {
   const [msg, setmsg] = useState("error ");
   const [temp, settemp] = useState("");
   const [pulse, setpulse] = useState("");
-  const [breastfeeding, setbreastfeeding] = useState("");
+  const [breastfeeding, setbreastfeeding] = useState(false);
   const [cry, setcry] = useState("normally");
-  const [teeth, setteeth] = useState("");
+  const [teeth, setteeth] = useState("normal");
   const [colorval, setcolorval] = useState("Proper ");
-  const [verdicts, setVerdicts] = useState([]);
+
+  useEffect(() => {
+    console.log(teeth)
+  }, [teeth])
+
+  // Really bad code, sorry
+  const calVerdict = (height, weight, temp, pulse, cry, breastfeeding, teeth, colorval) => {
+    let good = 0;
+    let bad = 0;
+    if (height <= 19) bad++; else good++;
+    if (weight >= 4 && weight <= 5) good++; else bad++;
+    if (temp >= 36 && temp < 38) good++; else bad++;
+    if (pulse >= 80 && pulse <= 160) good++; else bad++;
+    if (cry == "Normally") good++; else bad++;
+    if (breastfeeding == "Yes") good++; else bad++;
+    if (teeth == "Normal") good++; else bad++;
+    if (colorval == "proper") good++; else bad++;
+
+    if (good + bad == 0) {
+      return "Consult App developers";
+    }
+
+    const risk = bad / (good + bad);
+
+    if (risk < 0.5) {
+      return "Normal";
+    }
+    else if (risk < 0.8) {
+      return "Consult a doctor";
+    }
+    else return "Visit a Hospital"
+  }
+  const [verdicts, setVerdicts] = useState(props.vitaldetails.map(m => calVerdict(m.height, m.weight, m.temp, m.pulse, m.cry, m.breastfeeding, m.teech, m.colorval)));
 
   const colorvalue = (value) => {
     var temp = value;
@@ -37,7 +69,7 @@ export default function MyVital(props) {
       alert("Blank detected");
     } else {
       console.log("yeha xam");
-      
+
       var temp_bmi = weight / (height * height);
       setbmi(temp_bmi);
       console.log("Bmi:", bmi);
@@ -67,40 +99,13 @@ export default function MyVital(props) {
         breastfeeding,
         teeth,
         colorval,
-        temp_bmi, 
+        temp_bmi,
         message
       );
     }
   };
 
-  // Really bad code, sorry
-  const calVerdict = (height, weight, temp, pulse, cry, breastfeeding, teeth, colorval) => {
-  let good = 0;
-  let bad = 0;
- 
-    if (height <= 19) bad++; else good++;
-    if (weight >= 4 && weight <=5) good++; else bad++;
-    if (temp >= 36 && temp < 38) good++; else bad++;
-    if (pulse >= 80 && pulse <= 160) good++; else bad++;
-    if (cry == "Normally") good++; else bad++;
-    if (breastfeeding == "Yes") good++; else bad++;
-    if (teeth == "Normal") good++; else bad++;
-    if (colorval == "proper") good++ ; else bad++;
-    
-    if (good + bad == 0){
-      return "Consult App developers";
-    }
 
-    const risk = bad / (good + bad);
-    
-    if(risk < 0.5){
-      return "Normal";
-    }
-    else if (risk < 0.8){
-      return "Consult a doctor";
-    }
-    else return "Visit a Hospital"
-  }
   return (
     <>
       <Modal
@@ -294,7 +299,20 @@ export default function MyVital(props) {
                 </Form.Control>
               </Form.Group>
               <Form.Group>
-                <h3 id="labels">Is Breastfeeding continued?</h3>
+            <div id="labels" className="birthCheckInput">
+              {t("BreastFeeding")}
+            </div>
+            <Form.Control
+              size="sm"
+              type="checkbox"
+              className="checkbox"
+              value={breastfeeding}
+              onChange={(e) => {
+                console.log(!breastfeeding)
+                setbreastfeeding(!breastfeeding);
+              }}
+            />
+                {/* <h3 id="labels">Is Breastfeeding continued?</h3>
 
                 <div className="mb-3 checkbox__details">
                   <Form.Check
@@ -303,13 +321,7 @@ export default function MyVital(props) {
                     value="Yes"
                     label={`Yes`}
                   />
-                  <Form.Check
-                    size="lg"
-                    type="checkbox"
-                    value="No"
-                    label={`No`}
-                  />
-                </div>
+                </div> */}
               </Form.Group>
             </div>
           </Form>
@@ -430,9 +442,9 @@ export default function MyVital(props) {
                   </Card.Title>
                   <Card.Title>
                     <b>{t("Breastfeeding Continiued")}?: </b>
-                    {detail.breastfeeding}
+                    {detail.breastfeeding ? "Yes": "No"}
                     &nbsp;&nbsp;&nbsp;
-                    {detail.breastfeeding == "Yes" ? (
+                    {detail.breastfeeding == true ? (
                       <Button variant="success" size="sm">
                         {" "}
                         Normal
@@ -491,8 +503,7 @@ export default function MyVital(props) {
               </Card>
             </div>
             <br></br>
-
-            <div></div>
+            <div>{verdicts[index]}</div>
           </>
         );
       })}
