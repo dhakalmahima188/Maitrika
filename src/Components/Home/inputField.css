@@ -40,6 +40,10 @@
     padding: 30px;
 }
 
+.inputFirst {
+    margin-left: -19px;
+}
+
 @media only screen and (max-device-width: 420px) {
     .home__container {
         width: 375px;

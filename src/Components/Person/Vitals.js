@@ -104,7 +104,7 @@ export default function MyVital(props) {
                   onChange={(e) => {
                     setheight(e.target.value);
                   }}
-                  placeholder=" Enter Height"
+                  placeholder=" Enter Height in inches"
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -117,7 +117,7 @@ export default function MyVital(props) {
                   onChange={(e) => {
                     setweight(e.target.value);
                   }}
-                  placeholder="Enter Weight"
+                  placeholder="Enter Weight in kg"
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -201,7 +201,7 @@ export default function MyVital(props) {
                 controlId="exampleForm.ControlTextarea1"
               >
                 {" "}
-                <h3 id="labels"> {t("Body Temperature")}(℃)</h3>
+                <h3 id="labels"> {t("Body Temperature")}(*F)</h3>
                 <Form.Control
                   size="lg"
                   value={temp}
@@ -243,7 +243,7 @@ export default function MyVital(props) {
                 controlId="exampleForm.ControlTextarea1"
               >
                 {" "}
-                <h3 id="labels">Teeth and Gums?</h3>
+                <h3 id="labels">Teeth and Gums:</h3>
                 <Form.Control
                   as="select"
                   custom
@@ -327,7 +327,7 @@ export default function MyVital(props) {
                   <Card.Title>
                     <b> {t("Weight")}: </b>
                     {detail.weight} kg &nbsp;&nbsp;&nbsp;
-                    {detail.weight <= 5 && detail.weight >= 4 ? (
+                    {detail.weight <= 5 && detail.weight >= 3 ? (
                       <Button variant="success" size="sm">
                         {t("Normal")}
                       </Button>
@@ -346,7 +346,7 @@ export default function MyVital(props) {
                   <Card.Title>
                     <b>Temperature: </b>
                     {detail.temp} &nbsp;&nbsp;&nbsp;
-                    {detail.temp <= 38 && detail.temp >= 36 ? (
+                    {detail.temp <= 98 && detail.temp >= 97 ? (
                       <Button variant="success" size="sm">
                         {" "}
                         Normal
@@ -375,10 +375,10 @@ export default function MyVital(props) {
                     )}
                   </Card.Title>
                   <Card.Title>
-                    <b>How often baby cries?: </b>
+                    <b>How often baby cries? </b>
                     {detail.cry}
                     &nbsp;&nbsp;&nbsp;
-                    {detail.cry == "Normally" ? (
+                    {detail.cry == "normally" ? (
                       <Button variant="success" size="sm">
                         {" "}
                         Normal
@@ -400,9 +400,9 @@ export default function MyVital(props) {
                         Normal
                       </Button>
                     ) : (
-                      <Button variant="danger" size="sm">
+                      <Button variant="success" size="sm">
                         {" "}
-                        {t("High Risk")}
+                        {t("Low Risk")}
                       </Button>
                     )}
                   </Card.Title>

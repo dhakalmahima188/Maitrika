@@ -25,22 +25,25 @@ export const InputField = (props) => {
 
   return (
     <>
-    <div className="Form_area home__container inputfield__container">
-      <h4 className="input__title">{t('Add New Patient')}</h4>
-      <hr /><br />
-      <Form>
-        <Row>
-          <Col>
-            <div id="labels">{t("Mother's name")}</div>
-            <Form.Control
-              size="lg"
-              value={title}
-              className="formInput"
-              onChange={(e) => {
-                setTitle(e.target.value);
-              }}
-              placeholder={t(" Name")}
-            />
+      <div className="Form_area home__container inputfield__container">
+        <h4 className="input__title">{t("Add New Patient")}</h4>
+        <hr />
+        <br />
+        <Form>
+          <Row>
+            <Col>
+              <div id="labels" className="inputFirst">
+                {t("Mother's name")}
+              </div>
+              <Form.Control
+                size="lg"
+                value={title}
+                className="formInput"
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+                placeholder={t(" Name")}
+              />
             </Col>
           </Row>
           <Row>

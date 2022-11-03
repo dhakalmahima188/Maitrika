@@ -47,8 +47,8 @@
 }
 
 .dropdown-item {
-    border: 2px solid #43AED9;
-    background-color: #C0E9F2;
+    border: 2px solid green;
+    background-color: lightgreen;
     padding: 0px;
     width: 70px;
     font-weight: bold;
@@ -62,7 +62,7 @@
 .area__name {
     display: block;
     text-align: center;
-    background-color: #43AED9;
+    background-color: green;
     padding: 15px;
     color: white;
     font-weight: bold;
@@ -100,7 +100,7 @@
     .dropdown-item {
         top: 20px;
         left: 0px;
-        background-color: #43AED9;
+        background-color: lightgreen;
         border: 2px solid white;
         width: 40px;
     }
