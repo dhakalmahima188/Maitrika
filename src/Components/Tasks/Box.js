@@ -6,6 +6,7 @@ export const Box = (props) => {
     let item = props.item
     return (
         <>
+        
             <div className="box" style={{ backgroundColor: (item.key !== props.selected) ? 'white' : "#e3f0f5" }}
                 onClick={() => props.onClick(item.key)}>
                 <img src={item.image} alt="" className='tasks__img' />
