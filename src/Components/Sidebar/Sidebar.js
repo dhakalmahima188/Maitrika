@@ -52,8 +52,6 @@ export const Sidebar = () => {
             </button>
           ))}
         </div>
-        <br />
-        <br />
         <h4 className="area__name">
           {t("Amrita Baskota")}, {t("Sadar Marga")}, {t("Ramaroshan")}{" "}
           {t("Gaupalika")}, {t("Achham")}

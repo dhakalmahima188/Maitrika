@@ -6,56 +6,58 @@ import service from "../../assets/health.png";
 import { Button } from "react-bootstrap";
 import { MdDone } from "react-icons/md";
 import Card from "react-bootstrap/Card";
-import './Tasks.css'
+import { useTranslation } from "react-i18next";
+
+import "./Tasks.css";
 
 export const Tasks = () => {
-const [targetData, settargetData] = React.useState([
-    {
-        key: 0,
-        image: pregnantLady,
-        name: "Mahima Dhakal",
-        subject: "Pregnancy Follow Up",
-        time: "1 day left",
-        category: "text",
-  
-        important: 0,
-      },
-  
-      {
-        key: 1,
-        image: birth,
-        name: "Radha Acharya",
-        subject: "Expected Date",
-        time: "3 days left",
-        important: 1,
-        category: "text",
-      },
-      {
-        key: 2,
-        image: vaccine,
-        name: "Radha Acharya",
-        subject: "Polio Dosage to Child",
-        time: "In 2 weeks",
-        important: 0,
-        category: "fourm",
-      },
-      {
-        key: 3,
-        image: service,
-        name: "Yunika BAjracharya",
-        subject: "Whole Body CheckUp",
-        time: "In 2 weeks",
-        important: 1,
-        category: "fourm",
-      },
+  const { t } = useTranslation();
 
-]);
- 
-  
+  const [targetData, settargetData] = React.useState([
+    {
+      key: 0,
+      image: pregnantLady,
+      name: "Mahima Dhakal",
+      subject: "Pregnancy Follow Up",
+      time: "1 day left",
+      category: "text",
+
+      important: 0,
+    },
+
+    {
+      key: 1,
+      image: birth,
+      name: "Richa Acharya",
+      subject: "Expected Date",
+      time: "3 days left",
+      important: 1,
+      category: "text",
+    },
+    {
+      key: 2,
+      image: vaccine,
+      name: "Radha Shree",
+      subject: "Polio Dosage to Child",
+      time: "In 2 weeks",
+      important: 0,
+      category: "fourm",
+    },
+    {
+      key: 3,
+      image: service,
+      name: "Sarita Shakya",
+      subject: "Whole Body CheckUp",
+      time: "In 2 weeks",
+      important: 1,
+      category: "fourm",
+    },
+  ]);
+
   const onDelete = (item) => {
     console.log(item);
     settargetData(
-        targetData.filter((e) => {
+      targetData.filter((e) => {
         return e !== item;
       })
     );
@@ -63,34 +65,28 @@ const [targetData, settargetData] = React.useState([
 
   return (
     <div>
-
       {targetData.map((task) => {
         return (
-       <div className=''>
-          <div className=' doctor__container '>
-            <div  className="doctor__box">
-              <img className=" doctor__img " src={task.image} />
-              <div>
-              <h4 className=''> {task.name}</h4>
-              <div className=''> {task.subject}</div>
-              <div className=''> {task.time}</div>
+          <>
+            <div className="tasks__box">
+              <img src={task.image} alt="" className="tasks__img" />
+              <div className="tasks__textbox">
+                <h4 className="tasks__title">{t(task.name)}</h4>
+                <h6 className="tasks__contact">{task.subject}</h6>
+                <h6 className="tasks__contact">{task.time}</h6>
               </div>
-              <div>
-                <Button 
-                  className="done_btn"
-                  variant="success"
-                  size="sm"
-                  onClick={() => {
-                    onDelete(task);
-                  }}
-                >
-                  <MdDone />
-                </Button>
-              </div>
+              <Button
+                className="done_btn"
+                variant="success"
+                size="sm"
+                onClick={() => {
+                  onDelete(task);
+                }}
+              >
+                <MdDone />
+              </Button>
             </div>
-          </div>
-          </div>
-
+          </>
         );
       })}
     </div>
