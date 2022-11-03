@@ -5,8 +5,8 @@ import { Assignment, Phone, PhoneDisabled } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import { io } from 'socket.io-client';
 
-import { SocketContext } from '../../Context';
-import { sendPatID } from '../../server';
+import { SocketContext } from '../../../Context';
+import { sendDocID } from '../../../server';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,20 +41,23 @@ const useStyles = makeStyles((theme) => ({
 let tempSocket = io('http://localhost:5000');
 const Sidebar = ({ children }) => {
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
+
   const [idToCall, setIdToCall] = useState('');
   const classes = useStyles();
 
+
+
   useEffect(() => {
     tempSocket.on("ready", (data) => {
-      setIdToCall(data.doc)
       console.log(data)
+      setIdToCall(data.pat)
+      
 
     })
   }, [])
   const sendData = () => {
-    tempSocket.emit("pat", me)
+    tempSocket.emit("doc", me)
   }
-
 
   return (
     <Container className={classes.container}>

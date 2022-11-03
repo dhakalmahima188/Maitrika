@@ -12,6 +12,7 @@ import { DpFCHV } from "./Components/DoctorPage/DpFCHV/DpFCHV"
 import { DpSearchBar } from "./Components/DoctorPage/DpHome/DpSearchBar"
 import { DpEvent } from "./Components/DoctorPage/DpHome/DpEvent"
 import { DpPerson } from "./Components/DoctorPage/DpPerson/DpPerson"
+import DpVideoCall from "./Components/DoctorPage/DpVideo/VideoCall"
 
 
 import { useTranslation } from "react-i18next";
@@ -264,6 +265,15 @@ function App() {
             }
         />
 
+          <Route
+            path="/doctorpage/video"
+            element={
+              <>
+                <DpSidebar />
+                <DpVideoCall />
+              </>
+            }
+        />
 
         </Routes>
 
